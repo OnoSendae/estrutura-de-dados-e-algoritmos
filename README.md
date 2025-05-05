@@ -4,6 +4,7 @@ Este repositório contém materiais e exemplos para o treinamento de Algoritmos 
 
 ## Índice Geral
 
+0. [Fundamentos da Programação](#módulo-0-fundamentos-da-programação)
 1. [Análise de Algoritmos e Complexidade](#módulo-1-análise-de-algoritmos-e-complexidade)
 2. [Estruturas de Dados Lineares Avançadas](#módulo-2-estruturas-de-dados-lineares-avançadas)
 3. [Árvores e Grafos](#módulo-3-árvores-e-grafos)
@@ -12,8 +13,20 @@ Este repositório contém materiais e exemplos para o treinamento de Algoritmos 
 6. [Algoritmos Gulosos e Programação Dinâmica](#módulo-6-algoritmos-gulosos-e-programação-dinâmica)
 7. [Tópicos Avançados e Aplicações](#módulo-7-tópicos-avançados-e-aplicações)
 8. [Estruturas de Dados Especializadas e Aplicações Avançadas](#módulo-8-estruturas-de-dados-especializadas-e-aplicações-avançadas)
+9. [Estruturas de Dados Complexas](#módulo-9-estruturas-de-dados-complexas)
+10. [Indexação](#módulo-10-indexação)
+11. [Técnicas de Resolução de Problemas](#módulo-11-técnicas-de-resolução-de-problemas)
 
 ## Sumário Detalhado
+
+### Módulo 0: Fundamentos da Programação
+- [Sintaxe da Linguagem](0-fundamentos-da-programacao/01-sintaxe-da-linguagem.md)
+- [Estruturas de Controle](0-fundamentos-da-programacao/02-estruturas-de-controle.md)
+- [Funções](0-fundamentos-da-programacao/03-funcoes.md)
+- [Conceitos Básicos de OOP](0-fundamentos-da-programacao/04-programacao-orientada-objetos.md)
+- [Pseudocódigo](0-fundamentos-da-programacao/05-pseudocodigo.md)
+- [Exemplos Práticos](0-fundamentos-da-programacao/exemplos/)
+- [Exercícios](0-fundamentos-da-programacao/exercicios/)
 
 ### Módulo 1: Análise de Algoritmos e Complexidade
 - [Visão Geral do Módulo](1-analise-de-algoritmos-e-complexidade/0-visao-geral-modulo.md)
@@ -103,10 +116,35 @@ Este repositório contém materiais e exemplos para o treinamento de Algoritmos 
 - [Estudo de Caso: Sistema de Controle de Versão](8-estruturas-de-dados-especializadas-e-aplicacoes-avancadas/5-estudo-caso-sistema-controle-versao.md)
 - [Exercícios Integradores](8-estruturas-de-dados-especializadas-e-aplicacoes-avancadas/6-exercicios-integradores.md)
 
+### Módulo 9: Estruturas de Dados Complexas
+- [ISAM: Método de Acesso Sequencial Indexado](9-estruturas-de-dados-complexas/1-isam-metodo-acesso-sequencial-indexado.md)
+- [Árvores 2-3](9-estruturas-de-dados-complexas/2-arvores-2-3.md)
+
+### Módulo 10: Indexação
+- [Indexação Linear](10-indexacao/1-indexacao-linear.md)
+- [Indexação Baseada em Árvore](10-indexacao/2-indexacao-baseada-em-arvore.md)
+
+### Módulo 11: Técnicas de Resolução de Problemas
+- [Algoritmos Randomizados](11-tecnicas-de-resolucao-de-problemas/1-algoritmos-randomizados.md)
+
 ## Estrutura de Diretórios
 
 ```
 estrutura-de-dados-e-algoritmos/
+├── 0-fundamentos-da-programacao/
+│   ├── README.md
+│   ├── 01-sintaxe-da-linguagem.md
+│   ├── 02-estruturas-de-controle.md
+│   ├── 03-funcoes.md
+│   ├── 04-programacao-orientada-objetos.md
+│   ├── 05-pseudocodigo.md
+│   ├── exemplos/
+│   │   ├── 01-sintaxe-variaveis.js
+│   │   ├── 02-estruturas-controle.js
+│   │   ├── 03-funcoes.js
+│   │   ├── 04-programacao-orientada-objetos.js
+│   │   └── 05-pseudocodigo.js
+│   └── exercicios/
 ├── 1-analise-de-algoritmos-e-complexidade/
 │   ├── 0-visao-geral-modulo.md
 │   ├── 1-introducao-analise-algoritmos.md
@@ -197,6 +235,14 @@ estrutura-de-dados-e-algoritmos/
 │   ├── 4-estruturas-imutaveis-javascript.md
 │   ├── 5-estudo-caso-sistema-controle-versao.md
 │   └── 6-exercicios-integradores.md
+├── 9-estruturas-de-dados-complexas/
+│   ├── 1-isam-metodo-acesso-sequencial-indexado.md
+│   └── 2-arvores-2-3.md
+├── 10-indexacao/
+│   ├── 1-indexacao-linear.md
+│   └── 2-indexacao-baseada-em-arvore.md
+├── 11-tecnicas-de-resolucao-de-problemas/
+│   └── 1-algoritmos-randomizados.md
 └── README.md
 ```
 
@@ -210,6 +256,6 @@ estrutura-de-dados-e-algoritmos/
 
 ## Pré-requisitos
 
-- Conhecimentos básicos de programação
+- Conhecimentos básicos de programação (ou iniciar pelo Módulo 0 - Fundamentos da Programação)
 - Familiaridade com JavaScript/TypeScript
 - Node.js instalado para executar os exemplos 
