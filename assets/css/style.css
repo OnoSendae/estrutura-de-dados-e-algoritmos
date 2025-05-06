@@ -162,6 +162,20 @@ body {
     color: var(--text-secondary);
 }
 
+/* Estilos para o novo a.lesson-link */
+.lesson a.lesson-link {
+    display: flex; /* Para alinhar o ícone e as informações da aula */
+    align-items: center;
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    color: inherit; /* Faz o link herdar a cor do texto do seu pai (li.lesson) */
+    flex-grow: 1; /* Faz o link ocupar o espaço disponível no li.lesson */
+    padding: 8px 0; /* Exemplo de padding, ajuste conforme o design original do li.lesson */
+}
+
+.lesson a.lesson-link:focus {
+    outline: none; /* Remove o outline de foco */
+}
+
 /* Content */
 .content {
     grid-column: 2;
