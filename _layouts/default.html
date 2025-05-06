@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% include head.html %}
+</head>
+<body>
+    {{ content }}
+    <script>
+      window.JEKYLL_BASEURL = "{{ site.baseurl }}"; // Passa o baseurl para o JavaScript
+    </script>
+    <script src="{{ '/assets/js/player.js' | relative_url }}"></script>
+</body>
+</html> 

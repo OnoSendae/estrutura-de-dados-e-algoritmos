@@ -1,0 +1,22 @@
+title: Plataforma de Estudos - Algoritmos e Estruturas de Dados
+description: >-
+  Uma plataforma interativa para aprender algoritmos e estruturas de dados
+  com materiais em texto e áudio.
+baseurl: "/estrutura-de-dados-e-algoritmos" # Defina como /nome-do-seu-repositorio se estiver em um subdiretório no GitHub Pages
+url: "https://onosendae.github.io" # Defina a URL base do seu site, ex: https://username.github.io
+
+# Build settings
+markdown: kramdown
+# theme: minima # Removido/Comentado pois estamos usando um layout customizado
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - scripts/
+  - README.md
+  - package.json
+  - package-lock.json 
