@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Converte arquivos WAV para MP3 recursivamente em diretórios",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "node src/index.js"
   },
