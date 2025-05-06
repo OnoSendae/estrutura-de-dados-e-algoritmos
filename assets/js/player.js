@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Base URL para carregar arquivos .md - importante para GitHub Pages
     // Jekyll injeta site.baseurl. Se não estiver disponível, assume raiz.
-    const baseurl = window.JEKYLL_BASEURL || ''; 
+    // const baseurl = window.JEKYLL_BASEURL || ''; // Comentado/Removido pois os caminhos já vêm com baseurl do Liquid
 
     function loadAndPlayLesson(index) {
         if (index < 0 || index >= lessons.length) return;
@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Carrega e exibe material Markdown
         if (mdPath && mdPath !== 'null' && mdPath !== 'undefined') {
-            materialLink.href = `${baseurl}${mdPath}`;
+            materialLink.href = mdPath;
             materialLink.classList.remove('hidden');
             
-            fetch(`${baseurl}${mdPath}`)
+            fetch(mdPath)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Carrega e toca áudio
         if (audioSrc && audioSrc !== 'null' && audioSrc !== 'undefined') {
-            audioPlayer.src = `${baseurl}${audioSrc}`;
+            audioPlayer.src = audioSrc;
             audioPlayer.play();
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
             isPlaying = true;

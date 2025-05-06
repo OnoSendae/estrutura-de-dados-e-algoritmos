@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Noto Sans Mono', 'Roboto Mono', monospace;
 }
 
 :root {
@@ -25,7 +25,7 @@ body {
 
 .app-container {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 420px 1fr;
     grid-template-rows: 1fr 90px; /* Main content e player */
     height: 100vh;
 }
@@ -62,7 +62,7 @@ body {
     margin-bottom: 8px;
     cursor: pointer;
     color: var(--text-secondary);
-    font-weight: 600;
+    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -74,7 +74,7 @@ body {
 }
 
 .menu li i {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .playlist-container {
@@ -104,7 +104,7 @@ body {
     cursor: pointer;
     padding: 8px 0;
     display: block;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-primary);
 }
 
@@ -152,7 +152,7 @@ body {
 
 .lesson-title {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-primary);
 }
 
@@ -270,8 +270,6 @@ body {
 #reading-material {
     color: var(--text-secondary);
     line-height: 1.6;
-    max-height: 400px; 
-    overflow-y: auto; 
     background-color: var(--dark-bg); 
     padding: 15px;
     border-radius: 4px;
@@ -282,7 +280,7 @@ body {
     white-space: pre-wrap; 
     word-wrap: break-word; 
     color: var(--text-primary); 
-    font-family: 'Courier New', Courier, monospace; 
+    font-family: 'Noto Sans Mono', 'Roboto Mono', monospace;
     font-size: 0.9em;
     background-color: var(--hover-bg); 
     padding: 10px;
@@ -335,7 +333,7 @@ body {
 }
 
 #reading-material code {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Noto Sans Mono', 'Roboto Mono', monospace;
     background-color: var(--hover-bg);
     padding: 0.2em 0.4em;
     border-radius: 3px;
@@ -581,13 +579,13 @@ body {
 /* Responsividade */
 @media (max-width: 1024px) {
     .app-container {
-        grid-template-columns: 240px 1fr;
+        grid-template-columns: 280px 1fr;
     }
 }
 
 @media (max-width: 768px) {
     .app-container {
-        grid-template-columns: 200px 1fr;
+        grid-template-columns: 240px 1fr;
     }
     
     .current-lesson {
