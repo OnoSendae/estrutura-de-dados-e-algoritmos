@@ -75,9 +75,24 @@ document.addEventListener('DOMContentLoaded', function() {
                          readingMaterialDiv.appendChild(materialLink);
                     }
                 });
-        } else {
-            readingMaterialDiv.innerHTML = '<p>Esta aula não possui material de leitura associado.</p>';
-            materialLink.classList.add('hidden');
+        } else { // Se mdPath for null, 'null', undefined, ou uma string vazia
+            const nextLessonButton = document.createElement('button');
+            nextLessonButton.textContent = 'Avançar para a próxima aula';
+            nextLessonButton.className = 'btn-next-material'; // Para estilização opcional
+            nextLessonButton.onclick = () => {
+                // Garante que não tentemos avançar além da última aula
+                if (currentLessonIndex < lessons.length - 1) {
+                    loadAndPlayLesson(currentLessonIndex + 1);
+                } else {
+                    // Opcional: feedback se já estiver na última aula e não houver próxima
+                    console.log("Já está na última aula."); 
+                }
+            };
+            
+            readingMaterialDiv.innerHTML = '<p>Para avançar para a próxima aula, clique no botão abaixo ou utilize os controles do player.</p>';
+            readingMaterialDiv.appendChild(nextLessonButton);
+            
+            materialLink.classList.add('hidden'); // Esconde o link "Abrir Material Completo"
         }
 
         // Carrega e toca áudio
