@@ -1,0 +1,22 @@
+{
+  "name": "conversor-wav-mp3",
+  "version": "1.0.0",
+  "description": "Converte arquivos WAV para MP3 recursivamente em diretórios",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "wav",
+    "mp3",
+    "converter",
+    "audio"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^11.1.1"
+  }
+} 
