@@ -120,15 +120,19 @@ body {
 
 .lesson {
     display: flex;
-    align-items: center;
-    padding: 8px 0;
     cursor: pointer;
     border-radius: 4px;
     margin: 4px 0;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .lesson:hover, .lesson.active {
     background-color: var(--hover-bg);
+}
+
+.lesson a.lesson-link:focus-visible {
+    background-color: var(--hover-bg);
+    border-radius: 4px;
 }
 
 .play-icon {
@@ -164,16 +168,17 @@ body {
 
 /* Estilos para o novo a.lesson-link */
 .lesson a.lesson-link {
-    display: flex; /* Para alinhar o ícone e as informações da aula */
+    display: flex;
     align-items: center;
-    text-decoration: none; /* Remove o sublinhado padrão do link */
-    color: inherit; /* Faz o link herdar a cor do texto do seu pai (li.lesson) */
-    flex-grow: 1; /* Faz o link ocupar o espaço disponível no li.lesson */
-    padding: 8px 0; /* Exemplo de padding, ajuste conforme o design original do li.lesson */
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1;
+    padding: 10px 8px;
+    border-radius: 4px;
 }
 
 .lesson a.lesson-link:focus {
-    outline: none; /* Remove o outline de foco */
+    outline: none;
 }
 
 /* Content */
