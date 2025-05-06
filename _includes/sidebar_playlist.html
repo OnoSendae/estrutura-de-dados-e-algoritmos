@@ -24,11 +24,13 @@
                                 data-md-path="{{ lesson.md_path | prepend: site.baseurl }}"
                                 data-lesson-title="{{ lesson.title | escape }}"
                                 data-module-title="{{ module.title | escape }}">
-                                <div class="play-icon"><i class="fas fa-play"></i></div>
-                                <div class="lesson-info">
-                                    <span class="lesson-title">{{ lesson.title }}</span>
-                                    <span class="lesson-module">{{ module.title }}</span>
-                                </div>
+                                <a href="#{{ lesson.id }}" class="lesson-link" draggable="false">
+                                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                                    <div class="lesson-info">
+                                        <span class="lesson-title">{{ lesson.title }}</span>
+                                        <span class="lesson-module">{{ module.title }}</span>
+                                    </div>
+                                </a>
                             </li>
                         {% endif %}
                     {% endfor %}

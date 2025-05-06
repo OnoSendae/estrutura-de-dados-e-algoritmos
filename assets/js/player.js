@@ -162,7 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     lessons.forEach((lesson, index) => {
-        lesson.addEventListener('click', () => {
+        lesson.addEventListener('click', (event) => {
+            event.preventDefault();
             loadAndPlayLesson(index);
         });
     });
@@ -237,6 +238,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Tenta carregar uma aula a partir do hash da URL na inicialização
     loadLessonFromUrlHash();
+
+    // Adiciona um listener para o evento hashchange
+    window.addEventListener('hashchange', loadLessonFromUrlHash);
 
     // Para passar o baseurl do Jekyll para o JavaScript, você pode adicionar no seu layout default.html:
     // <script>
