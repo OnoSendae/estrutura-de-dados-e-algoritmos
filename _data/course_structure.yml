@@ -172,21 +172,23 @@ modules:
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/3-arvores-balanceadas.md
       - id: 3-arvores-e-grafos-4-grafos-conceitos
         title: Grafos Conceitos
-        mp3_path: null
+        mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/4-grafos-conceitos.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/4-grafos-conceitos.md
       - id: 3-arvores-e-grafos-41-grafos-conceitos-representacoes
         title: Grafos Conceitos Representacoes
-        mp3_path: null
+        mp3_path: >-
+          /src/modulos-treinamento/3-arvores-e-grafos/4.1-grafos-conceitos-representacoes.mp3
         md_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/4.1-grafos-conceitos-representacoes.md
       - id: 3-arvores-e-grafos-42-grafos-conceitos-modelagem
         title: Grafos Conceitos Modelagem
-        mp3_path: null
+        mp3_path: >-
+          /src/modulos-treinamento/3-arvores-e-grafos/4.2-grafos-conceitos-modelagem.mp3
         md_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/4.2-grafos-conceitos-modelagem.md
       - id: 3-arvores-e-grafos-5-busca-largura-bfs
         title: Busca Largura Bfs
-        mp3_path: null
+        mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/5-busca-largura-bfs.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/5-busca-largura-bfs.md
       - id: 3-arvores-e-grafos-GUIA-INSTRUTOR
         title: GUIA INSTRUTOR
