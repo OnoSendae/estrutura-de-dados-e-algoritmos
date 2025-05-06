@@ -156,17 +156,19 @@ modules:
         md_path: null
       - id: 3-arvores-e-grafos-1-introducao-estruturas-hierarquicas
         title: Introducao Estruturas Hierarquicas
-        mp3_path: null
+        mp3_path: >-
+          /src/modulos-treinamento/3-arvores-e-grafos/1-introducao-estruturas-hierarquicas.mp3
         md_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/1-introducao-estruturas-hierarquicas.md
       - id: 3-arvores-e-grafos-2-arvores-binarias-busca
         title: Arvores Binarias Busca
-        mp3_path: null
+        mp3_path: >-
+          /src/modulos-treinamento/3-arvores-e-grafos/2-arvores-binarias-busca.mp3
         md_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/2-arvores-binarias-busca.md
       - id: 3-arvores-e-grafos-3-arvores-balanceadas
         title: Arvores Balanceadas
-        mp3_path: null
+        mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/3-arvores-balanceadas.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/3-arvores-balanceadas.md
       - id: 3-arvores-e-grafos-4-grafos-conceitos
         title: Grafos Conceitos
