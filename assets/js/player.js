@@ -115,6 +115,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Atualiza destaque na playlist
         lessons.forEach(l => l.classList.remove('active'));
         lessonElement.classList.add('active');
+
+        // Atualiza o fragmento da URL com o ID da aula atual
+        const lessonId = lessonElement.dataset.lessonId;
+        if (lessonId) {
+            // Usamos replaceState para não poluir o histórico do navegador com cada clique de aula interna.
+            // Se o objetivo fosse permitir que o botão "voltar" do navegador navegasse entre as aulas tocadas,
+            // poderíamos usar history.pushState aqui.
+            if (history.replaceState) {
+                history.replaceState(null, null, '#' + lessonId);
+            } else {
+                // Fallback para navegadores mais antigos que não suportam history.replaceState
+                window.location.hash = '#' + lessonId;
+            }
+        }
     }
 
     playBtn.addEventListener('click', () => {
@@ -193,6 +207,36 @@ document.addEventListener('DOMContentLoaded', function() {
             this.parentElement.classList.toggle('expanded');
         });
     });
+
+    // Função para carregar a aula com base no ID do fragmento da URL
+    function loadLessonFromUrlHash() {
+        const lessonIdFromHash = window.location.hash.substring(1); // Remove o # inicial
+        if (lessonIdFromHash) {
+            let lessonToLoadIndex = -1;
+            lessons.forEach((lesson, index) => {
+                if (lesson.dataset.lessonId === lessonIdFromHash) {
+                    lessonToLoadIndex = index;
+                }
+            });
+
+            if (lessonToLoadIndex !== -1) {
+                loadAndPlayLesson(lessonToLoadIndex);
+            } else {
+                console.warn('Lesson ID from URL hash not found:', lessonIdFromHash);
+                // Opcional: carregar a primeira aula se o ID do hash não for encontrado e nenhuma aula estiver carregada
+                if (lessons.length > 0 && currentLessonIndex === -1) {
+                   // loadAndPlayLesson(0); // Descomente se quiser carregar a primeira aula como fallback
+                }
+            }
+        }
+        // Opcional: se não houver hash e nenhuma aula estiver carregada, carregar a primeira
+        // else if (lessons.length > 0 && currentLessonIndex === -1) {
+        //    loadAndPlayLesson(0); // Descomente se quiser carregar a primeira aula por padrão
+        // }
+    }
+
+    // Tenta carregar uma aula a partir do hash da URL na inicialização
+    loadLessonFromUrlHash();
 
     // Para passar o baseurl do Jekyll para o JavaScript, você pode adicionar no seu layout default.html:
     // <script>
