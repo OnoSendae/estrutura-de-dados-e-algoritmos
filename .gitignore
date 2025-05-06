@@ -1,1 +1,33 @@
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log
+yarn.lock # Se você usa Yarn e não quer versionar o lock, embora seja recomendado versionar.
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby / Bundler (local vendor/bundle)
+# .bundle/ # Descomente se você usa 'bundle install --path vendor/bundle'
+
+# Logs
+*.log
+
+# Arquivos de áudio (do seu original)
 *.wav
+
+# Cache/Configurações de Editores
+.vscode/
+.idea/
+.cursor/ # Adicionado baseado na estrutura do seu projeto
+
+# Arquivos de ambiente (se você usar .env)
+# .env
+# .env.*
+# !.env.example

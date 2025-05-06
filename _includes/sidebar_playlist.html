@@ -1,0 +1,40 @@
+<aside class="sidebar">
+    <div class="logo">
+        <h1>AlgoPlayer</h1> <!-- Ou {{ site.title }} -->
+    </div>
+    <nav class="menu">
+        <ul>
+            <li class="active"><i class="fas fa-home"></i> Home</li>
+            <li><i class="fas fa-search"></i> Buscar</li>
+            <li><i class="fas fa-book"></i> Biblioteca</li>
+        </ul>
+    </nav>
+    <div class="playlist-container">
+        <h2>Módulos & Aulas</h2>
+        <ul class="playlist">
+            {% for module in site.data.course_structure.modules %}
+            <li class="playlist-module">
+                <span class="module-title">{{ module.emoji }} {{ module.title }}</span>
+                <ul class="module-lessons">
+                    {% for lesson in module.lessons %}
+                        {% if lesson.mp3_path or lesson.md_path %}
+                            <li class="lesson"
+                                data-lesson-id="{{ lesson.id }}"
+                                data-audio-src="{{ lesson.mp3_path | prepend: site.baseurl }}"
+                                data-md-path="{{ lesson.md_path | prepend: site.baseurl }}"
+                                data-lesson-title="{{ lesson.title | escape }}"
+                                data-module-title="{{ module.title | escape }}">
+                                <div class="play-icon"><i class="fas fa-play"></i></div>
+                                <div class="lesson-info">
+                                    <span class="lesson-title">{{ lesson.title }}</span>
+                                    <span class="lesson-module">{{ module.title }}</span>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside> 

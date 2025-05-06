@@ -1,0 +1,84 @@
+---
+layout: default
+title: Início
+---
+
+<div class="app-container">
+    {% include sidebar_playlist.html %}
+
+    <main class="content">
+        <header class="top-bar">
+            <div class="navigation">
+                <button class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="user-menu">
+                <button class="user-btn"><i class="fas fa-user"></i> Minha Conta</button>
+            </div>
+        </header>
+        
+        <div class="content-area">
+            <div class="now-playing">
+                <h2>Tocando agora</h2>
+                <div class="current-lesson">
+                    <div class="lesson-cover">
+                        <i class="fas fa-book-open fa-5x"></i> <!-- Ícone padrão -->
+                    </div>
+                    <div class="lesson-details">
+                        <h3 id="current-title">Selecione uma aula para começar</h3>
+                        <p id="current-module">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="material-container">
+                <h3>Material de Leitura</h3>
+                <div id="reading-material">
+                    <p>Selecione uma aula para ver o material de leitura associado.</p>
+                    <a id="material-link" href="#" class="hidden" target="_blank" rel="noopener noreferrer">Abrir Material Completo <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="player">
+        <div class="player-left">
+            <div class="mini-cover">
+                <i class="fas fa-book-open"></i> <!-- Ícone padrão -->
+            </div>
+            <div class="track-info">
+                <div id="mini-title">Nenhuma aula selecionada</div>
+                <div id="mini-module">-</div>
+            </div>
+            <button class="like-btn"><i class="far fa-heart"></i></button>
+        </div>
+        
+        <div class="player-center">
+            <div class="player-controls">
+                <button class="control-btn"><i class="fas fa-random"></i></button>
+                <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                <button class="control-btn play-pause-btn" id="play-btn"><i class="fas fa-play"></i></button>
+                <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                <button class="control-btn"><i class="fas fa-redo"></i></button>
+            </div>
+            
+            <div class="progress-container">
+                <span id="current-time">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+        
+        <div class="player-right">
+            <button class="control-btn"><i class="fas fa-list"></i></button>
+            <button class="control-btn"><i class="fas fa-volume-up"></i></button>
+            <div class="volume-bar">
+                <div class="volume"></div>
+            </div>
+        </div>
+        
+        <audio id="audio-player"></audio>
+    </footer>
+</div> 
