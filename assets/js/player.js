@@ -75,14 +75,25 @@ document.addEventListener('DOMContentLoaded', function() {
         miniModuleTitleEl.textContent = moduleTitle;
 
         // Atualiza o ícone/cover da aula atual se existir para o módulo
-        const moduleId = lessonId.split('-')[0] + '-' + lessonId.split('-')[1] + '-' + lessonId.split('-')[2] + '-' + lessonId.split('-')[3];
-        const moduleKey = moduleId.substring(2); // Remove o número do início
+        // const moduleId = lessonId.split('-')[0] + '-' + lessonId.split('-')[1] + '-' + lessonId.split('-')[2] + '-' + lessonId.split('-')[3];
+        // const moduleKey = moduleId.substring(2); // Remove o número do início
         
-        const icon = moduleIcons[moduleKey] || '📚';
+        // Nova lógica mais robusta para extrair moduleKey usando regex
+        const match = lessonId.match(/^\d{2}-([a-z0-9-]+?)-\d{2}-/);
+        const moduleKey = match && match[1] ? match[1] : null;
+
+        const icon = moduleKey && moduleIcons[moduleKey] ? moduleIcons[moduleKey] : '📚';
         const lessonCovers = document.querySelectorAll('.lesson-cover');
         lessonCovers.forEach(cover => {
             cover.innerHTML = `<span style="font-size: 36px;">${icon}</span>`;
         });
+
+        const miniCoverContentElement = document.getElementById('mini-cover-content');
+        if (miniCoverContentElement) {
+            // Define o emoji no mini-cover, similar ao lesson-cover
+            // Usamos um tamanho de fonte ligeiramente menor para o mini-cover
+            miniCoverContentElement.innerHTML = `<span style="font-size: 24px;">${icon}</span>`; // Ajuste '24px' conforme necessário
+        }
 
         // Carrega e exibe material Markdown
         if (mdPath && mdPath !== 'null' && mdPath !== 'undefined') {
