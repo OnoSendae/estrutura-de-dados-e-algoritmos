@@ -37,10 +37,6 @@ modules:
           /src/modulos-treinamento/0-fundamentos-da-programacao/05-pseudocodigo.mp3
         md_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/05-pseudocodigo.md
-      - id: 0-fundamentos-da-programacao-README
-        title: README
-        mp3_path: null
-        md_path: /src/modulos-treinamento/0-fundamentos-da-programacao/README.md
   - id_prefix: 1-analise-de-algoritmos-e-complexidade
     title: Analise De Algoritmos e Complexidade
     emoji: 🛠️
@@ -143,11 +139,6 @@ modules:
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/5.1-exercicios.md
-      - id: 2-estruturas-de-dados-lineares-avancadas-README
-        title: README
-        mp3_path: null
-        md_path: >-
-          /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/README.md
   - id_prefix: 3-arvores-e-grafos
     title: Arvores e Grafos
     emoji: 📚
@@ -192,14 +183,6 @@ modules:
         title: Busca Largura Bfs
         mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/5-busca-largura-bfs.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/5-busca-largura-bfs.md
-      - id: 3-arvores-e-grafos-GUIA-INSTRUTOR
-        title: GUIA INSTRUTOR
-        mp3_path: null
-        md_path: /src/modulos-treinamento/3-arvores-e-grafos/GUIA-INSTRUTOR.md
-      - id: 3-arvores-e-grafos-README
-        title: README
-        mp3_path: null
-        md_path: /src/modulos-treinamento/3-arvores-e-grafos/README.md
   - id_prefix: 4-algoritmos-de-ordenacao-e-busca-avancados
     title: Algoritmos De Ordenacao e Busca Avancados
     emoji: 📚
@@ -259,11 +242,6 @@ modules:
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/6-case-study-benchmark-sistema.md
-      - id: 4-algoritmos-de-ordenacao-e-busca-avancados-README
-        title: README
-        mp3_path: null
-        md_path: >-
-          /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/README.md
   - id_prefix: 5-tabelas-hash-e-funcoes-hash
     title: Tabelas Hash e Funcoes Hash
     emoji: 📚
@@ -332,21 +310,6 @@ modules:
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/7-hash-tables-vs-outras-estruturas.mp3
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/7-hash-tables-vs-outras-estruturas.md
-      - id: 5-tabelas-hash-e-funcoes-hash-conclusao-modulo5
-        title: Conclusao Modulo5
-        mp3_path: null
-        md_path: >-
-          /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/conclusao-modulo5.md
-      - id: 5-tabelas-hash-e-funcoes-hash-preview-modulo6
-        title: Preview Modulo6
-        mp3_path: null
-        md_path: >-
-          /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/preview-modulo6.md
-      - id: 5-tabelas-hash-e-funcoes-hash-transicao-modulo5-6
-        title: Transicao Modulo5 6
-        mp3_path: null
-        md_path: >-
-          /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/transicao-modulo5-6.md
   - id_prefix: 6-algoritmos-gulosos-e-programacao-dinamica
     title: Algoritmos Gulosos e Programacao Dinamica
     emoji: 📚
