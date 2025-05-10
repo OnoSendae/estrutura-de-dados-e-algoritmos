@@ -112,7 +112,8 @@ modules:
         title: Estruturas De Dados Lineares Avancadas
         mp3_path: >-
           /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/0-estruturas-de-dados-lineares-avancadas.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/0-estruturas-de-dados-lineares-avancadas.md
       - id: 2-estruturas-de-dados-lineares-avancadas-1-listas-encadeadas
         title: Listas Encadeadas
         mp3_path: >-
@@ -154,7 +155,7 @@ modules:
       - id: 3-arvores-e-grafos-0-arvores-e-grafos
         title: Arvores e Grafos
         mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/0-arvores-e-grafos.mp3
-        md_path: null
+        md_path: /src/modulos-treinamento/3-arvores-e-grafos/0-arvores-e-grafos.md
       - id: 3-arvores-e-grafos-1-introducao-estruturas-hierarquicas
         title: Introducao Estruturas Hierarquicas
         mp3_path: >-
@@ -208,7 +209,8 @@ modules:
         title: Algoritmos De Ordenacao e Busca Avancados
         mp3_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/0-algoritmos-de-ordenacao-e-busca-avancados.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/0-algoritmos-de-ordenacao-e-busca-avancados.md
       - id: 4-algoritmos-de-ordenacao-e-busca-avancados-0-introducao-visao-geral
         title: Introducao Visao Geral
         mp3_path: >-
@@ -292,16 +294,12 @@ modules:
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/2-funcoes-hash.mp3
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/2-funcoes-hash.md
-      - id: 5-tabelas-hash-e-funcoes-hash-3-tratamento-colisoes
-        title: Tratamento Colisoes
-        mp3_path: null
-        md_path: >-
-          /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/3-tratamento-colisoes.md
       - id: 5-tabelas-hash-e-funcoes-hash-3-tratamento-de-colisoes
         title: Tratamento De Colisoes
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/3-tratamento-de-colisoes.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/3-tratamento-de-colisoes.md
       - id: 5-tabelas-hash-e-funcoes-hash-31-visual-hash-colisoes
         title: Visual Hash Colisoes
         mp3_path: >-
@@ -358,7 +356,8 @@ modules:
         title: Algoritmos Gulosos e Programacao Dinamica
         mp3_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/0-algoritmos-gulosos-e-programacao-dinamica.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/0-algoritmos-gulosos-e-programacao-dinamica.md
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-1-algoritmos-gulosos-fundamentos
         title: Algoritmos Gulosos Fundamentos
@@ -419,7 +418,8 @@ modules:
         title: Topicos Avancados e Aplicacoes
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/0-topicos-avancados-e-aplicacoes.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/0-topicos-avancados-e-aplicacoes.md
       - id: >-
           7-topicos-avancados-e-aplicacoes-1-arvores-segmentos-fenwick-consultas-eficientes
         title: Arvores Segmentos Fenwick Consultas Eficientes
@@ -490,7 +490,8 @@ modules:
         title: Estruturas De Dados Persistentes
         mp3_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/0-estruturas-de-dados-persistentes.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/8-estruturas-de-dados-persistentes/0-estruturas-de-dados-persistentes.md
       - id: >-
           8-estruturas-de-dados-persistentes-1-fundamentos-estruturas-persistentes
         title: Fundamentos Estruturas Persistentes
@@ -549,7 +550,8 @@ modules:
         title: Estruturas De Dados Complexas
         mp3_path: >-
           /src/modulos-treinamento/9-estruturas-de-dados-complexas/0-estruturas-de-dados-complexas.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/9-estruturas-de-dados-complexas/0-estruturas-de-dados-complexas.md
       - id: >-
           9-estruturas-de-dados-complexas-1-isam-metodo-acesso-sequencial-indexado
         title: Isam Metodo Acesso Sequencial Indexado
@@ -570,7 +572,7 @@ modules:
       - id: 10-indexacao-0-indexacao
         title: Indexacao
         mp3_path: /src/modulos-treinamento/10-indexacao/0-indexacao.mp3
-        md_path: null
+        md_path: /src/modulos-treinamento/10-indexacao/0-indexacao.md
       - id: 10-indexacao-1-indexacao-linear
         title: Indexacao Linear
         mp3_path: /src/modulos-treinamento/10-indexacao/1-indexacao-linear.mp3
