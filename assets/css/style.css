@@ -8,12 +8,23 @@
 
 :root {
     --primary-color: #1DB954;
+    --secondary-color: #444;
     --dark-bg: #121212;
+    --dark-bg-2: #B3B3B3;
     --sidebar-bg: #000000;
     --card-bg: #181818;
     --text-primary: #FFFFFF;
     --text-secondary: #B3B3B3;
     --hover-bg: #282828;
+    --code-bg: #1e1e1e;
+    --code-text: #e6e6e6;
+    --code-border: #444;
+    --code-keyword: #569cd6;
+    --code-string: #ce9178;
+    --code-function: #dcdcaa;
+    --code-number: #b5cea8;
+    --code-comment: #6A9955;
+    --code-operator: #d4d4d4;
 }
 
 body {
@@ -25,7 +36,7 @@ body {
 
 .app-container {
     display: grid;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 450px 1fr;
     grid-template-rows: 1fr 90px; /* Main content e player */
     height: 100vh;
 }
@@ -39,16 +50,29 @@ body {
     flex-direction: column;
     overflow: hidden; /* Controla o scroll da playlist internamente */
     padding-top: 24px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
     padding: 0 24px;
     margin-bottom: 24px;
+    display: flex;
+    align-items: center;
 }
 
 .logo h1 {
     color: var(--text-primary);
     font-size: 24px;
+    background: linear-gradient(to right, var(--primary-color), #4df287);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
+.logo img {
+    height: 32px;
+    margin-right: 10px;
 }
 
 .menu ul {
@@ -66,6 +90,7 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
+    transition: all 0.2s ease;
 }
 
 .menu li:hover, .menu li.active {
@@ -98,31 +123,56 @@ body {
 
 .playlist-module {
     margin-bottom: 16px;
+    background-color: rgba(40, 40, 40, 0.4);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .module-title {
     cursor: pointer;
-    padding: 8px 0;
-    display: block;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
     font-weight: 500;
     color: var(--text-primary);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.module-title:hover {
+    background-color: rgba(60, 60, 60, 0.4);
+}
+
+.module-title::after {
+    content: '\f054';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 16px;
+    transition: transform 0.3s ease;
+}
+
+.playlist-module.expanded .module-title::after {
+    transform: rotate(90deg);
 }
 
 .module-lessons {
-    display: none; /* Começa fechado */
-    list-style: none;
-    padding-left: 16px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(30, 30, 30, 0.5);
 }
 
 .playlist-module.expanded .module-lessons {
-    display: block;
+    max-height: 1000px; /* Valor alto o suficiente para exibir todas as aulas */
 }
 
 .lesson {
     display: flex;
     cursor: pointer;
     border-radius: 4px;
-    margin: 4px 0;
+    margin: 4px 8px;
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -133,6 +183,7 @@ body {
 .lesson a.lesson-link:focus-visible {
     background-color: var(--hover-bg);
     border-radius: 4px;
+    outline: none;
 }
 
 .play-icon {
@@ -147,6 +198,7 @@ body {
 
 .lesson:hover .play-icon, .lesson.active .play-icon {
     opacity: 1;
+    color: var(--primary-color);
 }
 
 .lesson-info {
@@ -198,42 +250,46 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
-    /* background: #303030; /* Um pouco de fundo para não sumir no scroll */
+    backdrop-filter: blur(10px);
+    background-color: rgba(18, 18, 18, 0.8);
 }
 
 .nav-btn, .user-btn {
-    background-color: rgba(0, 0, 0, 0.7);
+    background: transparent;
     border: none;
-    color: var(--text-primary);
+    color: var(--text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    margin-right: 8px;
 }
 
 .user-btn {
-    width: auto;
-    border-radius: 32px;
     padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .nav-btn:hover, .user-btn:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+    color: var(--text-primary);
 }
 
 .navigation {
     display: flex;
+    gap: 16px;
 }
 
 .content-area {
-    padding: 24px 0;
+    padding: 0 0 32px;
 }
 
 .now-playing {
@@ -243,31 +299,34 @@ body {
 .now-playing h2 {
     font-size: 24px;
     margin-bottom: 16px;
+    font-weight: 700;
 }
 
 .current-lesson {
     display: flex;
-    align-items: center;
     gap: 24px;
-    background-color: var(--card-bg);
+    align-items: center;
+    background-color: rgba(40, 40, 40, 0.4);
     padding: 20px;
     border-radius: 8px;
 }
 
 .lesson-cover {
-    width: 150px;
-    height: 150px;
-    background-color: var(--hover-bg);
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    color: var(--text-secondary);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .lesson-details h3 {
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .lesson-details p {
@@ -275,60 +334,71 @@ body {
 }
 
 .material-container {
-    margin-top: 32px;
-    background-color: var(--card-bg);
-    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.5);
+    padding: 24px;
     border-radius: 8px;
-}
-
-.material-container h3 {
-    font-size: 18px;
     margin-bottom: 16px;
 }
 
+.material-container h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
 #reading-material {
-    color: var(--text-secondary);
     line-height: 1.6;
-    background-color: var(--dark-bg); 
-    padding: 15px;
-    border-radius: 4px;
-    border: 1px solid var(--hover-bg);
+    color: var(--text-primary);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    overflow-x: auto;
 }
 
 #reading-material pre {
-    white-space: pre-wrap; 
-    word-wrap: break-word; 
-    color: var(--text-primary); 
-    font-family: 'Noto Sans Mono', 'Roboto Mono', monospace;
-    font-size: 0.9em;
-    background-color: var(--hover-bg); 
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px 0;
+    background-color: var(--code-bg);
+    padding: 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 16px 0;
+    border-left: 4px solid var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    position: relative;
+    line-height: 1.5;
 }
 
-/* Styles for Markdown content generated by Marked.js */
+#reading-material pre::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    border-radius: 0 0 4px 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 #reading-material h1,
 #reading-material h2,
 #reading-material h3,
 #reading-material h4,
 #reading-material h5,
 #reading-material h6 {
-    color: var(--text-primary);
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    line-height: 1.3;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
 }
 
-#reading-material h1 { font-size: 2em; }
-#reading-material h2 { font-size: 1.75em; }
+#reading-material h1 { font-size: 2em; margin-top: 16px; }
+#reading-material h2 { font-size: 1.75em; padding-bottom: 0.3em; border-bottom: 1px solid var(--hover-bg); }
 #reading-material h3 { font-size: 1.5em; }
 #reading-material h4 { font-size: 1.25em; }
+#reading-material h5 { font-size: 1em; }
 
 #reading-material p {
-    margin-bottom: 1em;
-    line-height: 1.7;
-    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.6;
 }
 
 #reading-material a {
@@ -342,260 +412,404 @@ body {
 
 #reading-material ul,
 #reading-material ol {
-    margin-left: 20px;
-    margin-bottom: 1em;
-    color: var(--text-secondary);
+    margin-bottom: 16px;
+    padding-left: 24px;
+    line-height: 1.6;
 }
 
 #reading-material li {
-    margin-bottom: 0.5em;
+    margin-bottom: 8px;
 }
 
 #reading-material code {
-    font-family: 'Noto Sans Mono', 'Roboto Mono', monospace;
-    background-color: var(--hover-bg);
-    padding: 0.2em 0.4em;
+    font-family: 'Roboto Mono', monospace;
+    padding: 2px 5px;
+    background-color: rgba(30, 30, 30, 0.7);
     border-radius: 3px;
     font-size: 0.9em;
-    color: #c5c8c6; 
+    color: var(--primary-color);
 }
 
 #reading-material pre > code {
+    display: block;
     padding: 0;
     background-color: transparent;
-    color: inherit; 
+    color: var(--code-text);
+    font-size: 14px;
+}
+
+/* Syntax highlighting para código JavaScript */
+#reading-material .code-keyword { 
+    color: var(--code-keyword); 
+    font-weight: bold;
+}
+#reading-material .code-string { 
+    color: var(--code-string);
+    white-space: pre-wrap;
+}
+#reading-material .code-function { 
+    color: var(--code-function);
+}
+#reading-material .code-number { 
+    color: var(--code-number);
+}
+#reading-material .code-comment { 
+    color: var(--code-comment);
+    font-style: italic;
+}
+#reading-material .code-operator { 
+    color: var(--code-operator);
 }
 
 #reading-material blockquote {
+    padding: 16px;
+    margin: 16px 0;
     border-left: 4px solid var(--primary-color);
-    padding-left: 15px;
-    margin: 1em 0;
-    color: #a0a0a0; 
-    font-style: italic;
+    background-color: rgba(40, 40, 40, 0.4);
+    border-radius: 4px;
 }
 
 #reading-material hr {
-    border: 0;
     height: 1px;
     background-color: var(--hover-bg);
-    margin: 2em 0;
+    border: none;
+    margin: 24px 0;
 }
 
 #reading-material table {
-    width: auto;
+    width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1em;
+    margin: 16px 0;
+    overflow-x: auto;
+    display: block;
 }
 
 #reading-material th,
 #reading-material td {
+    padding: 8px 16px;
     border: 1px solid var(--hover-bg);
-    padding: 8px 12px;
     text-align: left;
 }
 
 #reading-material th {
-    background-color: var(--card-bg);
-    color: var(--text-primary);
+    background-color: rgba(40, 40, 40, 0.6);
     font-weight: 600;
 }
-/* End of Styles for Markdown content */
 
 #material-link {
     display: inline-block;
     margin-top: 16px;
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s;
 }
 
 #material-link:hover {
-    text-decoration: underline;
+    color: #4df287;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Player */
 .player {
     grid-column: 1 / span 2;
     grid-row: 2;
-    background-color: #181818;
-    border-top: 1px solid #282828;
-    padding: 0 16px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--hover-bg);
+    padding: 0 24px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
 
 .player-left {
-    width: 30%;
     display: flex;
     align-items: center;
+    gap: 16px;
+    width: 30%;
 }
 
 .mini-cover {
     width: 56px;
     height: 56px;
-    background-color: var(--hover-bg);
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: var(--dark-bg-2);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    margin-right: 16px;
-    color: var(--text-secondary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .track-info {
-    flex: 1;
+    max-width: 200px;
+    overflow: hidden;
 }
 
 #mini-title {
-    font-size: 14px;
     color: var(--text-primary);
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #mini-module {
-    font-size: 12px;
     color: var(--text-secondary);
+    font-size: 12px;
 }
 
 .like-btn {
-    background: none;
+    background: transparent;
     border: none;
     color: var(--text-secondary);
-    font-size: 14px;
     cursor: pointer;
-    margin-left: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
 }
 
 .like-btn:hover {
-    color: var(--text-primary);
+    color: var(--primary-color);
 }
 
 .player-center {
-    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 40%;
 }
 
 .player-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8px;
+    gap: 16px;
+    margin-bottom: 10px;
 }
 
 .control-btn {
-    background: none;
+    background: transparent;
     border: none;
     color: var(--text-secondary);
-    font-size: 14px;
     cursor: pointer;
-    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    outline: none;
 }
 
 .control-btn:hover {
     color: var(--text-primary);
 }
 
+.control-btn:active {
+    color: var(--primary-color);
+}
+
+/* Adiciona um estilo de foco para acessibilidade, especialmente para spans atuando como botões */
+.control-btn:focus {
+    box-shadow: 0 0 0 2px var(--primary-color); /* Um brilho sutil no foco */
+}
+
 .play-pause-btn {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     background-color: var(--text-primary);
     color: var(--dark-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 16px;
+    font-size: 16px;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .play-pause-btn:hover {
+    background-color: var(--primary-color);
     transform: scale(1.05);
     color: var(--dark-bg);
 }
 
 .progress-container {
-    width: 100%;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 500px;
     gap: 8px;
 }
 
 #current-time, #duration {
     font-size: 12px;
     color: var(--text-secondary);
+    min-width: 40px;
 }
 
 .progress-bar {
     flex: 1;
     height: 4px;
-    background-color: #5e5e5e;
-    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
     cursor: pointer;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
 .progress {
-    width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
     height: 100%;
-    background-color: var(--text-primary);
-    border-radius: 2px;
+    background-color: var(--primary-color);
+    width: 0%;
     transition: width 0.1s linear;
 }
 
 .progress-bar:hover .progress {
-    background-color: var(--primary-color);
+    background-color: #4df287;
 }
 
 .player-right {
-    width: 30%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 16px;
+    width: 30%;
 }
 
 .volume-bar {
     width: 100px;
+    height: 14px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    cursor: pointer;
+    border-radius: 7px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.volume-bar input[type="range"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+}
+
+.volume-bar input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
     height: 4px;
-    background-color: #5e5e5e;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 2px;
+}
+
+.volume-bar input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    margin-top: -4px;
+    background-color: var(--primary-color);
+    box-shadow: -100vw 0 0 100vw var(--primary-color);
+}
+
+.volume {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 4px;
+    background-color: var(--primary-color);
+    width: 50%;
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.volume-bar input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    background: transparent;
     border-radius: 2px;
     cursor: pointer;
 }
 
-.volume {
-    width: 70%; /* Default volume */
-    height: 100%;
-    background-color: var(--text-primary);
-    border-radius: 2px;
+.volume-bar input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
 }
 
-.volume-bar:hover .volume {
-    background-color: var(--primary-color);
+.volume-bar input[type="range"]::-ms-track {
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    cursor: pointer;
 }
 
-/* Scrollbar */
+.volume-bar input[type="range"]::-ms-thumb {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Botão de compartilhamento */
+.share-btn {
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.share-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Scrollbar personalizada */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #5e5e5e;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #7e7e7e;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-/* Responsividade */
+/* Media Queries para responsividade */
 @media (max-width: 1024px) {
     .app-container {
         grid-template-columns: 280px 1fr;
@@ -604,7 +818,8 @@ body {
 
 @media (max-width: 768px) {
     .app-container {
-        grid-template-columns: 240px 1fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 90px;
     }
     
     .current-lesson {
@@ -613,42 +828,179 @@ body {
     }
     
     .lesson-cover {
-        width: 100px;
-        height: 100px;
+        margin-bottom: 16px;
+    }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 320px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    .content {
+        grid-column: 1;
+    }
+
+    .top-bar {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .menu-toggle {
+        display: block;
+        margin-right: 16px;
+    }
+    
+    .player {
+        grid-column: 1;
+    }
+    
+    .player-left {
+        width: 40%;
+    }
+    
+    .player-right {
+        width: 20%;
     }
 }
 
 @media (max-width: 576px) {
     .app-container {
-        grid-template-columns: 1fr; /* Sidebar some em telas pequenas */
-        grid-template-rows: auto 1fr 90px; /* Topbar, Content, Player */
+        grid-template-rows: 1fr 120px;
     }
     
-    .sidebar {
-        display: none; /* Esconde sidebar */
-    }
-
-    .content {
-        grid-column: 1; /* Content ocupa a primeira coluna */
+    .player {
+        flex-direction: column;
+        padding: 12px 16px;
+        gap: 12px;
+        height: 120px;
     }
     
     .player-left {
-        width: auto; /* Ajusta para conteúdo */
-    }
-    
-    .track-info {
-        display: none; /* Esconde info da faixa para mais espaço */
+        width: 100%;
+        justify-content: flex-start;
     }
     
     .player-center {
-        flex: 1; /* Player center ocupa mais espaço */
+        width: 100%;
     }
     
     .player-right {
-        width: auto; /* Ajusta para conteúdo */
+        display: none;
     }
     
-    .volume-bar {
-        display: none; /* Esconde barra de volume */
+    .progress-container {
+        max-width: 100%;
     }
-} 
+    
+    .current-lesson {
+        padding: 16px;
+    }
+    
+    .material-container {
+        padding: 16px;
+    }
+    
+    .lesson-details h3 {
+        font-size: 20px;
+    }
+}
+
+/* Estilo para exemplos de código completos */
+.code-example {
+    position: relative;
+    background-color: var(--code-bg);
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+    margin: 24px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.code-example pre {
+    margin: 0;
+    border-left: none;
+}
+
+.code-example-title {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--hover-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.code-language {
+    background-color: rgba(29, 185, 84, 0.2);
+    color: var(--primary-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.copy-code-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-left: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.copy-code-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+}
+
+/* Ajustes para o conteúdo de código */
+#reading-material pre code {
+    padding: 0;
+    background-color: transparent;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    tab-size: 4;
+}
+
+/* Estilos para o link do GitHub na sidebar */
+.github-link-container {
+    padding: 16px 24px; /* Mesmo padding lateral do logo e playlist-container */
+    margin-top: 16px; /* Espaço acima */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separador visual */
+}
+
+.github-link-container a {
+    color: var(--text-secondary); /* Cor do texto padrão */
+    text-decoration: none; /* Remove sublinhado */
+    display: flex; /* Alinha ícone e texto */
+    align-items: center;
+    gap: 10px; /* Espaço entre ícone e texto */
+    transition: color 0.2s ease;
+}
+
+.github-link-container a:hover {
+    color: var(--text-primary); /* Cor ao passar o mouse */
+}
+
+.github-link-container i {
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+/* NOVOS ESTILOS PARA O TOAST */ 

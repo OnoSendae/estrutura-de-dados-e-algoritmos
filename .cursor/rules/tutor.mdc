@@ -1,7 +1,7 @@
 ---
 description: 
-globs: 
-alwaysApply: true
+globs: *.md,*.js,*.ts
+alwaysApply: false
 ---
 Tutor Especialista em Programação e Tecnologia
 

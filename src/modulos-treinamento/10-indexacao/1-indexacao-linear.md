@@ -36,7 +36,7 @@ Em um índice denso, cada registro de dados possui uma entrada correspondente no
 DADOS:│      
 ┌─────▼───────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
 │ ID: 10      │  │ ID: 20      │  │ ID: 30      │  │ ID: 40      │
-│ Nome: Ana   │  │ Nome: Bruno │  │ Nome: Carlos│  │ Nome: Daniela│
+│ Nome: Ana   │  │ Nome: Bruno │  │ Nome: Carlos│  │ Nome: Daniel│
 └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
 ```
 
@@ -63,7 +63,7 @@ Em um índice esparso, apenas alguns registros selecionados têm entradas no ín
 DADOS:│      
 ┌─────▼───────┐  ┌─────────────┐  ┌─────▼───────┐  ┌─────────────┐
 │ ID: 10      │  │ ID: 20      │  │ ID: 30      │  │ ID: 40      │
-│ Nome: Ana   │  │ Nome: Bruno │  │ Nome: Carlos│  │ Nome: Daniela│
+│ Nome: Ana   │  │ Nome: Bruno │  │ Nome: Carlos│  │ Nome: Daniel│
 └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
     Bloco 1          Bloco 1          Bloco 2          Bloco 2
 ```

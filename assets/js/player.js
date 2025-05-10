@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed.'); // DEBUG: Início do script
+
     // Elementos do DOM
     const audioPlayer = document.getElementById('audio-player');
     const playBtn = document.getElementById('play-btn');
@@ -6,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('next-btn');
     const currentTimeEl = document.getElementById('current-time');
     const durationEl = document.getElementById('duration');
-    const progressBar = document.querySelector('.progress-bar .progress'); // Corrected selector
+    const progressBar = document.querySelector('.progress-bar .progress');
     const progressContainer = document.querySelector('.progress-bar');
     
     const currentLessonTitleEl = document.getElementById('current-title');
@@ -17,16 +19,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const readingMaterialDiv = document.getElementById('reading-material');
     const materialLink = document.getElementById('material-link');
 
+    // Novos elementos para controle de volume e mudo
+    const muteBtn = document.getElementById('mute-btn');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeBarVisual = document.querySelector('.volume-bar .volume'); // A barra visual dentro do container
+
     const lessons = document.querySelectorAll('.playlist .lesson');
     let currentLessonIndex = -1;
     let isPlaying = false;
 
-    // Base URL para carregar arquivos .md - importante para GitHub Pages
-    // Jekyll injeta site.baseurl. Se não estiver disponível, assume raiz.
-    // const baseurl = window.JEKYLL_BASEURL || ''; // Comentado/Removido pois os caminhos já vêm com baseurl do Liquid
+    // Ícones para os módulos
+    const moduleIcons = {
+        'fundamentos-da-programacao': '🏁',
+        'analise-de-algoritmos-e-complexidade': '🛠️',
+        'estruturas-de-dados-lineares-avancadas': '📚',
+        'arvores-e-grafos': '🌳',
+        'algoritmos-de-ordenacao-e-busca-avancados': '🔍',
+        'tabelas-hash-e-funcoes-hash': '🔑',
+        'algoritmos-gulosos-e-programacao-dinamica': '⚡',
+        'topicos-avancados-e-aplicacoes': '🚀',
+        'estruturas-de-dados-persistentes': '💾',
+        'estruturas-de-dados-complexas': '🧩',
+        'indexacao': '📇',
+        'tecnicas-de-resolucao-de-problemas': '🧠'
+    };
 
     function loadAndPlayLesson(index) {
-        if (index < 0 || index >= lessons.length) return;
+        console.log(`loadAndPlayLesson called with index: ${index}`); // DEBUG: Início da função de carregar/tocar
+        if (index < 0 || index >= lessons.length) {
+            console.warn(`Invalid lesson index: ${index}`); // DEBUG: Índice inválido
+            return;
+        }
 
         const lessonElement = lessons[index];
         currentLessonIndex = index;
@@ -35,12 +58,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const mdPath = lessonElement.dataset.mdPath;
         const lessonTitle = lessonElement.dataset.lessonTitle;
         const moduleTitle = lessonElement.dataset.moduleTitle;
+        const lessonId = lessonElement.dataset.lessonId;
+
+        // Encontra o módulo pai e expande-o se ainda não estiver expandido
+        const parentModule = lessonElement.closest('.playlist-module');
+        if (parentModule && !parentModule.classList.contains('expanded')) {
+            parentModule.classList.add('expanded');
+        }
 
         // Atualiza informações da interface
         currentLessonTitleEl.textContent = lessonTitle;
         currentModuleTitleEl.textContent = moduleTitle;
         miniLessonTitleEl.textContent = lessonTitle;
         miniModuleTitleEl.textContent = moduleTitle;
+
+        // Atualiza o ícone/cover da aula atual se existir para o módulo
+        const moduleId = lessonId.split('-')[0] + '-' + lessonId.split('-')[1] + '-' + lessonId.split('-')[2] + '-' + lessonId.split('-')[3];
+        const moduleKey = moduleId.substring(2); // Remove o número do início
+        
+        const icon = moduleIcons[moduleKey] || '📚';
+        const lessonCovers = document.querySelectorAll('.lesson-cover');
+        lessonCovers.forEach(cover => {
+            cover.innerHTML = `<span style="font-size: 36px;">${icon}</span>`;
+        });
 
         // Carrega e exibe material Markdown
         if (mdPath && mdPath !== 'null' && mdPath !== 'undefined') {
@@ -57,12 +97,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(markdownContent => {
                     if (typeof marked !== 'undefined') {
                         readingMaterialDiv.innerHTML = marked.parse(markdownContent);
+                        applyCodeHighlighting();
                     } else {
                         const pre = document.createElement('pre');
                         pre.textContent = markdownContent;
                         readingMaterialDiv.innerHTML = '';
                         readingMaterialDiv.appendChild(pre);
                     }
+                    
+                    // Adiciona botão de compartilhamento
+                    addShareButton();
+                    
                     // Re-append o link caso o innerHTML o tenha removido
                     if (!readingMaterialDiv.contains(materialLink)) {
                         readingMaterialDiv.appendChild(materialLink);
@@ -97,11 +142,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Carrega e toca áudio
         if (audioSrc && audioSrc !== 'null' && audioSrc !== 'undefined') {
+            console.log('Loading audio source:', audioSrc); // DEBUG
             audioPlayer.src = audioSrc;
-            audioPlayer.play();
-            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            isPlaying = true;
+            // A UI (botão play/pause e isPlaying) será atualizada pelos listeners de 'play' e 'pause'
+            audioPlayer.play().catch(error => {
+                 console.error('Error attempting to play audio:', error); // DEBUG: Erro ao tentar tocar
+                 // Isso pode acontecer se a reprodução automática for bloqueada pelo navegador
+                 // Pode ser necessário que o usuário interaja primeiro
+                 // Certifica-se de que a UI reflita que não está tocando se o autoplay falhar
+                 isPlaying = false; // Garante que o estado interno esteja correto
+                 playBtn.innerHTML = '<i class="fas fa-play"></i>'; // Mostra botão play
+            });
         } else {
+             console.log('No valid audio source found for this lesson.', lessonId); // DEBUG
             // Se não tiver áudio, para o player e reseta o botão
             audioPlayer.pause();
             audioPlayer.src = '';
@@ -117,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         lessonElement.classList.add('active');
 
         // Atualiza o fragmento da URL com o ID da aula atual
-        const lessonId = lessonElement.dataset.lessonId;
         if (lessonId) {
             // Usamos replaceState para não poluir o histórico do navegador com cada clique de aula interna.
             // Se o objetivo fosse permitir que o botão "voltar" do navegador navegasse entre as aulas tocadas,
@@ -131,26 +183,224 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    playBtn.addEventListener('click', () => {
-        if (!audioPlayer.src || audioPlayer.src === window.location.href) { // Verifica se tem source válido
-             if (lessons.length > 0 && currentLessonIndex === -1) loadAndPlayLesson(0); // Toca a primeira se nenhuma foi tocada
-             return;
+    // Função para destacar o código
+    function applyCodeHighlighting() {
+        const codeBlocks = document.querySelectorAll('#reading-material pre code');
+        codeBlocks.forEach((codeBlock, index) => {
+            // Identifica a linguagem a partir da classe (se existir)
+            let language = 'javascript'; // Padrão para JavaScript
+            let title = `Exemplo ${index + 1}`;
+            
+            // Procura por classes como 'language-javascript', 'language-python', etc.
+            const codeElement = codeBlock.parentElement;
+            if (codeElement.className) {
+                const languageMatch = codeElement.className.match(/language-(\w+)/);
+                if (languageMatch) {
+                    language = languageMatch[1];
+                }
+                
+                // Verifica se há um título no comentário inicial do código
+                const titleMatch = codeBlock.textContent.match(/^\s*\/\/\s*(.+?)\n/);
+                if (titleMatch) {
+                    title = titleMatch[1].trim();
+                    // Remove o comentário de título do código
+                    codeBlock.textContent = codeBlock.textContent.replace(/^\s*\/\/\s*(.+?)\n/, '');
+                }
+            }
+            
+            // Adiciona o atributo data-language
+            codeElement.setAttribute('data-language', language);
+            
+            // Envolve o bloco de código em um container com título
+            wrapCodeBlock(codeElement, title, language);
+            
+            // Aplica highlighting para JavaScript/TypeScript
+            if (language === 'javascript' || language === 'js' || language === 'typescript' || language === 'ts') {
+                const code = codeBlock.textContent;
+                
+                // Remove qualquer HTML existente para evitar conflitos
+                codeBlock.textContent = code;
+                
+                // Cria um DOM temporário para manipular o código mais facilmente
+                const tempDiv = document.createElement('div');
+                tempDiv.textContent = code;
+                let processedCode = tempDiv.innerHTML;
+                
+                // Protege contra substituições recursivas
+                const placeholders = {
+                    comments: [],
+                    strings: [],
+                    keywords: [],
+                    functions: [],
+                    numbers: [],
+                    operators: []
+                };
+                
+                // Função para substituir padrões com placeholders
+                const replaceWithPlaceholder = (regex, type, text) => {
+                    return text.replace(regex, (match) => {
+                        const id = placeholders[type].length;
+                        placeholders[type].push(match);
+                        return `__${type}_${id}__`;
+                    });
+                };
+                
+                // Função para restaurar placeholders com spans HTML
+                const restorePlaceholders = (text, type, className) => {
+                    placeholders[type].forEach((value, id) => {
+                        const placeholder = `__${type}_${id}__`;
+                        const span = `<span class="${className}">${value}</span>`;
+                        text = text.replace(placeholder, span);
+                    });
+                    return text;
+                };
+                
+                // Expressões regulares para identificar elementos da sintaxe
+                const commentRegex = /(\/\/.*?$|\/\*[\s\S]*?\*\/)/gm;
+                const stringRegex = /(["'`])((?:\\\1|(?!\1).)*?)\1/g;
+                const keywordRegex = /\b(let|var|const|function|return|if|else|for|while|do|switch|case|break|continue|new|this|class|extends|import|export|try|catch|finally|throw|async|await|from|of|in)\b/g;
+                const numberRegex = /\b(0x[\dA-Fa-f]+|\d*\.?\d+)\b/g;
+                const functionRegex = /\b([a-zA-Z_$][\w$]*)\s*\(/g;
+                const operatorRegex = /([+\-*/%=&|^<>!?:]+)/g;
+                
+                // Primeiro protege comentários e strings 
+                processedCode = replaceWithPlaceholder(commentRegex, 'comments', processedCode);
+                processedCode = replaceWithPlaceholder(stringRegex, 'strings', processedCode);
+                
+                // Depois substitui os outros elementos
+                processedCode = replaceWithPlaceholder(keywordRegex, 'keywords', processedCode);
+                processedCode = replaceWithPlaceholder(numberRegex, 'numbers', processedCode);
+                processedCode = replaceWithPlaceholder(functionRegex, 'functions', processedCode);
+                processedCode = replaceWithPlaceholder(operatorRegex, 'operators', processedCode);
+                
+                // Restaura todos os elementos com as classes corretas
+                processedCode = restorePlaceholders(processedCode, 'comments', 'code-comment');
+                processedCode = restorePlaceholders(processedCode, 'strings', 'code-string');
+                processedCode = restorePlaceholders(processedCode, 'keywords', 'code-keyword');
+                processedCode = restorePlaceholders(processedCode, 'numbers', 'code-number');
+                // Para funções, precisamos manter o parêntese separado
+                placeholders['functions'].forEach((value, id) => {
+                    const placeholder = `__functions_${id}__`;
+                    // Substitui apenas o nome da função, mantendo o parêntese fora do span
+                    const funcName = value.slice(0, -1);
+                    const span = `<span class="code-function">${funcName}</span>(`;
+                    processedCode = processedCode.replace(placeholder, span);
+                });
+                processedCode = restorePlaceholders(processedCode, 'operators', 'code-operator');
+                
+                // Aplica o código processado
+                codeBlock.innerHTML = processedCode;
+            }
+        });
+    }
+
+    // Função para envolver blocos de código em um container com título
+    function wrapCodeBlock(codeElement, title, language) {
+        // Não envolve se já estiver em um container .code-example
+        if (codeElement.parentElement.classList.contains('code-example')) {
+            return;
         }
-        if (isPlaying) {
-            audioPlayer.pause();
+        
+        // Cria o container
+        const container = document.createElement('div');
+        container.className = 'code-example';
+        
+        // Cria a barra de título
+        const titleBar = document.createElement('div');
+        titleBar.className = 'code-example-title';
+        titleBar.innerHTML = `
+            <span>${title}</span>
+            <span class="code-language">${language.toUpperCase()}</span>
+        `;
+        
+        // Insere o container no lugar do elemento de código
+        codeElement.parentNode.insertBefore(container, codeElement);
+        container.appendChild(titleBar);
+        container.appendChild(codeElement);
+        
+        // Adiciona botão de copiar código
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-code-btn';
+        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+        copyButton.title = 'Copiar código';
+        titleBar.appendChild(copyButton);
+        
+        // Adiciona funcionalidade de cópia
+        copyButton.addEventListener('click', () => {
+            const code = codeElement.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar código:', err);
+            });
+        });
+    }
+
+    // Função para adicionar um botão de compartilhamento (no material de leitura)
+    function addShareButton() {
+        const shareContainer = document.createElement('div');
+        shareContainer.className = 'share-container';
+        shareContainer.innerHTML = `
+            <button class="share-btn">
+                <i class="fas fa-share-alt"></i> Compartilhar
+            </button>
+        `;
+        
+        readingMaterialDiv.insertAdjacentElement('afterbegin', shareContainer);
+        
+        // Adiciona o evento de compartilhamento
+        const shareBtn = shareContainer.querySelector('.share-btn');
+        if (shareBtn) { // Adiciona verificação
+             shareBtn.addEventListener('click', () => {
+                // Lógica de copiar URL para a área de transferência (sem Web Share API)
+                const urlToCopy = window.location.href;
+                navigator.clipboard.writeText(urlToCopy).then(() => {
+                    showToast('Link do material copiado!'); // Usa a função toast
+                }).catch(err => {
+                    console.error('Erro ao copiar link do material:', err);
+                    // Fallback para métodos antigos, se necessário, embora writeText seja amplamente suportado
+                });
+            });
+        }
+    }
+
+    playBtn.addEventListener('click', () => {
+        console.log('Play button clicked.'); // DEBUG
+        // Simplifica a lógica do botão play: apenas pausa/toca o que estiver carregado
+        // A carga inicial baseada no hash é feita pela loadLessonFromUrlHash no DOMContentLoaded
+        if (audioPlayer.src && audioPlayer.src !== window.location.href) { // Verifica se tem source válida
+             console.log('Audio source exists, toggling play/pause.'); // DEBUG
+            if (isPlaying) {
+                audioPlayer.pause();
+            } else {
+                audioPlayer.play().catch(error => {
+                     console.error('Error attempting to play audio from play button:', error); // DEBUG
+                });
+            }
         } else {
-            audioPlayer.play();
+             console.log('Play button clicked, but no valid audio source is loaded.');
+             // Opcional: Mostrar mensagem para o usuário selecionar uma aula
         }
     });
 
+    // Event listeners para atualizar a UI com base nos eventos reais do player
     audioPlayer.addEventListener('play', () => {
+        console.log('Audio player started playing.'); // DEBUG
         isPlaying = true;
         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     });
 
     audioPlayer.addEventListener('pause', () => {
+        console.log('Audio player paused.'); // DEBUG
         isPlaying = false;
         playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    });
+
+    audioPlayer.addEventListener('error', (e) => {
+        console.error('Audio player error:', e); // DEBUG: Adiciona log de erro no player
     });
 
     nextBtn.addEventListener('click', () => {
@@ -205,36 +455,107 @@ document.addEventListener('DOMContentLoaded', function() {
     const moduleTitles = document.querySelectorAll('.playlist-module > .module-title');
     moduleTitles.forEach(title => {
         title.addEventListener('click', function() {
-            this.parentElement.classList.toggle('expanded');
+            const module = this.parentElement;
+            module.classList.toggle('expanded');
+            
+            // Quando expandir um módulo, recolhe os outros para um visual mais limpo
+            if (module.classList.contains('expanded')) {
+                moduleTitles.forEach(otherTitle => {
+                    const otherModule = otherTitle.parentElement;
+                    if (otherModule !== module) {
+                        otherModule.classList.remove('expanded');
+                    }
+                });
+            }
         });
     });
 
     // Função para carregar a aula com base no ID do fragmento da URL
     function loadLessonFromUrlHash() {
+        console.log('Attempting to load lesson from URL hash...');
         const lessonIdFromHash = window.location.hash.substring(1); // Remove o # inicial
+        
         if (lessonIdFromHash) {
+            console.log('URL hash found:', lessonIdFromHash);
             let lessonToLoadIndex = -1;
             lessons.forEach((lesson, index) => {
+                console.log(`Checking lesson ${index}: ID = ${lesson.dataset.lessonId}`); // DEBUG: Verifica cada lesson id
                 if (lesson.dataset.lessonId === lessonIdFromHash) {
                     lessonToLoadIndex = index;
                 }
             });
 
             if (lessonToLoadIndex !== -1) {
+                console.log('Matching lesson found at index:', lessonToLoadIndex);
                 loadAndPlayLesson(lessonToLoadIndex);
             } else {
-                console.warn('Lesson ID from URL hash not found:', lessonIdFromHash);
-                // Opcional: carregar a primeira aula se o ID do hash não for encontrado e nenhuma aula estiver carregada
-                if (lessons.length > 0 && currentLessonIndex === -1) {
-                   // loadAndPlayLesson(0); // Descomente se quiser carregar a primeira aula como fallback
-                }
+                console.warn('Lesson ID from URL hash not found in playlist:', lessonIdFromHash);
+            }
+        } else {
+             console.log('No URL hash found.');
+        }
+    }
+
+    // Adicionar suporte para toggle do menu em dispositivos móveis
+    const createMobileMenuToggle = () => {
+        // Verifica se o botão já existe
+        if (!document.querySelector('.menu-toggle')) {
+            const menuToggle = document.createElement('button');
+            menuToggle.className = 'menu-toggle control-btn';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            
+            const navigation = document.querySelector('.navigation');
+            if (navigation) {
+                navigation.prepend(menuToggle);
+                
+                menuToggle.addEventListener('click', () => {
+                    const sidebar = document.querySelector('.sidebar');
+                    sidebar.classList.toggle('open');
+                    
+                    // Adiciona overlay quando o menu estiver aberto
+                    let overlay = document.querySelector('.sidebar-overlay');
+                    if (sidebar.classList.contains('open')) {
+                        if (!overlay) {
+                            overlay = document.createElement('div');
+                            overlay.className = 'sidebar-overlay';
+                            document.body.appendChild(overlay);
+                            
+                            overlay.addEventListener('click', () => {
+                                sidebar.classList.remove('open');
+                                overlay.remove();
+                            });
+                        }
+                    } else if (overlay) {
+                        overlay.remove();
+                    }
+                });
             }
         }
-        // Opcional: se não houver hash e nenhuma aula estiver carregada, carregar a primeira
-        // else if (lessons.length > 0 && currentLessonIndex === -1) {
-        //    loadAndPlayLesson(0); // Descomente se quiser carregar a primeira aula por padrão
-        // }
-    }
+    };
+
+    // Detectar se é dispositivo móvel e adicionar o toggle
+    const checkMobileView = () => {
+        if (window.innerWidth <= 768) {
+            createMobileMenuToggle();
+            
+            // Adiciona evento de fechamento do menu ao clicar em uma aula em dispositivo móvel
+            lessons.forEach(lesson => {
+                lesson.addEventListener('click', () => {
+                    const sidebar = document.querySelector('.sidebar');
+                    const overlay = document.querySelector('.sidebar-overlay');
+                    
+                    if (sidebar && sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                        if (overlay) overlay.remove();
+                    }
+                });
+            });
+        }
+    };
+
+    // Verifica na inicialização e ao redimensionar
+    checkMobileView();
+    window.addEventListener('resize', checkMobileView);
 
     // Tenta carregar uma aula a partir do hash da URL na inicialização
     loadLessonFromUrlHash();
@@ -242,9 +563,256 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adiciona um listener para o evento hashchange
     window.addEventListener('hashchange', loadLessonFromUrlHash);
 
-    // Para passar o baseurl do Jekyll para o JavaScript, você pode adicionar no seu layout default.html:
-    // <script>
-    //   window.JEKYLL_BASEURL = "{{ site.baseurl }}";
-    // </script>
-    // ANTES de carregar este script player.js
+    // Expandir o primeiro módulo por padrão
+    if (moduleTitles.length > 0) {
+        moduleTitles[0].parentElement.classList.add('expanded');
+    }
+
+    // Código para adicionar botão de compartilhamento no player
+    const playerRight = document.querySelector('.player-right');
+    if (playerRight) {
+        const shareButton = document.createElement('button');
+        // Adiciona uma classe mais específica para o botão de compartilhar do player
+        shareButton.className = 'control-btn player-share-action-btn'; 
+        shareButton.innerHTML = '<i class="fas fa-share-alt"></i>';
+        shareButton.title = 'Compartilhar aula'; // Adiciona um tooltip
+        
+        shareButton.addEventListener('click', () => {
+            // Lógica de copiar URL para a área de transferência (sem Web Share API)
+            const urlToCopy = window.location.href;
+            navigator.clipboard.writeText(urlToCopy).then(() => {
+                showToast('Link da aula copiado!'); // Usa a função toast
+            }).catch(err => {
+                console.error('Erro ao copiar link da aula:', err);
+                // Fallback para métodos antigos, se necessário
+                // Exemplo de fallback antigo:
+                // const tempInput = document.createElement('input');
+                // tempInput.value = window.location.href;
+                // document.body.appendChild(tempInput);
+                // tempInput.select();
+                // document.execCommand('copy');
+                // document.body.removeChild(tempInput);
+                // showToast('Link copiado para a área de transferência!');
+            });
+        });
+        
+        // Insere antes do controle de volume
+        const volumeControl = playerRight.querySelector('.control-btn#mute-btn'); // Usa o ID para ser mais específico
+        if (volumeControl) {
+            playerRight.insertBefore(shareButton, volumeControl);
+        } else {
+            // Adiciona ao final se o botão de mudo não for encontrado (improvável, mas seguro)
+            playerRight.appendChild(shareButton);
+        }
+    }
+
+    // Função para exibir uma notificação toast
+    function showToast(message) {
+        // Remove toasts existentes para evitar sobreposição
+        const existingToasts = document.querySelectorAll('.toast-notification');
+        existingToasts.forEach(toast => toast.remove());
+
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        // Força reflow para garantir que a transição CSS funcione
+        void toast.offsetWidth; 
+
+        // Adiciona classe para iniciar a animação (aparecer)
+        toast.classList.add('show');
+
+        // Remove o toast após alguns segundos
+        setTimeout(() => {
+            toast.classList.remove('show');
+            // Remove o elemento do DOM após a transição (tempo da transição + um pequeno delay)
+            toast.addEventListener('transitionend', () => toast.remove());
+        }, 3000); // Mantém o toast visível por 3 segundos
+    }
+
+    // Adiciona estilos CSS necessários para o overlay E para o toast
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Estilos existentes para overlay, share-container, share-btn, btn-next-material */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+        
+        /* Estilos para o botão de compartilhar no material */
+        .share-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+        
+        /* Estilos para os botões de compartilhar */
+        .share-btn {
+            background-color: rgba(40, 40, 40, 0.7);
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .share-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+        }
+        
+        /* Estilos para o botão de próxima aula no material */
+        .btn-next-material {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-next-material:hover {
+            background-color: #4df287;
+            transform: scale(1.05);
+        }
+
+        /* NOVOS ESTILOS PARA O TOAST */
+        .toast-notification {
+            position: fixed;
+            bottom: 110px; /* Acima do player */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            padding: 12px 20px;
+            border-radius: 4px;
+            z-index: 1000; /* Acima de outros elementos */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            font-size: 14px;
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 576px) {
+             .toast-notification {
+                 bottom: 140px; /* Ajuste para mobile se o player for mais alto */
+                 width: 90%;
+                 text-align: center;
+             }
+        }
+
+        /* Estilo específico para o botão de compartilhar NO PLAYER */
+        .player-share-action-btn:active {
+            background-color: var(--primary-color) !important; /* Fundo verde no clique */
+            color: var(--dark-bg) !important; /* Ícone escuro no clique, !important para sobrescrever .control-btn:active */
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Função para atualizar a barra visual de volume e o ícone do botão de mudo
+    function updateVolumeUI() {
+        if (!audioPlayer || !volumeSlider || !volumeBarVisual || !muteBtn) return;
+
+        const volume = audioPlayer.volume; // Valor entre 0 e 1
+        const isMuted = audioPlayer.muted || volume === 0;
+
+        // Atualiza a barra visual (convertendo volume de 0-1 para 0-100 para a largura)
+        volumeBarVisual.style.width = `${volume * 100}%`;
+
+        // Atualiza o ícone do botão de mudo
+        if (isMuted) {
+            muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        } else if (volume > 0.5) {
+            muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+        } else if (volume > 0) {
+            muteBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
+        } else {
+             muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        }
+         // Garante que o slider reflita o volume correto, mesmo que mudado por outro meio (como mudo)
+        if (!audioPlayer.muted) {
+             volumeSlider.value = volume * 100;
+        }
+    }
+
+    // Event Listeners para controle de volume
+
+    // Mudo/Desmudo pelo botão
+    if (muteBtn) {
+        muteBtn.addEventListener('click', () => {
+            if (audioPlayer) {
+                audioPlayer.muted = !audioPlayer.muted;
+                // A UI será atualizada pelo evento 'volumechange' no audioPlayer
+            }
+        });
+    }
+
+    // Controle de volume pelo slider
+    if (volumeSlider) {
+        volumeSlider.addEventListener('input', (e) => {
+            if (audioPlayer) {
+                // Converte o valor do slider (0-100) para o volume do áudio (0-1)
+                const newVolume = e.target.value / 100;
+                audioPlayer.volume = newVolume;
+
+                // Ao mover o slider, desmuta o áudio
+                if (audioPlayer.muted && newVolume > 0) {
+                    audioPlayer.muted = false;
+                }
+                 // A UI será atualizada pelo evento 'volumechange' no audioPlayer
+            }
+        });
+    }
+
+    // Atualizar a UI quando o volume do áudio mudar (garante sincronia)
+    if (audioPlayer) {
+        audioPlayer.addEventListener('volumechange', updateVolumeUI);
+
+        // Inicializar a UI de volume/mudo quando a página carregar
+        // Use um pequeno delay para garantir que o audioPlayer esteja pronto
+        audioPlayer.onloadedmetadata = () => {
+             // Define um volume inicial se necessário (opcional, o HTML já tem value=50)
+             // audioPlayer.volume = 0.5;
+             updateVolumeUI();
+        };
+        // Fallback caso onloadedmetadata não seja disparado rapidamente (ex: áudio em cache)
+        setTimeout(updateVolumeUI, 100);
+    }
+
+    // Evento para o ícone do GitHub no player
+    const githubPlayerIcon = document.getElementById('github-player-icon');
+    if (githubPlayerIcon) {
+        const githubUrl = githubPlayerIcon.dataset.url;
+        if (githubUrl) {
+            githubPlayerIcon.addEventListener('click', () => {
+                window.open(githubUrl, '_blank', 'noopener,noreferrer');
+                githubPlayerIcon.blur(); // Remove o foco após o clique
+            });
+            // Adiciona acessibilidade para tecla Enter
+            githubPlayerIcon.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+                    githubPlayerIcon.blur(); // Remove o foco após o Enter
+                }
+            });
+        }
+    }
 }); 

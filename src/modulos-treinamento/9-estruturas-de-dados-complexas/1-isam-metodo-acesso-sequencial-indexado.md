@@ -24,11 +24,11 @@ Visualmente, podemos representar esta estrutura da seguinte forma:
 
 ```
          ┌───────────────── ÍNDICE MESTRE ─────────────────┐
-         │ Chave1 → Cil1 | Chave50 → Cil2 | Chave100 → Cil3 │
+         │ Chave1 → Cil1 | Chave50 → Cil2 | Chave100 → Cil3│
          └───────────────────────┬───────────────────────┬─┘
                                  │                       │
            ┌───────────────────┐ │ ┌───────────────────┐ │
-           │   ÍNDICE CILINDRO 1  │ │   ÍNDICE CILINDRO 2  │
+           │   ÍNDICE CILINDRO 1  │ │   ÍNDICE CILINDRO 2│
            │ Chave1 → Pag1     │ │ │ Chave50 → Pag5    │ │
            │ Chave10 → Pag2    │ │ │ Chave60 → Pag6    │ │
            │ ...               │ │ │ ...               │ │
