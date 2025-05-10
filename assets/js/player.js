@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed.'); // DEBUG: Início do script
 
+    const JEKYLL_BASEURL = window.JEKYLL_BASEURL || ''; // Pega o baseurl
+
     // Elementos do DOM
     const audioPlayer = document.getElementById('audio-player');
     const playBtn = document.getElementById('play-btn');
@@ -562,6 +564,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adiciona um listener para o evento hashchange
     window.addEventListener('hashchange', loadLessonFromUrlHash);
+
+    // Após a tentativa de carregar via hash, verifica se é preciso carregar o README
+    setTimeout(() => {
+        // Só carrega o README se nenhuma aula foi carregada via hash E não há áudio no player
+        if (currentLessonIndex === -1 && (!audioPlayer.currentSrc || audioPlayer.currentSrc === window.location.href)) {
+            loadReadmeAsDefault();
+        }
+    }, 50); // Pequeno delay para garantir que o carregamento via hash tente primeiro
+
+    // Função para carregar o README.md como conteúdo padrão
+    function loadReadmeAsDefault() {
+        console.log("No lesson loaded via hash, attempting to load README.md as default content.");
+
+        // Atualiza a UI para indicar "Bem-vindo" ou "README"
+        currentLessonTitleEl.textContent = "Bem-vindo ao Algorithm Player!";
+        currentModuleTitleEl.textContent = "Visão Geral do Projeto";
+        miniLessonTitleEl.textContent = "Bem-vindo!";
+        miniModuleTitleEl.textContent = "Projeto";
+
+        // Atualiza o ícone/cover padrão
+        const defaultIcon = '👋'; // Ícone de boas-vindas
+        const lessonCovers = document.querySelectorAll('.lesson-cover');
+        lessonCovers.forEach(cover => {
+            cover.innerHTML = `<span style="font-size: 48px;">${defaultIcon}</span>`;
+        });
+
+        // Limpa o estado do player de áudio
+        if (audioPlayer) {
+            audioPlayer.pause();
+            audioPlayer.src = ''; // Remove a fonte do áudio
+            if(playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            isPlaying = false;
+            if(currentTimeEl) currentTimeEl.textContent = '0:00';
+            if(durationEl) durationEl.textContent = '0:00';
+            if(progressBar) progressBar.style.width = '0%';
+        }
+
+        const readmePath = JEKYLL_BASEURL + '/README.md';
+
+        fetch(readmePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch README.md: ${response.statusText} (URL: ${response.url})`);
+                }
+                return response.text();
+            })
+            .then(markdownContent => {
+                if (typeof marked !== 'undefined') {
+                    readingMaterialDiv.innerHTML = marked.parse(markdownContent);
+                    applyCodeHighlighting(); // Se o README tiver blocos de código
+                } else {
+                    const pre = document.createElement('pre');
+                    pre.textContent = markdownContent;
+                    readingMaterialDiv.innerHTML = ''; // Limpa conteúdo anterior
+                    readingMaterialDiv.appendChild(pre);
+                }
+                materialLink.classList.add('hidden'); // Esconde link de material específico
+            })
+            .catch(error => {
+                console.error("Error loading README.md:", error);
+                readingMaterialDiv.innerHTML = "<p>Conteúdo inicial não pôde ser carregado. Por favor, selecione uma aula na playlist para começar.</p>";
+            });
+    }
 
     // Expandir o primeiro módulo por padrão
     if (moduleTitles.length > 0) {

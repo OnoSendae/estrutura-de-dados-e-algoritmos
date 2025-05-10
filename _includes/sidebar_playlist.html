@@ -1,7 +1,9 @@
 <aside class="sidebar">
-    <div class="logo">
-        <h1>AlgoPlayer</h1> <!-- Ou {{ site.title }} -->
-    </div>
+    <a href="{{ site.baseurl }}/" class="logo-link" aria-label="Página Inicial">
+        <div class="logo">
+            <img src="{{ '/assets/player-logo.png' | relative_url }}" alt="AlgoPlayer Logo" class="site-logo">
+        </div>
+    </a>
     <div class="playlist-container">
         <h2>Módulos & Aulas</h2>
         <ul class="playlist">

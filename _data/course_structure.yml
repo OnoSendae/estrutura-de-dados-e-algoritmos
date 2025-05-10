@@ -7,7 +7,8 @@ modules:
         title: Fundamentos Da Programacao
         mp3_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/0-fundamentos-da-programacao.mp3
-        md_path: null
+        md_path: >-
+          /src/modulos-treinamento/0-fundamentos-da-programacao/0-fundamentos-da-programacao.md
       - id: 0-fundamentos-da-programacao-01-sintaxe-da-linguagem
         title: Sintaxe Da Linguagem
         mp3_path: >-

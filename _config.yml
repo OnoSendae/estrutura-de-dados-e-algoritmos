@@ -17,6 +17,6 @@ exclude:
   - Gemfile.lock
   - node_modules
   - scripts/
-  - README.md
+  # - README.md # Comentando ou removendo esta linha
   - package.json
   - package-lock.json 
