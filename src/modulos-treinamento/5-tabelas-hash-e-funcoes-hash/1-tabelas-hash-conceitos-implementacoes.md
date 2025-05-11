@@ -1,4 +1,4 @@
-# Algoritmos e Estrutura de Dados na Prática
+
 
 ## Módulo 5: Tabelas Hash e Funções Hash
 

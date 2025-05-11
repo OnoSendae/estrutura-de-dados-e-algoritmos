@@ -1,4 +1,4 @@
-# Algoritmos e Estrutura de Dados na Prática
+
 
 ## Módulo 7: Tópicos Avançados e Aplicações
 

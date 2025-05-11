@@ -38,7 +38,10 @@ body {
     display: grid;
     grid-template-columns: 450px 1fr;
     grid-template-rows: 1fr 120px; /* Main content e player */
-    height: 100vh;
+    height: 125vh; /* Ajustado de 100vh para 125vh (100vh / 0.8) */
+    width: 125%;   /* Adicionado para compensar a escala na largura (100% / 0.8) */
+    transform: scale(0.8);
+    transform-origin: top left; /* Para a escala começar do canto superior esquerdo */
 }
 
 /* Sidebar */

@@ -1,4 +1,4 @@
-# Algoritmos e Estrutura de Dados na Prática
+
 
 ## Módulo 6: Algoritmos Gulosos e Programação Dinâmica
 

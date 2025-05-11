@@ -1,4 +1,4 @@
-# Algoritmos e Estrutura de Dados na Prática
+
 
 ## Módulo 1: Análise de Algoritmos e Complexidade
 
