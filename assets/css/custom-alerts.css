@@ -1,12 +1,11 @@
 .ticker-container {
   width: 100%; /* Ocupa a largura do seu contêiner pai (.player-center) */
-  height: 25px; /* Mantendo sua preferência de altura */
+  height: 15px; /* Mantendo sua preferência de altura */
   color: #00ff00; /* Texto verde brilhante, estilo LED */
   font-family: 'Noto Sans Mono', 'Roboto Mono', monospace; /* Mantendo sua preferência de fonte */
-  font-size: 14px; /* Reduzi um pouco para caber melhor como legenda, ajuste se necessário */
+  font-size: 12px; /* Reduzi um pouco para caber melhor como legenda, ajuste se necessário */
   font-weight: bold;
-  padding: 0px 10px; /* Ajustado para altura menor, sem padding vertical excessivo */
-  border-radius: 3px; /* Pode ser sutil */
+  padding: 0px 5px; /* Ajustado para altura menor, sem padding vertical excessivo */
   overflow: hidden; /* Essencial para o efeito marquee */
   /* box-shadow: 0 0 3px rgba(0, 255, 0, 0.5), 0 0 5px rgba(0, 255, 0, 0.3) inset; MANTIDO COMENTADO CONFORME SUA EDIÇÃO */
   z-index: 1; /* Abaixado, já que não é mais fixo globalmente */

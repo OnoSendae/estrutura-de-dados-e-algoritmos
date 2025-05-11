@@ -37,7 +37,7 @@ body {
 .app-container {
     display: grid;
     grid-template-columns: 450px 1fr;
-    grid-template-rows: 1fr 160px; /* Main content e player */
+    grid-template-rows: 1fr 120px; /* Main content e player */
     height: 100vh;
 }
 
