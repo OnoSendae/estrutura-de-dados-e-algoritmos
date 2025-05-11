@@ -1,6 +1,10 @@
-# 🚀 Algoritmos e Estruturas de Dados: Decolando na Prática! 🚀
 
+# 🚀 Algoritmos e Estruturas de Dados: Decolando na Prática! 🚀
 Bem-vindo(a) à sua plataforma de lançamento para o universo dos Algoritmos e Estruturas de Dados! Este repositório é o seu copiloto em uma jornada de aprendizado interativa, projetada para transformar conceitos complexos em ferramentas poderosas no seu arsenal de desenvolvimento.
+
+## 🎧 Player de Áudio
+Para facilitar o acesso aos áudios das aulas, criei um player de áudio que está disponível no link abaixo.
+[Algorithm Player](https://onosendae.github.io/estrutura-de-dados-e-algoritmos/)
 
 ## 🌌 Por Que Esta Jornada é Para Você?
 
