@@ -13,22 +13,95 @@ const modulesPath = join(projectBasePath, 'src', 'modulos-treinamento');
 const dataPath = join(projectBasePath, '_data');
 const outputPath = join(dataPath, 'course_structure.yml');
 
+// Mapa para restaurar caracteres especiais
+const specialCharMap = {
+    'Programacao': 'Programação',
+    'Analise': 'Análise',
+    'Avancadas': 'Avançadas',
+    'Avancados': 'Avançados',
+    'Ordenacao': 'Ordenação',
+    'Funcoes': 'Funções',
+    'Introducao': 'Introdução',
+    'Visao': 'Visão',
+    'Modulo': 'Módulo',
+    'Notacao': 'Notação',
+    'Espaco': 'Espaço',
+    'Medios': 'Médios',
+    'Exercicios': 'Exercícios',
+    'Praticos': 'Práticos',
+    'Reflexao': 'Reflexão',
+    'Proximos': 'Próximos',
+    'Arvores': 'Árvores',
+    'Hierarquicas': 'Hierárquicas',
+    'Binarias': 'Binárias',
+    'Representacoes': 'Representações',
+    'Otimizacoes': 'Otimizações',
+    'Aplicacoes': 'Aplicações',
+    'Dinamica': 'Dinâmica',
+    'Classicos': 'Clássicos',
+    'Colisoes': 'Colisões',
+    'Topicos': 'Tópicos',
+    'Solucao': 'Solução',
+    'Tecnicas': 'Técnicas',
+    'Indexacao': 'Indexação',
+    'Resolucao': 'Resolução',
+    'Pseudocodigo': 'Pseudocódigo',
+    'Compressao': 'Compressão',
+    'Codificacao': 'Codificação',
+    'Geometria': 'Geometria',
+    'Computacional': 'Computacional',
+    'Espaciais': 'Espaciais',
+    'Persistentes': 'Persistentes',
+    'Imutaveis': 'Imutáveis',
+    'Javascript': 'JavaScript',
+    'Estudo': 'Estudo',
+    'Versao': 'Versão',
+    'Isam': 'ISAM',
+    'Metodo': 'Método',
+    'Controle': 'Controle',
+    // Adicionar mais conforme a necessidade, revisando os nomes de arquivos/pastas
+    // e como eles são transformados em chaves para este mapa.
+    // As chaves devem corresponder exatamente à forma como a palavra
+    // aparece após a capitalização feita por:
+    // .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+};
+
+// Função para restaurar caracteres especiais nos títulos
+function restoreSpecialChars(text) {
+    if (!text) return '';
+    const words = text.split(' ');
+    const restoredWords = words.map(word => {
+        // Preserva pontuação no final da palavra, se houver
+        const punctuationMatch = word.match(/([.,!?;:]+)$/);
+        const coreWord = punctuationMatch ? word.slice(0, -punctuationMatch[0].length) : word;
+        const restoredCoreWord = specialCharMap[coreWord] || coreWord;
+        return punctuationMatch ? restoredCoreWord + punctuationMatch[0] : restoredCoreWord;
+    });
+    return restoredWords.join(' ');
+}
+
 // Re-implementing helper functions (ideally, these would be in a shared utils.js)
 function getModuleTitle(moduleDirName) {
     const parts = moduleDirName.split('-');
+    let title;
     if (parts.length > 1 && !isNaN(parseInt(parts[0]))) {
-         return parts.slice(1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
+         title = parts.slice(1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
+    } else {
+        title = moduleDirName.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
     }
-    return moduleDirName.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
+    return restoreSpecialChars(title); // Aplicar restauração
 }
 
 function getAulaTitle(fileName) {
     const baseNameWithoutExt = basename(fileName, extname(fileName));
     const parts = baseNameWithoutExt.split('-');
+    let title;
     if (parts.length > 1 && !isNaN(parseInt(parts[0]))) {
-        return parts.slice(1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
+        title = parts.slice(1).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
+    } else {
+        title = parts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
     }
-    return parts.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').replace(/ E /g, ' e ');
+    return restoreSpecialChars(title); // Aplicar restauração
 }
 
 function generateJekyllData() {

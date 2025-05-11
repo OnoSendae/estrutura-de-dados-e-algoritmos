@@ -1,10 +1,10 @@
 modules:
   - id_prefix: 0-fundamentos-da-programacao
-    title: Fundamentos Da Programacao
+    title: Fundamentos Da Programação
     emoji: 🏁
     lessons:
       - id: 0-fundamentos-da-programacao-0-fundamentos-da-programacao
-        title: Fundamentos Da Programacao
+        title: Fundamentos Da Programação
         mp3_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/0-fundamentos-da-programacao.mp3
         md_path: >-
@@ -22,63 +22,63 @@ modules:
         md_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/02-estruturas-de-controle.md
       - id: 0-fundamentos-da-programacao-03-funcoes
-        title: Funcoes
+        title: Funções
         mp3_path: /src/modulos-treinamento/0-fundamentos-da-programacao/03-funcoes.mp3
         md_path: /src/modulos-treinamento/0-fundamentos-da-programacao/03-funcoes.md
       - id: 0-fundamentos-da-programacao-04-programacao-orientada-objetos
-        title: Programacao Orientada Objetos
+        title: Programação Orientada Objetos
         mp3_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/04-programacao-orientada-objetos.mp3
         md_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/04-programacao-orientada-objetos.md
       - id: 0-fundamentos-da-programacao-05-pseudocodigo
-        title: Pseudocodigo
+        title: Pseudocódigo
         mp3_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/05-pseudocodigo.mp3
         md_path: >-
           /src/modulos-treinamento/0-fundamentos-da-programacao/05-pseudocodigo.md
   - id_prefix: 1-analise-de-algoritmos-e-complexidade
-    title: Analise De Algoritmos e Complexidade
+    title: Análise De Algoritmos e Complexidade
     emoji: 🛠️
     lessons:
       - id: 1-analise-de-algoritmos-e-complexidade-0-visao-geral-modulo
-        title: Visao Geral Modulo
+        title: Visão Geral Módulo
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/0-visao-geral-modulo.md
       - id: 1-analise-de-algoritmos-e-complexidade-1-introducao-analise-algoritmos
-        title: Introducao Analise Algoritmos
+        title: Introdução Análise Algoritmos
         mp3_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/1-introducao-analise-algoritmos.mp3
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/1-introducao-analise-algoritmos.md
       - id: 1-analise-de-algoritmos-e-complexidade-2-notacao-big-o
-        title: Notacao Big O
+        title: Notação Big O
         mp3_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/2-notacao-big-o.mp3
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/2-notacao-big-o.md
       - id: >-
           1-analise-de-algoritmos-e-complexidade-3-analise-complexidade-tempo-espaco
-        title: Analise Complexidade Tempo Espaco
+        title: Análise Complexidade Tempo Espaço
         mp3_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/3-analise-complexidade-tempo-espaco.mp3
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/3-analise-complexidade-tempo-espaco.md
       - id: 1-analise-de-algoritmos-e-complexidade-4-melhores-piores-casos-medios
-        title: Melhores Piores Casos Medios
+        title: Melhores Piores Casos Médios
         mp3_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/4-melhores-piores-casos-medios.mp3
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/4-melhores-piores-casos-medios.md
       - id: 1-analise-de-algoritmos-e-complexidade-5-exercicios-praticos
-        title: Exercicios Praticos
+        title: Exercícios Práticos
         mp3_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/5-exercicios-praticos.mp3
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/5-exercicios-praticos.md
       - id: 1-analise-de-algoritmos-e-complexidade-51-exercicios-praticos
-        title: Exercicios Praticos
+        title: Exercícios Práticos
         mp3_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/5.1-exercicios-praticos.mp3
         md_path: null
@@ -95,17 +95,17 @@ modules:
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/7-visualizacao-complexidade.md
       - id: 1-analise-de-algoritmos-e-complexidade-8-reflexao-e-proximos-passos
-        title: Reflexao e Proximos Passos
+        title: Reflexão e Próximos Passos
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/1-analise-de-algoritmos-e-complexidade/8-reflexao-e-proximos-passos.md
   - id_prefix: 2-estruturas-de-dados-lineares-avancadas
-    title: Estruturas De Dados Lineares Avancadas
+    title: Estruturas De Dados Lineares Avançadas
     emoji: 📚
     lessons:
       - id: >-
           2-estruturas-de-dados-lineares-avancadas-0-estruturas-de-dados-lineares-avancadas
-        title: Estruturas De Dados Lineares Avancadas
+        title: Estruturas De Dados Lineares Avançadas
         mp3_path: >-
           /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/0-estruturas-de-dados-lineares-avancadas.mp3
         md_path: >-
@@ -135,32 +135,32 @@ modules:
         md_path: >-
           /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/4-listas-skip.md
       - id: 2-estruturas-de-dados-lineares-avancadas-51-exercicios
-        title: Exercicios
+        title: Exercícios
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/2-estruturas-de-dados-lineares-avancadas/5.1-exercicios.md
   - id_prefix: 3-arvores-e-grafos
-    title: Arvores e Grafos
+    title: Árvores e Grafos
     emoji: 📚
     lessons:
       - id: 3-arvores-e-grafos-0-arvores-e-grafos
-        title: Arvores e Grafos
+        title: Árvores e Grafos
         mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/0-arvores-e-grafos.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/0-arvores-e-grafos.md
       - id: 3-arvores-e-grafos-1-introducao-estruturas-hierarquicas
-        title: Introducao Estruturas Hierarquicas
+        title: Introdução Estruturas Hierárquicas
         mp3_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/1-introducao-estruturas-hierarquicas.mp3
         md_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/1-introducao-estruturas-hierarquicas.md
       - id: 3-arvores-e-grafos-2-arvores-binarias-busca
-        title: Arvores Binarias Busca
+        title: Árvores Binárias Busca
         mp3_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/2-arvores-binarias-busca.mp3
         md_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/2-arvores-binarias-busca.md
       - id: 3-arvores-e-grafos-3-arvores-balanceadas
-        title: Arvores Balanceadas
+        title: Árvores Balanceadas
         mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/3-arvores-balanceadas.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/3-arvores-balanceadas.md
       - id: 3-arvores-e-grafos-4-grafos-conceitos
@@ -168,7 +168,7 @@ modules:
         mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/4-grafos-conceitos.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/4-grafos-conceitos.md
       - id: 3-arvores-e-grafos-41-grafos-conceitos-representacoes
-        title: Grafos Conceitos Representacoes
+        title: Grafos Conceitos Representações
         mp3_path: >-
           /src/modulos-treinamento/3-arvores-e-grafos/4.1-grafos-conceitos-representacoes.mp3
         md_path: >-
@@ -184,31 +184,31 @@ modules:
         mp3_path: /src/modulos-treinamento/3-arvores-e-grafos/5-busca-largura-bfs.mp3
         md_path: /src/modulos-treinamento/3-arvores-e-grafos/5-busca-largura-bfs.md
   - id_prefix: 4-algoritmos-de-ordenacao-e-busca-avancados
-    title: Algoritmos De Ordenacao e Busca Avancados
+    title: Algoritmos De Ordenação e Busca Avançados
     emoji: 📚
     lessons:
       - id: >-
           4-algoritmos-de-ordenacao-e-busca-avancados-0-algoritmos-de-ordenacao-e-busca-avancados
-        title: Algoritmos De Ordenacao e Busca Avancados
+        title: Algoritmos De Ordenação e Busca Avançados
         mp3_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/0-algoritmos-de-ordenacao-e-busca-avancados.mp3
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/0-algoritmos-de-ordenacao-e-busca-avancados.md
       - id: 4-algoritmos-de-ordenacao-e-busca-avancados-0-introducao-visao-geral
-        title: Introducao Visao Geral
+        title: Introdução Visão Geral
         mp3_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/0-introducao-visao-geral.mp3
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/0-introducao-visao-geral.md
       - id: >-
           4-algoritmos-de-ordenacao-e-busca-avancados-1-merge-sort-quick-sort-otimizacoes
-        title: Merge Sort Quick Sort Otimizacoes
+        title: Merge Sort Quick Sort Otimizações
         mp3_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/1-merge-sort-quick-sort-otimizacoes.mp3
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/1-merge-sort-quick-sort-otimizacoes.md
       - id: 4-algoritmos-de-ordenacao-e-busca-avancados-2-heap-sort-aplicacoes
-        title: Heap Sort Aplicacoes
+        title: Heap Sort Aplicações
         mp3_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/2-heap-sort-aplicacoes.mp3
         md_path: >-
@@ -227,12 +227,12 @@ modules:
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/4-busca-texto-kmp-boyer-moore.md
       - id: 4-algoritmos-de-ordenacao-e-busca-avancados-5-6-exercicios-case
-        title: 6 Exercicios Case
+        title: 6 Exercícios Case
         mp3_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/5-6-exercicios-case.mp3
         md_path: null
       - id: 4-algoritmos-de-ordenacao-e-busca-avancados-5-exercicios-praticos
-        title: Exercicios Praticos
+        title: Exercícios Práticos
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/5-exercicios-praticos.md
@@ -243,16 +243,16 @@ modules:
         md_path: >-
           /src/modulos-treinamento/4-algoritmos-de-ordenacao-e-busca-avancados/6-case-study-benchmark-sistema.md
   - id_prefix: 5-tabelas-hash-e-funcoes-hash
-    title: Tabelas Hash e Funcoes Hash
+    title: Tabelas Hash e Funções Hash
     emoji: 📚
     lessons:
       - id: 5-tabelas-hash-e-funcoes-hash-0-introducao-hash-tables
-        title: Introducao Hash Tables
+        title: Introdução Hash Tables
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/0-introducao-hash-tables.md
       - id: 5-tabelas-hash-e-funcoes-hash-0-tabelas-hash-e-funcoes-hash
-        title: Tabelas Hash e Funcoes Hash
+        title: Tabelas Hash e Funções Hash
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/0-tabelas-hash-e-funcoes-hash.mp3
         md_path: null
@@ -262,24 +262,24 @@ modules:
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/1-tabelas-hash-conceitos-implementacoes.md
       - id: 5-tabelas-hash-e-funcoes-hash-1-tabelas-hash-e-funcoes-hash
-        title: Tabelas Hash e Funcoes Hash
+        title: Tabelas Hash e Funções Hash
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/1-tabelas-hash-e-funcoes-hash.mp3
         md_path: null
       - id: 5-tabelas-hash-e-funcoes-hash-2-funcoes-hash
-        title: Funcoes Hash
+        title: Funções Hash
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/2-funcoes-hash.mp3
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/2-funcoes-hash.md
       - id: 5-tabelas-hash-e-funcoes-hash-3-tratamento-de-colisoes
-        title: Tratamento De Colisoes
+        title: Tratamento De Colisões
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/3-tratamento-de-colisoes.mp3
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/3-tratamento-de-colisoes.md
       - id: 5-tabelas-hash-e-funcoes-hash-31-visual-hash-colisoes
-        title: Visual Hash Colisoes
+        title: Visual Hash Colisões
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/3.1-visual-hash-colisoes.mp3
         md_path: >-
@@ -291,12 +291,12 @@ modules:
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/4-rehashing-fatores-carga.md
       - id: 5-tabelas-hash-e-funcoes-hash-5-6-exercicios-case-study
-        title: 6 Exercicios Case Study
+        title: 6 Exercícios Case Study
         mp3_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/5-6-exercicios-case-study.mp3
         md_path: null
       - id: 5-tabelas-hash-e-funcoes-hash-5-exercicios-praticos
-        title: Exercicios Praticos
+        title: Exercícios Práticos
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/5-exercicios-praticos.md
@@ -311,12 +311,12 @@ modules:
         md_path: >-
           /src/modulos-treinamento/5-tabelas-hash-e-funcoes-hash/7-hash-tables-vs-outras-estruturas.md
   - id_prefix: 6-algoritmos-gulosos-e-programacao-dinamica
-    title: Algoritmos Gulosos e Programacao Dinamica
+    title: Algoritmos Gulosos e Programação Dinâmica
     emoji: 📚
     lessons:
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-0-algoritmos-gulosos-e-programacao-dinamica
-        title: Algoritmos Gulosos e Programacao Dinamica
+        title: Algoritmos Gulosos e Programação Dinâmica
         mp3_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/0-algoritmos-gulosos-e-programacao-dinamica.mp3
         md_path: >-
@@ -330,7 +330,7 @@ modules:
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/1-algoritmos-gulosos-fundamentos.md
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-2-problemas-classicos-algoritmos-gulosos
-        title: Problemas Classicos Algoritmos Gulosos
+        title: Problemas Clássicos Algoritmos Gulosos
         mp3_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/2-problemas-classicos-algoritmos-gulosos.mp3
         md_path: >-
@@ -343,27 +343,27 @@ modules:
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/3-transicao-greedy-para-dp.md
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-4-programacao-dinamica-fundamentos
-        title: Programacao Dinamica Fundamentos
+        title: Programação Dinâmica Fundamentos
         mp3_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/4-programacao-dinamica-fundamentos.mp3
         md_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/4-programacao-dinamica-fundamentos.md
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-5-programacao-dinamica-problemas-classicos
-        title: Programacao Dinamica Problemas Classicos
+        title: Programação Dinâmica Problemas Clássicos
         mp3_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/5-programacao-dinamica-problemas-classicos.mp3
         md_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/5-programacao-dinamica-problemas-classicos.md
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-6-7-exercicios-praticos-nivelados-case-study-otimizacao-rotas
-        title: 7 Exercicios Praticos Nivelados Case Study Otimizacao Rotas
+        title: 7 Exercícios Práticos Nivelados Case Study Otimizacao Rotas
         mp3_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/6-7-exercicios-praticos-nivelados-case-study-otimizacao-rotas.mp3
         md_path: null
       - id: >-
           6-algoritmos-gulosos-e-programacao-dinamica-6-exercicios-praticos-nivelados
-        title: Exercicios Praticos Nivelados
+        title: Exercícios Práticos Nivelados
         mp3_path: null
         md_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/6-exercicios-praticos-nivelados.md
@@ -374,18 +374,18 @@ modules:
         md_path: >-
           /src/modulos-treinamento/6-algoritmos-gulosos-e-programacao-dinamica/7-case-study-otimizacao-rotas.md
   - id_prefix: 7-topicos-avancados-e-aplicacoes
-    title: Topicos Avancados e Aplicacoes
+    title: Tópicos Avançados e Aplicações
     emoji: 📚
     lessons:
       - id: 7-topicos-avancados-e-aplicacoes-0-topicos-avancados-e-aplicacoes
-        title: Topicos Avancados e Aplicacoes
+        title: Tópicos Avançados e Aplicações
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/0-topicos-avancados-e-aplicacoes.mp3
         md_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/0-topicos-avancados-e-aplicacoes.md
       - id: >-
           7-topicos-avancados-e-aplicacoes-1-arvores-segmentos-fenwick-consultas-eficientes
-        title: Arvores Segmentos Fenwick Consultas Eficientes
+        title: Árvores Segmentos Fenwick Consultas Eficientes
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/1-arvores-segmentos-fenwick-consultas-eficientes.mp3
         md_path: >-
@@ -398,7 +398,7 @@ modules:
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/2-trie-arvore-prefixos-busca-strings.md
       - id: >-
           7-topicos-avancados-e-aplicacoes-3-algoritmos-compressao-huffman-codificacao
-        title: Algoritmos Compressao Huffman Codificacao
+        title: Algoritmos Compressão Huffman Codificação
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/3-algoritmos-compressao-huffman-codificacao.mp3
         md_path: >-
@@ -412,7 +412,7 @@ modules:
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/4-geometria-computacional-algoritmos-espaciais.md
       - id: >-
           7-topicos-avancados-e-aplicacoes-5-exercicios-integrativos-aplicacao-pratica
-        title: Exercicios Integrativos Aplicacao Pratica
+        title: Exercícios Integrativos Aplicacao Pratica
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/5-exercicios-integrativos-aplicacao-pratica.mp3
         md_path: >-
@@ -426,7 +426,7 @@ modules:
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/6-case-study-sistema-autocompletar-implementacao.md
       - id: >-
           7-topicos-avancados-e-aplicacoes-7-revisao-conhecimentos-proximos-passos
-        title: Revisao Conhecimentos Proximos Passos
+        title: Revisao Conhecimentos Próximos Passos
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/7-revisao-conhecimentos-proximos-passos.mp3
         md_path: >-
@@ -440,7 +440,7 @@ modules:
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/8-dijkstra-bellman-ford-caminhos-minimos.md
       - id: >-
           7-topicos-avancados-e-aplicacoes-9-prim-kruskal-arvores-geradoras-minimas
-        title: Prim Kruskal Arvores Geradoras Minimas
+        title: Prim Kruskal Árvores Geradoras Minimas
         mp3_path: >-
           /src/modulos-treinamento/7-topicos-avancados-e-aplicacoes/9-prim-kruskal-arvores-geradoras-minimas.mp3
         md_path: >-
@@ -475,20 +475,20 @@ modules:
         md_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/3-mapas-persistentes.md
       - id: 8-estruturas-de-dados-persistentes-4-estruturas-imutaveis-javascript
-        title: Estruturas Imutaveis Javascript
+        title: Estruturas Imutáveis JavaScript
         mp3_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/4-estruturas-imutaveis-javascript.mp3
         md_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/4-estruturas-imutaveis-javascript.md
       - id: >-
           8-estruturas-de-dados-persistentes-5-estudo-caso-sistema-controle-versao
-        title: Estudo Caso Sistema Controle Versao
+        title: Estudo Caso Sistema Controle Versão
         mp3_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/5-estudo-caso-sistema-controle-versao.mp3
         md_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/5-estudo-caso-sistema-controle-versao.md
       - id: 8-estruturas-de-dados-persistentes-6-exercicios-integradores
-        title: Exercicios Integradores
+        title: Exercícios Integradores
         mp3_path: >-
           /src/modulos-treinamento/8-estruturas-de-dados-persistentes/6-exercicios-integradores.mp3
         md_path: >-
@@ -517,36 +517,36 @@ modules:
           /src/modulos-treinamento/9-estruturas-de-dados-complexas/0-estruturas-de-dados-complexas.md
       - id: >-
           9-estruturas-de-dados-complexas-1-isam-metodo-acesso-sequencial-indexado
-        title: Isam Metodo Acesso Sequencial Indexado
+        title: ISAM Método Acesso Sequencial Indexado
         mp3_path: >-
           /src/modulos-treinamento/9-estruturas-de-dados-complexas/1-isam-metodo-acesso-sequencial-indexado.mp3
         md_path: >-
           /src/modulos-treinamento/9-estruturas-de-dados-complexas/1-isam-metodo-acesso-sequencial-indexado.md
       - id: 9-estruturas-de-dados-complexas-2-arvores-2-3
-        title: Arvores 2 3
+        title: Árvores 2 3
         mp3_path: >-
           /src/modulos-treinamento/9-estruturas-de-dados-complexas/2-arvores-2-3.mp3
         md_path: >-
           /src/modulos-treinamento/9-estruturas-de-dados-complexas/2-arvores-2-3.md
   - id_prefix: 10-indexacao
-    title: Indexacao
+    title: Indexação
     emoji: 📚
     lessons:
       - id: 10-indexacao-0-indexacao
-        title: Indexacao
+        title: Indexação
         mp3_path: /src/modulos-treinamento/10-indexacao/0-indexacao.mp3
         md_path: /src/modulos-treinamento/10-indexacao/0-indexacao.md
       - id: 10-indexacao-1-indexacao-linear
-        title: Indexacao Linear
+        title: Indexação Linear
         mp3_path: /src/modulos-treinamento/10-indexacao/1-indexacao-linear.mp3
         md_path: /src/modulos-treinamento/10-indexacao/1-indexacao-linear.md
       - id: 10-indexacao-2-indexacao-baseada-em-arvore
-        title: Indexacao Baseada Em Arvore
+        title: Indexação Baseada Em Arvore
         mp3_path: >-
           /src/modulos-treinamento/10-indexacao/2-indexacao-baseada-em-arvore.mp3
         md_path: /src/modulos-treinamento/10-indexacao/2-indexacao-baseada-em-arvore.md
   - id_prefix: 11-tecnicas-de-resolucao-de-problemas
-    title: Tecnicas De Resolucao De Problemas
+    title: Técnicas De Resolução De Problemas
     emoji: 📚
     lessons:
       - id: 11-tecnicas-de-resolucao-de-problemas-1-algoritmos-randomizados
