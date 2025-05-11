@@ -514,17 +514,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Verifica se o botão já existe
         if (!document.querySelector('.menu-toggle')) {
             const menuToggle = document.createElement('button');
-            menuToggle.className = 'menu-toggle control-btn';
+            menuToggle.className = 'menu-toggle control-btn'; // Mantemos control-btn para herdar alguns estilos base
             menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            
-            const navigation = document.querySelector('.navigation');
-            if (navigation) {
-                navigation.prepend(menuToggle);
+            menuToggle.setAttribute('aria-label', 'Abrir menu');
+            menuToggle.setAttribute('aria-expanded', 'false');
+
+            // const navigation = document.querySelector('.navigation'); // Linha original comentada
+            const mainHeader = document.querySelector('.main-header'); // Novo seletor
+
+            if (mainHeader) { // Verifica se o .main-header existe
+                mainHeader.prepend(menuToggle);
                 
                 menuToggle.addEventListener('click', () => {
                     const sidebar = document.querySelector('.sidebar');
-                    sidebar.classList.toggle('open');
-                    
+                    const isOpen = sidebar.classList.toggle('open');
+                    menuToggle.setAttribute('aria-expanded', isOpen.toString());
+
                     // Adiciona overlay quando o menu estiver aberto
                     let overlay = document.querySelector('.sidebar-overlay');
                     if (sidebar.classList.contains('open')) {
@@ -535,34 +540,52 @@ document.addEventListener('DOMContentLoaded', function() {
                             
                             overlay.addEventListener('click', () => {
                                 sidebar.classList.remove('open');
+                                menuToggle.setAttribute('aria-expanded', 'false');
                                 overlay.remove();
                             });
                         }
+                        document.body.style.overflow = 'hidden'; // Impede o scroll do body quando o menu está aberto
                     } else if (overlay) {
                         overlay.remove();
+                        document.body.style.overflow = ''; // Restaura o scroll do body
                     }
                 });
+            } else {
+                console.warn('.main-header element not found for menu toggle.');
             }
         }
     };
 
     // Detectar se é dispositivo móvel e adicionar o toggle
     const checkMobileView = () => {
+        const sidebar = document.querySelector('.sidebar');
+        const menuToggle = document.querySelector('.menu-toggle');
+
         if (window.innerWidth <= 768) {
-            createMobileMenuToggle();
+            createMobileMenuToggle(); // Garante que o botão seja criado se não existir
+            // A visibilidade do botão é controlada pelo CSS
             
             // Adiciona evento de fechamento do menu ao clicar em uma aula em dispositivo móvel
             lessons.forEach(lesson => {
                 lesson.addEventListener('click', () => {
-                    const sidebar = document.querySelector('.sidebar');
-                    const overlay = document.querySelector('.sidebar-overlay');
-                    
                     if (sidebar && sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
+                        if(menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+                        const overlay = document.querySelector('.sidebar-overlay');
                         if (overlay) overlay.remove();
+                        document.body.style.overflow = ''; // Restaura o scroll do body
                     }
                 });
             });
+        } else {
+            // Se a tela for maior que 768px e o menu estiver aberto, feche-o
+            if (sidebar && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                if(menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+                const overlay = document.querySelector('.sidebar-overlay');
+                if (overlay) overlay.remove();
+                document.body.style.overflow = ''; // Restaura o scroll do body
+            }
         }
     };
 
