@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed.'); // DEBUG: Início do script
 
     const JEKYLL_BASEURL = window.JEKYLL_BASEURL || ''; // Pega o baseurl
@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const durationEl = document.getElementById('duration');
     const progressBar = document.querySelector('.progress-bar .progress');
     const progressContainer = document.querySelector('.progress-bar');
-    
+
     const currentLessonTitleEl = document.getElementById('current-title');
     const currentModuleTitleEl = document.getElementById('current-module');
     const miniLessonTitleEl = document.getElementById('mini-title');
     const miniModuleTitleEl = document.getElementById('mini-module');
-    
+
     const readingMaterialDiv = document.getElementById('reading-material');
     const materialLink = document.getElementById('material-link');
 
@@ -30,20 +30,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentLessonIndex = -1;
     let isPlaying = false;
 
-    // Ícones para os módulos
+    // Ícones para os módulos (atualizado para nova estrutura)
     const moduleIcons = {
-        'fundamentos-da-programacao': '🏁',
-        'analise-de-algoritmos-e-complexidade': '🛠️',
-        'estruturas-de-dados-lineares-avancadas': '📚',
-        'arvores-e-grafos': '🌳',
-        'algoritmos-de-ordenacao-e-busca-avancados': '🔍',
-        'tabelas-hash-e-funcoes-hash': '🔑',
-        'algoritmos-gulosos-e-programacao-dinamica': '⚡',
-        'topicos-avancados-e-aplicacoes': '🚀',
-        'estruturas-de-dados-persistentes': '💾',
-        'estruturas-de-dados-complexas': '🧩',
-        'indexacao': '📇',
-        'tecnicas-de-resolucao-de-problemas': '🧠'
+        'foundations': '🏁',
+        'complexity-analysis': '🛠️',
+        'linear-structures': '📚',
+        'trees-graphs': '🌳',
+        'sorting-searching': '🔍',
+        'hash-tables': '🗂️',
+        'greedy-dynamic': '🧩',
+        'advanced-topics': '🚀',
+        'persistent-structures': '💾',
+        'complex-structures': '🏗️',
+        'indexing': '📇',
+        'problem-solving': '🎯'
     };
 
     function loadAndPlayLesson(index) {
@@ -77,10 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Atualiza o ícone/cover da aula atual se existir para o módulo
         // const moduleId = lessonId.split('-')[0] + '-' + lessonId.split('-')[1] + '-' + lessonId.split('-')[2] + '-' + lessonId.split('-')[3];
         // const moduleKey = moduleId.substring(2); // Remove o número do início
-        
+
         // Nova lógica mais robusta para extrair moduleKey usando regex
-        const match = lessonId.match(/^\d{2}-([a-z0-9-]+?)-\d{2}-/);
-        const moduleKey = match && match[1] ? match[1] : null;
+        const match = lessonId.match(/^(\d{2}-[a-z0-9-]+)-/);
+        const moduleId = match && match[1] ? match[1] : null;
+        const moduleKey = moduleId ? moduleId.substring(3) : null; // Remove "XX-" do início
 
         const icon = moduleKey && moduleIcons[moduleKey] ? moduleIcons[moduleKey] : '📚';
         const lessonCovers = document.querySelectorAll('.lesson-cover');
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (mdPath && mdPath !== 'null' && mdPath !== 'undefined') {
             materialLink.href = mdPath;
             materialLink.classList.remove('hidden');
-            
+
             fetch(mdPath)
                 .then(response => {
                     if (!response.ok) {
@@ -117,10 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         readingMaterialDiv.innerHTML = '';
                         readingMaterialDiv.appendChild(pre);
                     }
-                    
+
                     // Adiciona botão de compartilhamento
                     addShareButton();
-                    
+
                     // Re-append o link caso o innerHTML o tenha removido
                     if (!readingMaterialDiv.contains(materialLink)) {
                         readingMaterialDiv.appendChild(materialLink);
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error("Erro ao carregar material .md:", error);
                     readingMaterialDiv.innerHTML = '<p>Erro ao carregar o material de leitura.</p>';
                     if (!readingMaterialDiv.contains(materialLink)) {
-                         readingMaterialDiv.appendChild(materialLink);
+                        readingMaterialDiv.appendChild(materialLink);
                     }
                 });
         } else { // Se mdPath for null, 'null', undefined, ou uma string vazia
@@ -143,13 +144,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     loadAndPlayLesson(currentLessonIndex + 1);
                 } else {
                     // Opcional: feedback se já estiver na última aula e não houver próxima
-                    console.log("Já está na última aula."); 
+                    console.log("Já está na última aula.");
                 }
             };
-            
+
             readingMaterialDiv.innerHTML = '<p>Para avançar para a próxima aula, clique no botão abaixo ou utilize os controles do player.</p>';
             readingMaterialDiv.appendChild(nextLessonButton);
-            
+
             materialLink.classList.add('hidden'); // Esconde o link "Abrir Material Completo"
         }
 
@@ -159,15 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
             audioPlayer.src = audioSrc;
             // A UI (botão play/pause e isPlaying) será atualizada pelos listeners de 'play' e 'pause'
             audioPlayer.play().catch(error => {
-                 console.error('Error attempting to play audio:', error); // DEBUG: Erro ao tentar tocar
-                 // Isso pode acontecer se a reprodução automática for bloqueada pelo navegador
-                 // Pode ser necessário que o usuário interaja primeiro
-                 // Certifica-se de que a UI reflita que não está tocando se o autoplay falhar
-                 isPlaying = false; // Garante que o estado interno esteja correto
-                 playBtn.innerHTML = '<i class="fas fa-play"></i>'; // Mostra botão play
+                console.error('Error attempting to play audio:', error); // DEBUG: Erro ao tentar tocar
+                // Isso pode acontecer se a reprodução automática for bloqueada pelo navegador
+                // Pode ser necessário que o usuário interaja primeiro
+                // Certifica-se de que a UI reflita que não está tocando se o autoplay falhar
+                isPlaying = false; // Garante que o estado interno esteja correto
+                playBtn.innerHTML = '<i class="fas fa-play"></i>'; // Mostra botão play
             });
         } else {
-             console.log('No valid audio source found for this lesson.', lessonId); // DEBUG
+            console.log('No valid audio source found for this lesson.', lessonId); // DEBUG
             // Se não tiver áudio, para o player e reseta o botão
             audioPlayer.pause();
             audioPlayer.src = '';
@@ -175,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             isPlaying = false;
             currentTimeEl.textContent = '0:00';
             durationEl.textContent = '0:00';
-            if(progressBar) progressBar.style.width = '0%';
+            if (progressBar) progressBar.style.width = '0%';
         }
 
         // Atualiza destaque na playlist
@@ -203,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Identifica a linguagem a partir da classe (se existir)
             let language = 'javascript'; // Padrão para JavaScript
             let title = `Exemplo ${index + 1}`;
-            
+
             // Procura por classes como 'language-javascript', 'language-python', etc.
             const codeElement = codeBlock.parentElement;
             if (codeElement.className) {
@@ -211,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (languageMatch) {
                     language = languageMatch[1];
                 }
-                
+
                 // Verifica se há um título no comentário inicial do código
                 const titleMatch = codeBlock.textContent.match(/^\s*\/\/\s*(.+?)\n/);
                 if (titleMatch) {
@@ -220,25 +221,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     codeBlock.textContent = codeBlock.textContent.replace(/^\s*\/\/\s*(.+?)\n/, '');
                 }
             }
-            
+
             // Adiciona o atributo data-language
             codeElement.setAttribute('data-language', language);
-            
+
             // Envolve o bloco de código em um container com título
             wrapCodeBlock(codeElement, title, language);
-            
+
             // Aplica highlighting para JavaScript/TypeScript
             if (language === 'javascript' || language === 'js' || language === 'typescript' || language === 'ts') {
                 const code = codeBlock.textContent;
-                
+
                 // Remove qualquer HTML existente para evitar conflitos
                 codeBlock.textContent = code;
-                
+
                 // Cria um DOM temporário para manipular o código mais facilmente
                 const tempDiv = document.createElement('div');
                 tempDiv.textContent = code;
                 let processedCode = tempDiv.innerHTML;
-                
+
                 // Protege contra substituições recursivas
                 const placeholders = {
                     comments: [],
@@ -248,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     numbers: [],
                     operators: []
                 };
-                
+
                 // Função para substituir padrões com placeholders
                 const replaceWithPlaceholder = (regex, type, text) => {
                     return text.replace(regex, (match) => {
@@ -257,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         return `__${type}_${id}__`;
                     });
                 };
-                
+
                 // Função para restaurar placeholders com spans HTML
                 const restorePlaceholders = (text, type, className) => {
                     placeholders[type].forEach((value, id) => {
@@ -267,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     return text;
                 };
-                
+
                 // Expressões regulares para identificar elementos da sintaxe
                 const commentRegex = /(\/\/.*?$|\/\*[\s\S]*?\*\/)/gm;
                 const stringRegex = /(["'`])((?:\\\1|(?!\1).)*?)\1/g;
@@ -275,17 +276,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const numberRegex = /\b(0x[\dA-Fa-f]+|\d*\.?\d+)\b/g;
                 const functionRegex = /\b([a-zA-Z_$][\w$]*)\s*\(/g;
                 const operatorRegex = /([+\-*/%=&|^<>!?:]+)/g;
-                
+
                 // Primeiro protege comentários e strings 
                 processedCode = replaceWithPlaceholder(commentRegex, 'comments', processedCode);
                 processedCode = replaceWithPlaceholder(stringRegex, 'strings', processedCode);
-                
+
                 // Depois substitui os outros elementos
                 processedCode = replaceWithPlaceholder(keywordRegex, 'keywords', processedCode);
                 processedCode = replaceWithPlaceholder(numberRegex, 'numbers', processedCode);
                 processedCode = replaceWithPlaceholder(functionRegex, 'functions', processedCode);
                 processedCode = replaceWithPlaceholder(operatorRegex, 'operators', processedCode);
-                
+
                 // Restaura todos os elementos com as classes corretas
                 processedCode = restorePlaceholders(processedCode, 'comments', 'code-comment');
                 processedCode = restorePlaceholders(processedCode, 'strings', 'code-string');
@@ -300,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     processedCode = processedCode.replace(placeholder, span);
                 });
                 processedCode = restorePlaceholders(processedCode, 'operators', 'code-operator');
-                
+
                 // Aplica o código processado
                 codeBlock.innerHTML = processedCode;
             }
@@ -313,11 +314,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (codeElement.parentElement.classList.contains('code-example')) {
             return;
         }
-        
+
         // Cria o container
         const container = document.createElement('div');
         container.className = 'code-example';
-        
+
         // Cria a barra de título
         const titleBar = document.createElement('div');
         titleBar.className = 'code-example-title';
@@ -325,19 +326,19 @@ document.addEventListener('DOMContentLoaded', function() {
             <span>${title}</span>
             <span class="code-language">${language.toUpperCase()}</span>
         `;
-        
+
         // Insere o container no lugar do elemento de código
         codeElement.parentNode.insertBefore(container, codeElement);
         container.appendChild(titleBar);
         container.appendChild(codeElement);
-        
+
         // Adiciona botão de copiar código
         const copyButton = document.createElement('button');
         copyButton.className = 'copy-code-btn';
         copyButton.innerHTML = '<i class="fas fa-copy"></i>';
         copyButton.title = 'Copiar código';
         titleBar.appendChild(copyButton);
-        
+
         // Adiciona funcionalidade de cópia
         copyButton.addEventListener('click', () => {
             const code = codeElement.querySelector('code').textContent;
@@ -361,13 +362,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 <i class="fas fa-share-alt"></i> Compartilhar
             </button>
         `;
-        
+
         readingMaterialDiv.insertAdjacentElement('afterbegin', shareContainer);
-        
+
         // Adiciona o evento de compartilhamento
         const shareBtn = shareContainer.querySelector('.share-btn');
         if (shareBtn) { // Adiciona verificação
-             shareBtn.addEventListener('click', () => {
+            shareBtn.addEventListener('click', () => {
                 // Lógica de copiar URL para a área de transferência (sem Web Share API)
                 const urlToCopy = window.location.href;
                 navigator.clipboard.writeText(urlToCopy).then(() => {
@@ -385,17 +386,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Simplifica a lógica do botão play: apenas pausa/toca o que estiver carregado
         // A carga inicial baseada no hash é feita pela loadLessonFromUrlHash no DOMContentLoaded
         if (audioPlayer.src && audioPlayer.src !== window.location.href) { // Verifica se tem source válida
-             console.log('Audio source exists, toggling play/pause.'); // DEBUG
+            console.log('Audio source exists, toggling play/pause.'); // DEBUG
             if (isPlaying) {
                 audioPlayer.pause();
             } else {
                 audioPlayer.play().catch(error => {
-                     console.error('Error attempting to play audio from play button:', error); // DEBUG
+                    console.error('Error attempting to play audio from play button:', error); // DEBUG
                 });
             }
         } else {
-             console.log('Play button clicked, but no valid audio source is loaded.');
-             // Opcional: Mostrar mensagem para o usuário selecionar uma aula
+            console.log('Play button clicked, but no valid audio source is loaded.');
+            // Opcional: Mostrar mensagem para o usuário selecionar uma aula
         }
     });
 
@@ -435,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!audioPlayer.duration) return;
         const { currentTime, duration } = audioPlayer;
         const progressPercent = (currentTime / duration) * 100;
-        if(progressBar) progressBar.style.width = `${progressPercent}%`;
+        if (progressBar) progressBar.style.width = `${progressPercent}%`;
         currentTimeEl.textContent = formatTime(currentTime);
         durationEl.textContent = formatTime(duration);
     });
@@ -463,14 +464,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const seconds = Math.floor(time % 60).toString().padStart(2, '0');
         return `${minutes}:${seconds}`;
     }
-    
+
     // Expandir/recolher módulos na playlist
     const moduleTitles = document.querySelectorAll('.playlist-module > .module-title');
     moduleTitles.forEach(title => {
-        title.addEventListener('click', function() {
+        title.addEventListener('click', function () {
             const module = this.parentElement;
             module.classList.toggle('expanded');
-            
+
             // Quando expandir um módulo, recolhe os outros para um visual mais limpo
             if (module.classList.contains('expanded')) {
                 moduleTitles.forEach(otherTitle => {
@@ -487,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadLessonFromUrlHash() {
         console.log('Attempting to load lesson from URL hash...');
         const lessonIdFromHash = window.location.hash.substring(1); // Remove o # inicial
-        
+
         if (lessonIdFromHash) {
             console.log('URL hash found:', lessonIdFromHash);
             let lessonToLoadIndex = -1;
@@ -505,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.warn('Lesson ID from URL hash not found in playlist:', lessonIdFromHash);
             }
         } else {
-             console.log('No URL hash found.');
+            console.log('No URL hash found.');
         }
     }
 
@@ -524,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (mainHeader) { // Verifica se o .main-header existe
                 mainHeader.prepend(menuToggle);
-                
+
                 menuToggle.addEventListener('click', () => {
                     const sidebar = document.querySelector('.sidebar');
                     const isOpen = sidebar.classList.toggle('open');
@@ -537,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             overlay = document.createElement('div');
                             overlay.className = 'sidebar-overlay';
                             document.body.appendChild(overlay);
-                            
+
                             overlay.addEventListener('click', () => {
                                 sidebar.classList.remove('open');
                                 menuToggle.setAttribute('aria-expanded', 'false');
@@ -564,13 +565,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 768) {
             createMobileMenuToggle(); // Garante que o botão seja criado se não existir
             // A visibilidade do botão é controlada pelo CSS
-            
+
             // Adiciona evento de fechamento do menu ao clicar em uma aula em dispositivo móvel
             lessons.forEach(lesson => {
                 lesson.addEventListener('click', () => {
                     if (sidebar && sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
-                        if(menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+                        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
                         const overlay = document.querySelector('.sidebar-overlay');
                         if (overlay) overlay.remove();
                         document.body.style.overflow = ''; // Restaura o scroll do body
@@ -581,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Se a tela for maior que 768px e o menu estiver aberto, feche-o
             if (sidebar && sidebar.classList.contains('open')) {
                 sidebar.classList.remove('open');
-                if(menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+                if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
                 const overlay = document.querySelector('.sidebar-overlay');
                 if (overlay) overlay.remove();
                 document.body.style.overflow = ''; // Restaura o scroll do body
@@ -628,11 +629,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (audioPlayer) {
             audioPlayer.pause();
             audioPlayer.src = ''; // Remove a fonte do áudio
-            if(playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
             isPlaying = false;
-            if(currentTimeEl) currentTimeEl.textContent = '0:00';
-            if(durationEl) durationEl.textContent = '0:00';
-            if(progressBar) progressBar.style.width = '0%';
+            if (currentTimeEl) currentTimeEl.textContent = '0:00';
+            if (durationEl) durationEl.textContent = '0:00';
+            if (progressBar) progressBar.style.width = '0%';
         }
 
         const readmePath = JEKYLL_BASEURL + '/README.md';
@@ -672,10 +673,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (playerRight) {
         const shareButton = document.createElement('button');
         // Adiciona uma classe mais específica para o botão de compartilhar do player
-        shareButton.className = 'control-btn player-share-action-btn'; 
+        shareButton.className = 'control-btn player-share-action-btn';
         shareButton.innerHTML = '<i class="fas fa-share-alt"></i>';
         shareButton.title = 'Compartilhar aula'; // Adiciona um tooltip
-        
+
         shareButton.addEventListener('click', () => {
             // Lógica de copiar URL para a área de transferência (sem Web Share API)
             const urlToCopy = window.location.href;
@@ -694,7 +695,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // showToast('Link copiado para a área de transferência!');
             });
         });
-        
+
         // Insere antes do controle de volume
         const volumeControl = playerRight.querySelector('.control-btn#mute-btn'); // Usa o ID para ser mais específico
         if (volumeControl) {
@@ -717,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(toast);
 
         // Força reflow para garantir que a transição CSS funcione
-        void toast.offsetWidth; 
+        void toast.offsetWidth;
 
         // Adiciona classe para iniciar a animação (aparecer)
         toast.classList.add('show');
@@ -844,11 +845,11 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (volume > 0) {
             muteBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
         } else {
-             muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
         }
-         // Garante que o slider reflita o volume correto, mesmo que mudado por outro meio (como mudo)
+        // Garante que o slider reflita o volume correto, mesmo que mudado por outro meio (como mudo)
         if (!audioPlayer.muted) {
-             volumeSlider.value = volume * 100;
+            volumeSlider.value = volume * 100;
         }
     }
 
@@ -876,7 +877,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (audioPlayer.muted && newVolume > 0) {
                     audioPlayer.muted = false;
                 }
-                 // A UI será atualizada pelo evento 'volumechange' no audioPlayer
+                // A UI será atualizada pelo evento 'volumechange' no audioPlayer
             }
         });
     }
@@ -888,9 +889,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Inicializar a UI de volume/mudo quando a página carregar
         // Use um pequeno delay para garantir que o audioPlayer esteja pronto
         audioPlayer.onloadedmetadata = () => {
-             // Define um volume inicial se necessário (opcional, o HTML já tem value=50)
-             // audioPlayer.volume = 0.5;
-             updateVolumeUI();
+            // Define um volume inicial se necessário (opcional, o HTML já tem value=50)
+            // audioPlayer.volume = 0.5;
+            updateVolumeUI();
         };
         // Fallback caso onloadedmetadata não seja disparado rapidamente (ex: áudio em cache)
         setTimeout(updateVolumeUI, 100);

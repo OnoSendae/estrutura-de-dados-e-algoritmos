@@ -9,7 +9,8 @@ url: "https://onosendae.github.io" # Defina a URL base do seu site, ex: https://
 markdown: kramdown
 # theme: minima # Removido/Comentado pois estamos usando um layout customizado
 plugins:
-  - jekyll-sitemap  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-feed
 
 # Exclude from processing.
 exclude:
