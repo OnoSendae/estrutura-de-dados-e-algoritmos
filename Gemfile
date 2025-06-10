@@ -5,6 +5,7 @@ gem "jekyll", "~> 4.2" # Ou a versão que o GitHub Pages usa, verificar document
 # Adiciona plugins do Jekyll aqui. É uma boa prática agrupá-los.
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.15" # Adicionado jekyll-feed. Use uma versão recente.
+  gem "jekyll-sitemap", "~> 1.4" # Plugin para gerar sitemap.xml
 end
 
 # GitHub Pages TEMA:

@@ -9,6 +9,7 @@ url: "https://onosendae.github.io" # Defina a URL base do seu site, ex: https://
 markdown: kramdown
 # theme: minima # Removido/Comentado pois estamos usando um layout customizado
 plugins:
+  - jekyll-sitemap
   - jekyll-feed
 
 # Exclude from processing.
@@ -19,4 +20,10 @@ exclude:
   - scripts/
   # - README.md # Comentando ou removendo esta linha
   - package.json
-  - package-lock.json 
+  - package-lock.json
+  # Arquivos de áudio agora centralizados - Jekyll pode processá-los 
+# Collections for course modules
+collections:
+  modules:
+    output: true
+    permalink: /:collection/:name/

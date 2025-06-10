@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirecionar /estrutura-de-dados-e-algoritmos para /estrutura-de-dados-e-algoritmos/
+RewriteRule ^estrutura-de-dados-e-algoritmos$ /estrutura-de-dados-e-algoritmos/ [R=301,L]
+
+# Para GitHub Pages - adicionar barra final em URLs de diretório
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.html$
+RewriteRule ^(.*)$ /$1/ [R=301,L] 

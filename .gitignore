@@ -31,3 +31,13 @@ _site/
 # .env
 # .env.*
 # !.env.example
+# Migration and backup files
+_backup/
+_temp/
+*.backup
+*.tmp
+# Audio processing temp files
+*.wav.tmp
+*.mp3.tmp
+# Generated documentation
+/docs/generated/

@@ -10,58 +10,29 @@
             {% for module in site.data.course_structure.modules %}
             <li class="playlist-module">
                 <span class="module-title">
-                    {% case module.id_prefix %}
-                        {% when "0-fundamentos-da-programacao" %}
-                            🏁
-                        {% when "1-analise-de-algoritmos-e-complexidade" %}
-                            🛠️
-                        {% when "2-estruturas-de-dados-lineares-avancadas" %}
-                            📚
-                        {% when "3-arvores-e-grafos" %}
-                            🌳
-                        {% when "4-algoritmos-de-ordenacao-e-busca-avancados" %}
-                            🔍
-                        {% when "5-tabelas-hash-e-funcoes-hash" %}
-                            🔑
-                        {% when "6-algoritmos-gulosos-e-programacao-dinamica" %}
-                            ⚡
-                        {% when "7-topicos-avancados-e-aplicacoes" %}
-                            🚀
-                        {% when "8-estruturas-de-dados-persistentes" %}
-                            💾
-                        {% when "9-estruturas-de-dados-complexas" %}
-                            🧩
-                        {% when "10-indexacao" %}
-                            📇
-                        {% when "11-tecnicas-de-resolucao-de-problemas" %}
-                            🧠
-                        {% else %}
-                            📚
-                    {% endcase %}
+                    {{ module.emoji }}
                     {{ module.title }}
                 </span>
                 <ul class="module-lessons">
                     {% for lesson in module.lessons %}
-                        {% if lesson.mp3_path or lesson.md_path %}
-                            <li class="lesson"
-                                data-lesson-id="{{ lesson.id }}"
-                                data-audio-src="{{ lesson.mp3_path | prepend: site.baseurl }}"
-                                data-md-path="{{ lesson.md_path | prepend: site.baseurl }}"
-                                data-lesson-title="{{ lesson.title | escape }}"
-                                data-module-title="{{ module.title | escape }}">
-                                <a href="#{{ lesson.id }}" class="lesson-link" draggable="false">
-                                    <div class="play-icon"><i class="fas fa-play"></i></div>
-                                    <div class="lesson-info">
-                                        <span class="lesson-title">{{ lesson.title }}</span>
-                                        <span class="lesson-module">{{ module.title }}</span>
-                                    </div>
-                                </a>
-                            </li>
-                        {% endif %}
+                    {% if lesson.mp3_path or lesson.md_path %}
+                    <li class="lesson" data-lesson-id="{{ lesson.id }}"
+                        data-audio-src="{{ lesson.mp3_path | prepend: site.baseurl }}"
+                        data-md-path="{{ lesson.md_path | prepend: site.baseurl }}"
+                        data-lesson-title="{{ lesson.title | escape }}" data-module-title="{{ module.title | escape }}">
+                        <a href="#{{ lesson.id }}" class="lesson-link" draggable="false">
+                            <div class="play-icon"><i class="fas fa-play"></i></div>
+                            <div class="lesson-info">
+                                <span class="lesson-title">{{ lesson.title }}</span>
+                                <span class="lesson-module">{{ module.title }}</span>
+                            </div>
+                        </a>
+                    </li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </li>
             {% endfor %}
         </ul>
     </div>
-</aside> 
+</aside>

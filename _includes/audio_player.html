@@ -1,0 +1,10 @@
+<!-- Audio Player for Lessons -->
+{% if page.audio_file %}
+<div class="audio-player">
+  <h4>🎧 Áudio da Aula</h4>
+  <audio controls preload="metadata">
+    <source src="{{ site.baseurl }}/assets/audio/{{ page.module_id }}/{{ page.audio_file }}" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+</div>
+{% endif %}

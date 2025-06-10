@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="module-page">
+    <header class="module-header">
+        <h1>{{ page.title }}</h1>
+        <p class="module-description">{{ page.description }}</p>
+        <nav class="breadcrumb">
+            <a href="{{ site.baseurl }}/">← Voltar ao Curso</a>
+        </nav>
+    </header>
+
+    <main class="module-content">
+        {{ content }}
+    </main>
+
+    <footer class="module-footer">
+        <nav class="module-navigation">
+            {% assign modules = site.data.course_structure.modules %}
+            {% assign current_index = -1 %}
+            {% for module in modules %}
+            {% if module.id_prefix == page.module_id %}
+            {% assign current_index = forloop.index0 %}
+            {% break %}
+            {% endif %}
+            {% endfor %}
+
+            {% if current_index > 0 %}
+            {% assign prev_module = modules[current_index - 1] %}
+            <a href="{{ site.baseurl }}/modules/{{ prev_module.id_prefix }}/" class="nav-btn prev">
+                ← {{ prev_module.title }}
+            </a>
+            {% endif %}
+
+            {% if current_index < modules.size - 1 %} {% assign next_module=modules[current_index + 1] %} <a
+                href="{{ site.baseurl }}/modules/{{ next_module.id_prefix }}/" class="nav-btn next">
+                {{ next_module.title }} →
+                </a>
+                {% endif %}
+        </nav>
+    </footer>
+</div>

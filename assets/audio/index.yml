@@ -1,0 +1,629 @@
+# Audio Files Index
+# Generated on: Tue Jun 10 09:18:18 -03 2025
+# Course: Estrutura de Dados e Algoritmos
+
+modules:
+  01-foundations:
+    files:
+      - filename: 0-fundamentals-da-programming.mp3
+        path: 01-foundations/0-fundamentals-da-programming.mp3
+        size: 3909937
+        duration: 396.956735
+      - filename: 0-fundamentals-da-programming.wav
+        path: 01-foundations/0-fundamentals-da-programming.wav
+        size: 19050810
+        duration: 396.890958
+      - filename: 01-sintaxe-da-linguagem.mp3
+        path: 01-foundations/01-sintaxe-da-linguagem.mp3
+        size: 4203256
+        duration: 429.400816
+      - filename: 01-sintaxe-da-linguagem.wav
+        path: 01-foundations/01-sintaxe-da-linguagem.wav
+        size: 20607930
+        duration: 429.330958
+      - filename: 02-structures-de-controle.mp3
+        path: 01-foundations/02-structures-de-controle.mp3
+        size: 5505122
+        duration: 566.204082
+      - filename: 02-structures-de-controle.wav
+        path: 01-foundations/02-structures-de-controle.wav
+        size: 27174330
+        duration: 566.130958
+      - filename: 03-funcoes.mp3
+        path: 01-foundations/03-funcoes.mp3
+        size: 3784572
+        duration: 384.078367
+      - filename: 03-funcoes.wav
+        path: 01-foundations/03-funcoes.wav
+        size: 18432570
+        duration: 384.010958
+      - filename: 04-programming-orientada-objetos.mp3
+        path: 01-foundations/04-programming-orientada-objetos.mp3
+        size: 3869393
+        duration: 395.598367
+      - filename: 04-programming-orientada-objetos.wav
+        path: 01-foundations/04-programming-orientada-objetos.wav
+        size: 18985530
+        duration: 395.530958
+      - filename: 05-pseudocodigo.mp3
+        path: 01-foundations/05-pseudocodigo.mp3
+        size: 3134984
+        duration: 317.962449
+      - filename: 05-pseudocodigo.wav
+        path: 01-foundations/05-pseudocodigo.wav
+        size: 15258810
+        duration: 317.890958
+  02-complexity-analysis:
+    files:
+      - filename: 1-introduction-analysis-algorithms.mp3
+        path: 02-complexity-analysis/1-introduction-analysis-algorithms.mp3
+        size: 4028475
+        duration: 406.439184
+      - filename: 1-introduction-analysis-algorithms.wav
+        path: 02-complexity-analysis/1-introduction-analysis-algorithms.wav
+        size: 19505850
+        duration: 406.370958
+      - filename: 2-notacao-big-o.mp3
+        path: 02-complexity-analysis/2-notacao-big-o.mp3
+        size: 3700941
+        duration: 377.208163
+      - filename: 2-notacao-big-o.wav
+        path: 02-complexity-analysis/2-notacao-big-o.wav
+        size: 18102330
+        duration: 377.130958
+      - filename: 3-analysis-complexidade-tempo-espaco.mp3
+        path: 02-complexity-analysis/3-analysis-complexidade-tempo-espaco.mp3
+        size: 4761494
+        duration: 488.960000
+      - filename: 3-analysis-complexidade-tempo-espaco.wav
+        path: 02-complexity-analysis/3-analysis-complexidade-tempo-espaco.wav
+        size: 23466810
+        duration: 488.890958
+      - filename: 4-melhores-piores-casos-medios.mp3
+        path: 02-complexity-analysis/4-melhores-piores-casos-medios.mp3
+        size: 3295948
+        duration: 339.670204
+      - filename: 4-melhores-piores-casos-medios.wav
+        path: 02-complexity-analysis/4-melhores-piores-casos-medios.wav
+        size: 16301370
+        duration: 339.610958
+      - filename: 5-exercises-practical.mp3
+        path: 02-complexity-analysis/5-exercises-practical.mp3
+        size: 3507382
+        duration: 353.227755
+      - filename: 5-exercises-practical.wav
+        path: 02-complexity-analysis/5-exercises-practical.wav
+        size: 16952250
+        duration: 353.170958
+      - filename: 5.1-exercises-practical.mp3
+        path: 02-complexity-analysis/5.1-exercises-practical.mp3
+        size: 4165861
+        duration: 423.836735
+      - filename: 5.1-exercises-practical.wav
+        path: 02-complexity-analysis/5.1-exercises-practical.wav
+        size: 20341050
+        duration: 423.770958
+      - filename: 6-case-study.mp3
+        path: 02-complexity-analysis/6-case-study.mp3
+        size: 3579271
+        duration: 371.043265
+      - filename: 6-case-study.wav
+        path: 02-complexity-analysis/6-case-study.wav
+        size: 17806650
+        duration: 370.970958
+      - filename: 7-visualizacao-complexidade.mp3
+        path: 02-complexity-analysis/7-visualizacao-complexidade.mp3
+        size: 3688345
+        duration: 377.965714
+      - filename: 7-visualizacao-complexidade.wav
+        path: 02-complexity-analysis/7-visualizacao-complexidade.wav
+        size: 18138810
+        duration: 377.890958
+  03-linear-structures:
+    files:
+      - filename: 0-structures-de-dados-lineares-avancadas.mp3
+        path: 03-linear-structures/0-structures-de-dados-lineares-avancadas.mp3
+        size: 3775341
+        duration: 384.626939
+      - filename: 0-structures-de-dados-lineares-avancadas.wav
+        path: 03-linear-structures/0-structures-de-dados-lineares-avancadas.wav
+        size: 18459450
+        duration: 384.570958
+      - filename: 1-listas-encadeadas.mp3
+        path: 03-linear-structures/1-listas-encadeadas.mp3
+        size: 4431188
+        duration: 457.639184
+      - filename: 1-listas-encadeadas.wav
+        path: 03-linear-structures/1-listas-encadeadas.wav
+        size: 21963450
+        duration: 457.570958
+      - filename: 2-pilhas-filas.mp3
+        path: 03-linear-structures/2-pilhas-filas.mp3
+        size: 2742664
+        duration: 284.995918
+      - filename: 2-pilhas-filas.wav
+        path: 03-linear-structures/2-pilhas-filas.wav
+        size: 13676730
+        duration: 284.930958
+      - filename: 3-deques.mp3
+        path: 03-linear-structures/3-deques.mp3
+        size: 4099054
+        duration: 418.951837
+      - filename: 3-deques.wav
+        path: 03-linear-structures/3-deques.wav
+        size: 20106810
+        duration: 418.890958
+      - filename: 4-listas-skip.mp3
+        path: 03-linear-structures/4-listas-skip.mp3
+        size: 4642237
+        duration: 475.768163
+      - filename: 4-listas-skip.wav
+        path: 03-linear-structures/4-listas-skip.wav
+        size: 22833210
+        duration: 475.690958
+  04-trees-graphs:
+    files:
+      - filename: 0-arvores-e-grafos.mp3
+        path: 04-trees-graphs/0-arvores-e-grafos.mp3
+        size: 4322065
+        duration: 447.608163
+      - filename: 0-arvores-e-grafos.wav
+        path: 04-trees-graphs/0-arvores-e-grafos.wav
+        size: 21481530
+        duration: 447.530958
+      - filename: 1-introduction-structures-hierarquicas.mp3
+        path: 04-trees-graphs/1-introduction-structures-hierarquicas.mp3
+        size: 3758792
+        duration: 380.316735
+      - filename: 1-introduction-structures-hierarquicas.wav
+        path: 04-trees-graphs/1-introduction-structures-hierarquicas.wav
+        size: 18252090
+        duration: 380.250958
+      - filename: 2-arvores-binarias-busca.mp3
+        path: 04-trees-graphs/2-arvores-binarias-busca.mp3
+        size: 4533275
+        duration: 481.044898
+      - filename: 2-arvores-binarias-busca.wav
+        path: 04-trees-graphs/2-arvores-binarias-busca.wav
+        size: 23086650
+        duration: 480.970958
+      - filename: 3-arvores-balanceadas.mp3
+        path: 04-trees-graphs/3-arvores-balanceadas.mp3
+        size: 3355631
+        duration: 344.476735
+      - filename: 3-arvores-balanceadas.wav
+        path: 04-trees-graphs/3-arvores-balanceadas.wav
+        size: 16531770
+        duration: 344.410958
+      - filename: 4-grafos-concepts.mp3
+        path: 04-trees-graphs/4-grafos-concepts.mp3
+        size: 3661984
+        duration: 375.066122
+      - filename: 4-grafos-concepts.wav
+        path: 04-trees-graphs/4-grafos-concepts.wav
+        size: 18000570
+        duration: 375.010958
+      - filename: 4.1-grafos-concepts-representacoes.mp3
+        path: 04-trees-graphs/4.1-grafos-concepts-representacoes.mp3
+        size: 4080265
+        duration: 413.544490
+      - filename: 4.1-grafos-concepts-representacoes.wav
+        path: 04-trees-graphs/4.1-grafos-concepts-representacoes.wav
+        size: 19847610
+        duration: 413.490958
+      - filename: 4.2-grafos-concepts-modelagem.mp3
+        path: 04-trees-graphs/4.2-grafos-concepts-modelagem.mp3
+        size: 3707986
+        duration: 376.084898
+      - filename: 4.2-grafos-concepts-modelagem.wav
+        path: 04-trees-graphs/4.2-grafos-concepts-modelagem.wav
+        size: 18048570
+        duration: 376.010958
+      - filename: 5-busca-largura-bfs.mp3
+        path: 04-trees-graphs/5-busca-largura-bfs.mp3
+        size: 3968289
+        duration: 409.965714
+      - filename: 5-busca-largura-bfs.wav
+        path: 04-trees-graphs/5-busca-largura-bfs.wav
+        size: 19674810
+        duration: 409.890958
+  05-sorting-searching:
+    files:
+      - filename: 0-algorithms-de-ordenacao-e-busca-advanced.mp3
+        path: 05-sorting-searching/0-algorithms-de-ordenacao-e-busca-advanced.mp3
+        size: 4148012
+        duration: 417.149388
+      - filename: 0-algorithms-de-ordenacao-e-busca-advanced.wav
+        path: 05-sorting-searching/0-algorithms-de-ordenacao-e-busca-advanced.wav
+        size: 20020410
+        duration: 417.090958
+      - filename: 0-introduction-overview.mp3
+        path: 05-sorting-searching/0-introduction-overview.mp3
+        size: 3632029
+        duration: 368.875102
+      - filename: 0-introduction-overview.wav
+        path: 05-sorting-searching/0-introduction-overview.wav
+        size: 17702970
+        duration: 368.810958
+      - filename: 1-merge-sort-quick-sort-otimizacoes.mp3
+        path: 05-sorting-searching/1-merge-sort-quick-sort-otimizacoes.mp3
+        size: 4680803
+        duration: 484.075102
+      - filename: 1-merge-sort-quick-sort-otimizacoes.wav
+        path: 05-sorting-searching/1-merge-sort-quick-sort-otimizacoes.wav
+        size: 23232570
+        duration: 484.010958
+      - filename: 2-heap-sort-applications.mp3
+        path: 05-sorting-searching/2-heap-sort-applications.mp3
+        size: 5471067
+        duration: 559.647347
+      - filename: 2-heap-sort-applications.wav
+        path: 05-sorting-searching/2-heap-sort-applications.wav
+        size: 26859450
+        duration: 559.570958
+      - filename: 3-radix-bucket-sort.mp3
+        path: 05-sorting-searching/3-radix-bucket-sort.mp3
+        size: 3626900
+        duration: 375.640816
+      - filename: 3-radix-bucket-sort.wav
+        path: 05-sorting-searching/3-radix-bucket-sort.wav
+        size: 18027450
+        duration: 375.570958
+      - filename: 4-busca-texto-kmp-boyer-moore.mp3
+        path: 05-sorting-searching/4-busca-texto-kmp-boyer-moore.mp3
+        size: 3604265
+        duration: 369.867755
+      - filename: 4-busca-texto-kmp-boyer-moore.wav
+        path: 05-sorting-searching/4-busca-texto-kmp-boyer-moore.wav
+        size: 17750970
+        duration: 369.810958
+      - filename: 5-6-exercises-case.mp3
+        path: 05-sorting-searching/5-6-exercises-case.mp3
+        size: 3630287
+        duration: 373.524898
+      - filename: 5-6-exercises-case.wav
+        path: 05-sorting-searching/5-6-exercises-case.wav
+        size: 17925690
+        duration: 373.450958
+  06-hash-tables:
+    files:
+      - filename: 0-tabelas-hash-e-funcoes-hash.mp3
+        path: 06-hash-tables/0-tabelas-hash-e-funcoes-hash.mp3
+        size: 5477221
+        duration: 553.195102
+      - filename: 0-tabelas-hash-e-funcoes-hash.wav
+        path: 06-hash-tables/0-tabelas-hash-e-funcoes-hash.wav
+        size: 26550330
+        duration: 553.130958
+      - filename: 1-tabelas-hash-e-funcoes-hash.mp3
+        path: 06-hash-tables/1-tabelas-hash-e-funcoes-hash.mp3
+        size: 5662561
+        duration: 578.168163
+      - filename: 1-tabelas-hash-e-funcoes-hash.wav
+        path: 06-hash-tables/1-tabelas-hash-e-funcoes-hash.wav
+        size: 27748410
+        duration: 578.090958
+      - filename: 2-funcoes-hash.mp3
+        path: 06-hash-tables/2-funcoes-hash.mp3
+        size: 3747326
+        duration: 386.272653
+      - filename: 2-funcoes-hash.wav
+        path: 06-hash-tables/2-funcoes-hash.wav
+        size: 18538170
+        duration: 386.210958
+      - filename: 3-tratamento-de-colisoes.mp3
+        path: 06-hash-tables/3-tratamento-de-colisoes.mp3
+        size: 4154982
+        duration: 420.884898
+      - filename: 3-tratamento-de-colisoes.wav
+        path: 06-hash-tables/3-tratamento-de-colisoes.wav
+        size: 20198970
+        duration: 420.810958
+      - filename: 3.1-visual-hash-colisoes.mp3
+        path: 06-hash-tables/3.1-visual-hash-colisoes.mp3
+        size: 3034458
+        duration: 303.830204
+      - filename: 3.1-visual-hash-colisoes.wav
+        path: 06-hash-tables/3.1-visual-hash-colisoes.wav
+        size: 14581050
+        duration: 303.770958
+      - filename: 4-rehashing-fatores-carga.mp3
+        path: 06-hash-tables/4-rehashing-fatores-carga.mp3
+        size: 3188219
+        duration: 323.239184
+      - filename: 4-rehashing-fatores-carga.wav
+        path: 06-hash-tables/4-rehashing-fatores-carga.wav
+        size: 15512250
+        duration: 323.170958
+      - filename: 5-6-exercises-case-study.mp3
+        path: 06-hash-tables/5-6-exercises-case-study.mp3
+        size: 3868329
+        duration: 397.871020
+      - filename: 5-6-exercises-case-study.wav
+        path: 06-hash-tables/5-6-exercises-case-study.wav
+        size: 19094970
+        duration: 397.810958
+      - filename: 7-hash-tables-vs-outras-structures.mp3
+        path: 06-hash-tables/7-hash-tables-vs-outras-structures.mp3
+        size: 3161419
+        duration: 325.511837
+      - filename: 7-hash-tables-vs-outras-structures.wav
+        path: 06-hash-tables/7-hash-tables-vs-outras-structures.wav
+        size: 15621690
+        duration: 325.450958
+  07-greedy-dynamic:
+    files:
+      - filename: 0-algorithms-greedy-e-programming-dynamic.mp3
+        path: 07-greedy-dynamic/0-algorithms-greedy-e-programming-dynamic.mp3
+        size: 4111091
+        duration: 419.840000
+      - filename: 0-algorithms-greedy-e-programming-dynamic.wav
+        path: 07-greedy-dynamic/0-algorithms-greedy-e-programming-dynamic.wav
+        size: 20149050
+        duration: 419.770958
+      - filename: 1-algorithms-greedy-fundamentals.mp3
+        path: 07-greedy-dynamic/1-algorithms-greedy-fundamentals.mp3
+        size: 4686872
+        duration: 480.078367
+      - filename: 1-algorithms-greedy-fundamentals.wav
+        path: 07-greedy-dynamic/1-algorithms-greedy-fundamentals.wav
+        size: 23040570
+        duration: 480.010958
+      - filename: 2-problems-classicos-algorithms-greedy.mp3
+        path: 07-greedy-dynamic/2-problems-classicos-algorithms-greedy.mp3
+        size: 4758931
+        duration: 487.366531
+      - filename: 2-problems-classicos-algorithms-greedy.wav
+        path: 07-greedy-dynamic/2-problems-classicos-algorithms-greedy.wav
+        size: 23390010
+        duration: 487.290958
+      - filename: 3-transicao-greedy-para-dp.mp3
+        path: 07-greedy-dynamic/3-transicao-greedy-para-dp.mp3
+        size: 3850599
+        duration: 393.168980
+      - filename: 3-transicao-greedy-para-dp.wav
+        path: 07-greedy-dynamic/3-transicao-greedy-para-dp.wav
+        size: 18868410
+        duration: 393.090958
+      - filename: 4-programming-dynamic-fundamentals.mp3
+        path: 07-greedy-dynamic/4-programming-dynamic-fundamentals.mp3
+        size: 4562871
+        duration: 468.924082
+      - filename: 4-programming-dynamic-fundamentals.wav
+        path: 07-greedy-dynamic/4-programming-dynamic-fundamentals.wav
+        size: 22504890
+        duration: 468.850958
+      - filename: 5-programming-dynamic-problems-classicos.mp3
+        path: 07-greedy-dynamic/5-programming-dynamic-problems-classicos.mp3
+        size: 4653725
+        duration: 477.675102
+      - filename: 5-programming-dynamic-problems-classicos.wav
+        path: 07-greedy-dynamic/5-programming-dynamic-problems-classicos.wav
+        size: 22925370
+        duration: 477.610958
+      - filename: 6-7-exercises-practical-nivelados-case-study-otimizacao-rotas.mp3
+        path: 07-greedy-dynamic/6-7-exercises-practical-nivelados-case-study-otimizacao-rotas.mp3
+        size: 3836077
+        duration: 394.266122
+      - filename: 6-7-exercises-practical-nivelados-case-study-otimizacao-rotas.wav
+        path: 07-greedy-dynamic/6-7-exercises-practical-nivelados-case-study-otimizacao-rotas.wav
+        size: 18922170
+        duration: 394.210958
+  08-advanced-topics:
+    files:
+      - filename: 0-topics-advanced-e-applications.mp3
+        path: 08-advanced-topics/0-topics-advanced-e-applications.mp3
+        size: 4678151
+        duration: 480.600816
+      - filename: 0-topics-advanced-e-applications.wav
+        path: 08-advanced-topics/0-topics-advanced-e-applications.wav
+        size: 23065530
+        duration: 480.530958
+      - filename: 1-arvores-segmentos-fenwick-consultas-eficientes.mp3
+        path: 08-advanced-topics/1-arvores-segmentos-fenwick-consultas-eficientes.mp3
+        size: 3934211
+        duration: 403.147755
+      - filename: 1-arvores-segmentos-fenwick-consultas-eficientes.wav
+        path: 08-advanced-topics/1-arvores-segmentos-fenwick-consultas-eficientes.wav
+        size: 19348410
+        duration: 403.090958
+      - filename: 2-trie-arvore-prefixos-busca-strings.mp3
+        path: 08-advanced-topics/2-trie-arvore-prefixos-busca-strings.mp3
+        size: 3226497
+        duration: 330.710204
+      - filename: 2-trie-arvore-prefixos-busca-strings.wav
+        path: 08-advanced-topics/2-trie-arvore-prefixos-busca-strings.wav
+        size: 15871290
+        duration: 330.650958
+      - filename: 3-algorithms-compressao-huffman-codificacao.mp3
+        path: 08-advanced-topics/3-algorithms-compressao-huffman-codificacao.mp3
+        size: 4930038
+        duration: 503.797551
+      - filename: 3-algorithms-compressao-huffman-codificacao.wav
+        path: 08-advanced-topics/3-algorithms-compressao-huffman-codificacao.wav
+        size: 24179130
+        duration: 503.730958
+      - filename: 4-geometria-computacional-algorithms-espaciais.mp3
+        path: 08-advanced-topics/4-geometria-computacional-algorithms-espaciais.mp3
+        size: 5097536
+        duration: 521.064490
+      - filename: 4-geometria-computacional-algorithms-espaciais.wav
+        path: 08-advanced-topics/4-geometria-computacional-algorithms-espaciais.wav
+        size: 25008570
+        duration: 521.010958
+      - filename: 5-exercises-integrativos-aplicacao-pratica.mp3
+        path: 08-advanced-topics/5-exercises-integrativos-aplicacao-pratica.mp3
+        size: 3605417
+        duration: 371.748571
+      - filename: 5-exercises-integrativos-aplicacao-pratica.wav
+        path: 08-advanced-topics/5-exercises-integrativos-aplicacao-pratica.wav
+        size: 17841210
+        duration: 371.690958
+      - filename: 6-case-study-sistema-autocompletar-implementacao.mp3
+        path: 08-advanced-topics/6-case-study-sistema-autocompletar-implementacao.mp3
+        size: 3277774
+        duration: 341.838367
+      - filename: 6-case-study-sistema-autocompletar-implementacao.wav
+        path: 08-advanced-topics/6-case-study-sistema-autocompletar-implementacao.wav
+        size: 16405050
+        duration: 341.770958
+      - filename: 7-revisao-conhecimentos-proximos-passos.mp3
+        path: 08-advanced-topics/7-revisao-conhecimentos-proximos-passos.mp3
+        size: 2674497
+        duration: 272.039184
+      - filename: 7-revisao-conhecimentos-proximos-passos.wav
+        path: 08-advanced-topics/7-revisao-conhecimentos-proximos-passos.wav
+        size: 13054650
+        duration: 271.970958
+      - filename: 8-dijkstra-bellman-ford-caminhos-minimos.mp3
+        path: 08-advanced-topics/8-dijkstra-bellman-ford-caminhos-minimos.mp3
+        size: 4971259
+        duration: 513.645714
+      - filename: 8-dijkstra-bellman-ford-caminhos-minimos.wav
+        path: 08-advanced-topics/8-dijkstra-bellman-ford-caminhos-minimos.wav
+        size: 24651450
+        duration: 513.570958
+      - filename: 9-prim-kruskal-arvores-geradoras-minimas.mp3
+        path: 08-advanced-topics/9-prim-kruskal-arvores-geradoras-minimas.mp3
+        size: 4362451
+        duration: 442.801633
+      - filename: 9-prim-kruskal-arvores-geradoras-minimas.wav
+        path: 08-advanced-topics/9-prim-kruskal-arvores-geradoras-minimas.wav
+        size: 21251130
+        duration: 442.730958
+  09-persistent-structures:
+    files:
+      - filename: 0-structures-de-dados-persistentes.mp3
+        path: 09-persistent-structures/0-structures-de-dados-persistentes.mp3
+        size: 3800314
+        duration: 387.474286
+      - filename: 0-structures-de-dados-persistentes.wav
+        path: 09-persistent-structures/0-structures-de-dados-persistentes.wav
+        size: 18595770
+        duration: 387.410958
+      - filename: 1-fundamentals-structures-persistentes.mp3
+        path: 09-persistent-structures/1-fundamentals-structures-persistentes.mp3
+        size: 4738032
+        duration: 483.996735
+      - filename: 1-fundamentals-structures-persistentes.wav
+        path: 09-persistent-structures/1-fundamentals-structures-persistentes.wav
+        size: 23228730
+        duration: 483.930958
+      - filename: 2-listas-encadeadas-persistentes.mp3
+        path: 09-persistent-structures/2-listas-encadeadas-persistentes.mp3
+        size: 3731731
+        duration: 381.962449
+      - filename: 2-listas-encadeadas-persistentes.wav
+        path: 09-persistent-structures/2-listas-encadeadas-persistentes.wav
+        size: 18330810
+        duration: 381.890958
+      - filename: 3-mapas-persistentes.mp3
+        path: 09-persistent-structures/3-mapas-persistentes.mp3
+        size: 3921123
+        duration: 405.864490
+      - filename: 3-mapas-persistentes.wav
+        path: 09-persistent-structures/3-mapas-persistentes.wav
+        size: 19478970
+        duration: 405.810958
+      - filename: 4-structures-imutaveis-javascript.mp3
+        path: 09-persistent-structures/4-structures-imutaveis-javascript.mp3
+        size: 4342645
+        duration: 440.320000
+      - filename: 4-structures-imutaveis-javascript.wav
+        path: 09-persistent-structures/4-structures-imutaveis-javascript.wav
+        size: 21132090
+        duration: 440.250958
+      - filename: 5-estudo-caso-sistema-controle-versao.mp3
+        path: 09-persistent-structures/5-estudo-caso-sistema-controle-versao.mp3
+        size: 4222787
+        duration: 427.833469
+      - filename: 5-estudo-caso-sistema-controle-versao.wav
+        path: 09-persistent-structures/5-estudo-caso-sistema-controle-versao.wav
+        size: 20533050
+        duration: 427.770958
+      - filename: 6-exercises-integradores.mp3
+        path: 09-persistent-structures/6-exercises-integradores.mp3
+        size: 3769949
+        duration: 387.239184
+      - filename: 6-exercises-integradores.wav
+        path: 09-persistent-structures/6-exercises-integradores.wav
+        size: 18584250
+        duration: 387.170958
+      - filename: 7-disjoint-set-union-find.mp3
+        path: 09-persistent-structures/7-disjoint-set-union-find.mp3
+        size: 4140666
+        duration: 429.035102
+      - filename: 7-disjoint-set-union-find.wav
+        path: 09-persistent-structures/7-disjoint-set-union-find.wav
+        size: 20590650
+        duration: 428.970958
+      - filename: 8-suffix-trees-suffix-arrays.mp3
+        path: 09-persistent-structures/8-suffix-trees-suffix-arrays.mp3
+        size: 4041581
+        duration: 413.466122
+      - filename: 8-suffix-trees-suffix-arrays.wav
+        path: 09-persistent-structures/8-suffix-trees-suffix-arrays.wav
+        size: 19843770
+        duration: 413.410958
+  10-complex-structures:
+    files:
+      - filename: 0-structures-de-dados-complexas.mp3
+        path: 10-complex-structures/0-structures-de-dados-complexas.mp3
+        size: 3724629
+        duration: 378.644898
+      - filename: 0-structures-de-dados-complexas.wav
+        path: 10-complex-structures/0-structures-de-dados-complexas.wav
+        size: 18171450
+        duration: 378.570958
+      - filename: 1-isam-metodo-acesso-sequencial-indexado.mp3
+        path: 10-complex-structures/1-isam-metodo-acesso-sequencial-indexado.mp3
+        size: 3833508
+        duration: 392.515918
+      - filename: 1-isam-metodo-acesso-sequencial-indexado.wav
+        path: 10-complex-structures/1-isam-metodo-acesso-sequencial-indexado.wav
+        size: 18837690
+        duration: 392.450958
+      - filename: 2-arvores-2-3.mp3
+        path: 10-complex-structures/2-arvores-2-3.mp3
+        size: 3079850
+        duration: 316.264490
+      - filename: 2-arvores-2-3.wav
+        path: 10-complex-structures/2-arvores-2-3.wav
+        size: 15178170
+        duration: 316.210958
+  11-indexing:
+    files:
+      - filename: 0-indexacao.mp3
+        path: 11-indexing/0-indexacao.mp3
+        size: 5104055
+        duration: 515.082449
+      - filename: 0-indexacao.wav
+        path: 11-indexing/0-indexacao.wav
+        size: 24720570
+        duration: 515.010958
+      - filename: 1-indexacao-linear.mp3
+        path: 11-indexing/1-indexacao-linear.mp3
+        size: 3592668
+        duration: 370.677551
+      - filename: 1-indexacao-linear.wav
+        path: 11-indexing/1-indexacao-linear.wav
+        size: 17789370
+        duration: 370.610958
+      - filename: 2-indexacao-baseada-em-arvore.mp3
+        path: 11-indexing/2-indexacao-baseada-em-arvore.mp3
+        size: 4496950
+        duration: 463.360000
+      - filename: 2-indexacao-baseada-em-arvore.wav
+        path: 11-indexing/2-indexacao-baseada-em-arvore.wav
+        size: 22238010
+        duration: 463.290958
+  12-problem-solving:
+    files:
+      - filename: 1-algorithms-randomizados.mp3
+        path: 12-problem-solving/1-algorithms-randomizados.mp3
+        size: 4119965
+        duration: 421.668571
+      - filename: 1-algorithms-randomizados.wav
+        path: 12-problem-solving/1-algorithms-randomizados.wav
+        size: 20237370
+        duration: 421.610958
