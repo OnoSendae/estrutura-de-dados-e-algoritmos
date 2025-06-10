@@ -17,8 +17,8 @@
                     {% for lesson in module.lessons %}
                     {% if lesson.mp3_path or lesson.md_path %}
                     <li class="lesson" data-lesson-id="{{ lesson.id }}"
-                        data-audio-src="{{ lesson.mp3_path | prepend: site.baseurl }}"
-                        data-md-path="{{ lesson.md_path | prepend: site.baseurl }}"
+                        data-audio-src="{% if lesson.mp3_path %}{{ lesson.mp3_path | prepend: site.baseurl }}{% endif %}"
+                        data-md-path="{% if lesson.md_path %}{{ lesson.md_path | prepend: site.baseurl }}{% endif %}"
                         data-lesson-title="{{ lesson.title | escape }}" data-module-title="{{ module.title | escape }}">
                         <a href="#{{ lesson.id }}" class="lesson-link" draggable="false">
                             <div class="play-icon"><i class="fas fa-play"></i></div>

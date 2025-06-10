@@ -2,13 +2,13 @@
 <nav class="module-nav">
   <h3>Módulos do Curso</h3>
   <ul class="module-list">
-    {% for module in site.data.new_course_structure.modules %}
+    {% for module in site.data.course_structure.modules %}
     <li class="module-item">
       <a href="{{ module.path | relative_url }}" class="module-link">
         <span class="module-id">{{ module.id }}</span>
         <span class="module-title">{{ module.title }}</span>
       </a>
-      
+
       <!-- Sub-navigation for current module -->
       {% if page.module_id == module.id %}
       <ul class="module-subnav">

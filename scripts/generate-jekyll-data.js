@@ -15,20 +15,68 @@ const audioPath = join(projectBasePath, 'assets', 'audio');
 const dataPath = join(projectBasePath, '_data');
 const outputPath = join(dataPath, 'course_structure.yml');
 
-// Mapping from new module IDs to proper titles and emojis
+// Mapping from module IDs to proper titles, emojis, and English titles
 const moduleInfo = {
-    '01-foundations': { title: 'Fundamentos da Programação', emoji: '🏁' },
-    '02-complexity-analysis': { title: 'Análise de Algoritmos e Complexidade', emoji: '🛠️' },
-    '03-linear-structures': { title: 'Estruturas de Dados Lineares Avançadas', emoji: '📚' },
-    '04-trees-graphs': { title: 'Árvores e Grafos', emoji: '🌳' },
-    '05-sorting-searching': { title: 'Algoritmos de Ordenação e Busca Avançados', emoji: '🔍' },
-    '06-hash-tables': { title: 'Tabelas Hash e Funções Hash', emoji: '🗂️' },
-    '07-greedy-dynamic': { title: 'Algoritmos Gulosos e Programação Dinâmica', emoji: '🧩' },
-    '08-advanced-topics': { title: 'Tópicos Avançados e Aplicações', emoji: '🚀' },
-    '09-persistent-structures': { title: 'Estruturas de Dados Persistentes', emoji: '💾' },
-    '10-complex-structures': { title: 'Estruturas de Dados Complexas', emoji: '🏗️' },
-    '11-indexing': { title: 'Indexação', emoji: '📇' },
-    '12-problem-solving': { title: 'Técnicas de Resolução de Problemas', emoji: '🎯' }
+    '01-foundations': {
+        title: 'Fundamentos da Programação',
+        title_en: 'Programming Foundations',
+        emoji: '🏁'
+    },
+    '02-complexity-analysis': {
+        title: 'Análise de Algoritmos e Complexidade',
+        title_en: 'Algorithm Analysis & Complexity',
+        emoji: '🛠️'
+    },
+    '03-linear-structures': {
+        title: 'Estruturas de Dados Lineares Avançadas',
+        title_en: 'Advanced Linear Data Structures',
+        emoji: '📚'
+    },
+    '04-trees-graphs': {
+        title: 'Árvores e Grafos',
+        title_en: 'Trees and Graphs',
+        emoji: '🌳'
+    },
+    '05-sorting-searching': {
+        title: 'Algoritmos de Ordenação e Busca Avançados',
+        title_en: 'Advanced Sorting & Searching Algorithms',
+        emoji: '🔍'
+    },
+    '06-hash-tables': {
+        title: 'Tabelas Hash e Funções Hash',
+        title_en: 'Hash Tables & Hash Functions',
+        emoji: '🗂️'
+    },
+    '07-greedy-dynamic': {
+        title: 'Algoritmos Gulosos e Programação Dinâmica',
+        title_en: 'Greedy Algorithms & Dynamic Programming',
+        emoji: '🧩'
+    },
+    '08-advanced-topics': {
+        title: 'Tópicos Avançados e Aplicações',
+        title_en: 'Advanced Topics & Applications',
+        emoji: '🚀'
+    },
+    '09-persistent-structures': {
+        title: 'Estruturas de Dados Persistentes',
+        title_en: 'Persistent Data Structures',
+        emoji: '💾'
+    },
+    '10-complex-structures': {
+        title: 'Estruturas de Dados Complexas',
+        title_en: 'Complex Data Structures',
+        emoji: '🏗️'
+    },
+    '11-indexing': {
+        title: 'Indexação',
+        title_en: 'Indexing Techniques',
+        emoji: '📇'
+    },
+    '12-problem-solving': {
+        title: 'Técnicas de Resolução de Problemas',
+        title_en: 'Problem Solving Techniques',
+        emoji: '🎯'
+    }
 };
 
 // Function to generate lesson title from filename
@@ -104,7 +152,15 @@ function findAudioFile(moduleId, lessonFileName) {
 }
 
 function generateJekyllData() {
-    const courseData = { modules: [] };
+    const courseData = {
+        course: {
+            title: "Estrutura de Dados e Algoritmos",
+            description: "Curso completo de estruturas de dados e algoritmos",
+            version: "2.0",
+            last_updated: new Date().toISOString().split('T')[0]
+        },
+        modules: []
+    };
 
     try {
         if (!existsSync(modulesPath)) {
@@ -134,9 +190,17 @@ function generateJekyllData() {
             }
 
             const currentModuleData = {
+                id: moduleId,
                 id_prefix: moduleId,
                 title: moduleData.title,
+                title_en: moduleData.title_en,
                 emoji: moduleData.emoji,
+                path: `modules/${moduleId}`,
+                lessons_path: `modules/${moduleId}/lessons`,
+                exercises_path: `modules/${moduleId}/exercises`,
+                examples_path: `modules/${moduleId}/examples`,
+                resources_path: `modules/${moduleId}/resources`,
+                audio_path: `assets/audio/${moduleId}`,
                 lessons: []
             };
 
