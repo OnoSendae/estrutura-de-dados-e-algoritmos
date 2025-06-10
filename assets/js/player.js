@@ -62,6 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const moduleTitle = lessonElement.dataset.moduleTitle;
         const lessonId = lessonElement.dataset.lessonId;
 
+        console.log(`📄 Dados da aula:`);
+        console.log(`  📁 mdPath: "${mdPath}"`);
+        console.log(`  🎵 audioSrc: "${audioSrc}"`);
+        console.log(`  📚 lessonTitle: "${lessonTitle}"`);
+        console.log(`  📖 moduleTitle: "${moduleTitle}"`);
+        console.log(`  🆔 lessonId: "${lessonId}"`);
+
         // Encontra o módulo pai e expande-o se ainda não estiver expandido
         const parentModule = lessonElement.closest('.playlist-module');
         if (parentModule && !parentModule.classList.contains('expanded')) {
@@ -98,25 +105,76 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Carrega e exibe material Markdown
         if (mdPath && mdPath !== 'null' && mdPath !== 'undefined') {
+            console.log(`📄 Carregando markdown: ${mdPath}`);
             materialLink.href = mdPath;
             materialLink.classList.remove('hidden');
 
             fetch(mdPath)
                 .then(response => {
+                    console.log(`📡 Resposta do fetch: ${response.status} - ${response.statusText}`);
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     return response.text();
                 })
                 .then(markdownContent => {
-                    if (typeof marked !== 'undefined') {
+                    console.log(`📝 Markdown carregado. Tamanho: ${markdownContent.length} chars`);
+                    console.log(`📝 Início do conteúdo: ${markdownContent.substring(0, 200)}...`);
+
+                    // Função para processar com marked.js
+                    const processWithMarked = () => {
+                        console.log(`🔧 marked.js disponível. Processando markdown...`);
                         readingMaterialDiv.innerHTML = marked.parse(markdownContent);
-                        applyCodeHighlighting();
+                        console.log(`✅ HTML gerado pelo marked.js!`);
+
+                        // Debug: verifica o que foi gerado
+                        const allElements = document.querySelectorAll('#reading-material *');
+                        console.log(`📊 Elementos HTML gerados: ${allElements.length}`);
+
+                        const preElements = document.querySelectorAll('#reading-material pre');
+                        const codeElements = document.querySelectorAll('#reading-material code');
+                        console.log(`📊 <pre> encontrados: ${preElements.length}, <code> encontrados: ${codeElements.length}`);
+
+                        enhanceCodeBlocks();
+
+                        // Força uma nova verificação após o DOM atualizar
+                        setTimeout(() => {
+                            console.log(`🔄 Tentativa 2 após 200ms...`);
+                            enhanceCodeBlocks();
+                        }, 200);
+
+                        // E mais uma verificação para garantir
+                        setTimeout(() => {
+                            console.log(`🔄 Tentativa 3 após 500ms...`);
+                            const codeElements = document.querySelectorAll('#reading-material pre, #reading-material code');
+                            console.log(`🔍 Verificação final: ${codeElements.length} elementos de código encontrados`);
+                            enhanceCodeBlocks();
+                        }, 500);
+                    };
+
+                    if (typeof marked !== 'undefined') {
+                        processWithMarked();
                     } else {
-                        const pre = document.createElement('pre');
-                        pre.textContent = markdownContent;
-                        readingMaterialDiv.innerHTML = '';
-                        readingMaterialDiv.appendChild(pre);
+                        console.log(`⏳ marked.js ainda não carregado. Aguardando...`);
+
+                        // Tenta aguardar o marked.js carregar
+                        let attempts = 0;
+                        const checkMarked = setInterval(() => {
+                            attempts++;
+                            console.log(`🔍 Tentativa ${attempts}: Verificando marked.js...`);
+
+                            if (typeof marked !== 'undefined') {
+                                console.log(`✅ marked.js carregado na tentativa ${attempts}!`);
+                                clearInterval(checkMarked);
+                                processWithMarked();
+                            } else if (attempts >= 10) {
+                                console.log(`❌ marked.js não carregou após ${attempts} tentativas. Usando fallback.`);
+                                clearInterval(checkMarked);
+
+                                // Fallback: processa manualmente os blocos ```javascript
+                                processMarkdownManually(markdownContent);
+                            }
+                        }, 100);
                     }
 
                     // Adiciona botão de compartilhamento
@@ -197,115 +255,228 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Função para destacar o código
-    function applyCodeHighlighting() {
-        const codeBlocks = document.querySelectorAll('#reading-material pre code');
-        codeBlocks.forEach((codeBlock, index) => {
-            // Identifica a linguagem a partir da classe (se existir)
-            let language = 'javascript'; // Padrão para JavaScript
-            let title = `Exemplo ${index + 1}`;
+    // Função ROBUSTA para highlighting profissional de códigos MARKDOWN
+    function enhanceCodeBlocks() {
+        console.log('🎯 Iniciando enhanceCodeBlocks...');
 
-            // Procura por classes como 'language-javascript', 'language-python', etc.
-            const codeElement = codeBlock.parentElement;
-            if (codeElement.className) {
-                const languageMatch = codeElement.className.match(/language-(\w+)/);
-                if (languageMatch) {
-                    language = languageMatch[1];
-                }
+        // Aguarda um pouco para garantir que o marked.js terminou
+        setTimeout(() => {
+            // Testa TODOS os seletores possíveis
+            const allSelectors = [
+                '#reading-material pre code',
+                '#reading-material pre',
+                '#reading-material code',
+                'pre code',
+                'pre',
+                'code'
+            ];
 
-                // Verifica se há um título no comentário inicial do código
-                const titleMatch = codeBlock.textContent.match(/^\s*\/\/\s*(.+?)\n/);
-                if (titleMatch) {
-                    title = titleMatch[1].trim();
-                    // Remove o comentário de título do código
-                    codeBlock.textContent = codeBlock.textContent.replace(/^\s*\/\/\s*(.+?)\n/, '');
-                }
-            }
+            let totalBlocks = 0;
+            allSelectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                console.log(`🔍 Seletor "${selector}": ${elements.length} elementos`);
+                totalBlocks += elements.length;
+            });
 
-            // Adiciona o atributo data-language
-            codeElement.setAttribute('data-language', language);
+            // Procura especificamente por blocos de código do marked.js
+            const codeBlocks = document.querySelectorAll('#reading-material pre code, #reading-material pre, #reading-material code');
+            console.log(`📊 TOTAL encontrados: ${codeBlocks.length} blocos de código`);
 
-            // Envolve o bloco de código em um container com título
-            wrapCodeBlock(codeElement, title, language);
+            // Se não encontrou nada, força busca global
+            if (codeBlocks.length === 0) {
+                console.log('🚨 NENHUM BLOCO ENCONTRADO! Fazendo busca global...');
+                const globalBlocks = document.querySelectorAll('pre, code');
+                console.log(`🌍 Busca global: ${globalBlocks.length} elementos`);
 
-            // Aplica highlighting para JavaScript/TypeScript
-            if (language === 'javascript' || language === 'js' || language === 'typescript' || language === 'ts') {
-                const code = codeBlock.textContent;
-
-                // Remove qualquer HTML existente para evitar conflitos
-                codeBlock.textContent = code;
-
-                // Cria um DOM temporário para manipular o código mais facilmente
-                const tempDiv = document.createElement('div');
-                tempDiv.textContent = code;
-                let processedCode = tempDiv.innerHTML;
-
-                // Protege contra substituições recursivas
-                const placeholders = {
-                    comments: [],
-                    strings: [],
-                    keywords: [],
-                    functions: [],
-                    numbers: [],
-                    operators: []
-                };
-
-                // Função para substituir padrões com placeholders
-                const replaceWithPlaceholder = (regex, type, text) => {
-                    return text.replace(regex, (match) => {
-                        const id = placeholders[type].length;
-                        placeholders[type].push(match);
-                        return `__${type}_${id}__`;
-                    });
-                };
-
-                // Função para restaurar placeholders com spans HTML
-                const restorePlaceholders = (text, type, className) => {
-                    placeholders[type].forEach((value, id) => {
-                        const placeholder = `__${type}_${id}__`;
-                        const span = `<span class="${className}">${value}</span>`;
-                        text = text.replace(placeholder, span);
-                    });
-                    return text;
-                };
-
-                // Expressões regulares para identificar elementos da sintaxe
-                const commentRegex = /(\/\/.*?$|\/\*[\s\S]*?\*\/)/gm;
-                const stringRegex = /(["'`])((?:\\\1|(?!\1).)*?)\1/g;
-                const keywordRegex = /\b(let|var|const|function|return|if|else|for|while|do|switch|case|break|continue|new|this|class|extends|import|export|try|catch|finally|throw|async|await|from|of|in)\b/g;
-                const numberRegex = /\b(0x[\dA-Fa-f]+|\d*\.?\d+)\b/g;
-                const functionRegex = /\b([a-zA-Z_$][\w$]*)\s*\(/g;
-                const operatorRegex = /([+\-*/%=&|^<>!?:]+)/g;
-
-                // Primeiro protege comentários e strings 
-                processedCode = replaceWithPlaceholder(commentRegex, 'comments', processedCode);
-                processedCode = replaceWithPlaceholder(stringRegex, 'strings', processedCode);
-
-                // Depois substitui os outros elementos
-                processedCode = replaceWithPlaceholder(keywordRegex, 'keywords', processedCode);
-                processedCode = replaceWithPlaceholder(numberRegex, 'numbers', processedCode);
-                processedCode = replaceWithPlaceholder(functionRegex, 'functions', processedCode);
-                processedCode = replaceWithPlaceholder(operatorRegex, 'operators', processedCode);
-
-                // Restaura todos os elementos com as classes corretas
-                processedCode = restorePlaceholders(processedCode, 'comments', 'code-comment');
-                processedCode = restorePlaceholders(processedCode, 'strings', 'code-string');
-                processedCode = restorePlaceholders(processedCode, 'keywords', 'code-keyword');
-                processedCode = restorePlaceholders(processedCode, 'numbers', 'code-number');
-                // Para funções, precisamos manter o parêntese separado
-                placeholders['functions'].forEach((value, id) => {
-                    const placeholder = `__functions_${id}__`;
-                    // Substitui apenas o nome da função, mantendo o parêntese fora do span
-                    const funcName = value.slice(0, -1);
-                    const span = `<span class="code-function">${funcName}</span>(`;
-                    processedCode = processedCode.replace(placeholder, span);
+                globalBlocks.forEach((element, index) => {
+                    console.log(`🔍 Elemento ${index + 1}: tagName="${element.tagName}", className="${element.className}", texto="${element.textContent.substring(0, 30)}..."`);
                 });
-                processedCode = restorePlaceholders(processedCode, 'operators', 'code-operator');
-
-                // Aplica o código processado
-                codeBlock.innerHTML = processedCode;
             }
+
+            codeBlocks.forEach((element, index) => {
+                let preElement, codeElement;
+
+                if (element.tagName === 'PRE') {
+                    preElement = element;
+                    codeElement = element.querySelector('code') || element;
+                } else {
+                    codeElement = element;
+                    preElement = element.closest('pre') || element;
+                }
+
+                // Não processa se já foi processado
+                if (preElement.classList.contains('enhanced-code')) {
+                    console.log(`⏭️ Bloco ${index + 1} já processado`);
+                    return;
+                }
+
+                console.log(`🔧 Processando bloco ${index + 1}`);
+                console.log(`📝 TagName: ${element.tagName}, Classes: "${element.className}"`);
+
+                // Marca como processado
+                preElement.classList.add('enhanced-code');
+
+                // Identifica a linguagem
+                let language = '';
+                if (codeElement.className) {
+                    const languageMatch = codeElement.className.match(/language-(\w+)/);
+                    if (languageMatch) {
+                        language = languageMatch[1];
+                        console.log(`🏷️ Linguagem detectada: ${language}`);
+                    }
+                }
+
+                // Pega o código
+                const codeText = codeElement.textContent || preElement.textContent;
+                console.log(`📄 Conteúdo (primeiras 100 chars): "${codeText.substring(0, 100)}..."`);
+
+                // APLICA HIGHLIGHTING EM QUALQUER CÓDIGO QUE PAREÇA JAVASCRIPT
+                const looksLikeJS = codeText && (
+                    language === 'javascript' || language === 'js' ||
+                    language === 'typescript' || language === 'ts' ||
+                    codeText.includes('let ') ||
+                    codeText.includes('const ') ||
+                    codeText.includes('var ') ||
+                    codeText.includes('function') ||
+                    codeText.includes('=>') ||
+                    codeText.includes('console.log') ||
+                    codeText.includes('if (') ||
+                    codeText.includes('for (') ||
+                    codeText.includes('{') ||
+                    codeText.includes('}')
+                );
+
+                if (looksLikeJS && codeText.trim()) {
+                    console.log(`✨ APLICANDO HIGHLIGHTING! Motivo: ${language || 'detectado automaticamente'}`);
+                    applyProfessionalHighlighting(preElement, codeText);
+                } else {
+                    console.log(`⚠️ Ignorando - Linguagem: "${language}", Parece JS: ${looksLikeJS}, Texto: "${codeText.substring(0, 30)}..."`);
+                }
+            });
+        }, 100);
+    }
+
+    // Função de highlighting SIMPLIFICADO e LIMPO
+    function applyProfessionalHighlighting(preElement, codeText) {
+        const lines = codeText.split('\n');
+
+        // Aplica estilo CSS diretamente no elemento
+        preElement.style.cssText = `
+            background: #1e1e1e !important;
+            color: #d4d4d4 !important;
+            font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            padding: 20px !important;
+            border-radius: 8px !important;
+            overflow-x: auto !important;
+            margin: 16px 0 !important;
+            border: 1px solid #333 !important;
+            position: relative !important;
+        `;
+
+        // Adiciona estilos CSS para as classes de highlighting
+        if (!document.getElementById('code-highlighting-styles')) {
+            const style = document.createElement('style');
+            style.id = 'code-highlighting-styles';
+            style.textContent = `
+                .hl-comment { color: #6a9955 !important; }
+                .hl-string { color: #ce9178 !important; }
+                .hl-keyword { color: #569cd6 !important; font-weight: bold; }
+                .hl-number { color: #b5cea8 !important; }
+                .hl-function { color: #dcdcaa !important; }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Cria HTML simples e limpo
+        let html = '';
+
+        lines.forEach((line, index) => {
+            const lineNumber = (index + 1).toString().padStart(2, ' ');
+
+            // PRIMEIRO aplica highlighting (ANTES de escapar HTML)
+            let processedLine = line
+                // 1. Strings primeiro
+                .replace(/("[^"]*")/g, '###STRING1###$1###/STRING1###')
+                .replace(/('[^']*')/g, '###STRING2###$1###/STRING2###')
+                .replace(/(`[^`]*`)/g, '###STRING3###$1###/STRING3###')
+
+                // 2. Comentários
+                .replace(/(\/\/.*$)/gm, '###COMMENT###$1###/COMMENT###')
+
+                // 3. Keywords
+                .replace(/\b(let|const|var|function|if|else|for|while|return|class|new|this|true|false|null|undefined)\b/g, '###KEYWORD###$1###/KEYWORD###')
+
+                // 4. Números
+                .replace(/\b(\d+\.?\d*)\b/g, '###NUMBER###$1###/NUMBER###')
+
+                // 5. Funções
+                .replace(/\b([a-zA-Z_$][\w$]*)\s*(?=\()/g, '###FUNCTION###$1###/FUNCTION###');
+
+            // DEPOIS escapa o HTML
+            processedLine = escapeHtml(processedLine);
+
+            // POR ÚLTIMO converte os marcadores para HTML
+            processedLine = processedLine
+                .replace(/###STRING1###([^#]*)###\/STRING1###/g, '<span class="hl-string">$1</span>')
+                .replace(/###STRING2###([^#]*)###\/STRING2###/g, '<span class="hl-string">$1</span>')
+                .replace(/###STRING3###([^#]*)###\/STRING3###/g, '<span class="hl-string">$1</span>')
+                .replace(/###COMMENT###([^#]*)###\/COMMENT###/g, '<span class="hl-comment">$1</span>')
+                .replace(/###KEYWORD###([^#]*)###\/KEYWORD###/g, '<span class="hl-keyword">$1</span>')
+                .replace(/###NUMBER###([^#]*)###\/NUMBER###/g, '<span class="hl-number">$1</span>')
+                .replace(/###FUNCTION###([^#]*)###\/FUNCTION###/g, '<span class="hl-function">$1</span>');
+
+            html += `<div style="color: #d4d4d4; margin: 0; padding: 0;">` +
+                `<span style="color: #858585; margin-right: 16px; user-select: none; display: inline-block; width: 30px;">${lineNumber}</span>` +
+                `${processedLine}</div>`;
         });
+
+        preElement.innerHTML = html;
+        console.log('✅ Highlighting limpo aplicado!');
+    }
+
+    // Função auxiliar para escapar HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Função fallback para processar markdown manualmente
+    function processMarkdownManually(markdownContent) {
+        console.log(`🔧 Processando markdown manualmente...`);
+
+        // Converte markdown básico para HTML
+        let html = markdownContent
+            // Headers
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+
+            // Parágrafos
+            .replace(/\n\n/g, '</p><p>')
+
+            // Blocos de código
+            .replace(/```(\w+)?\n([\s\S]*?)```/g, (match, language, code) => {
+                const lang = language || 'javascript';
+                return `<pre><code class="language-${lang}">${escapeHtml(code.trim())}</code></pre>`;
+            });
+
+        // Envolve em parágrafos
+        html = '<p>' + html + '</p>';
+
+        // Limpa parágrafos vazios
+        html = html.replace(/<p><\/p>/g, '');
+
+        readingMaterialDiv.innerHTML = html;
+
+        console.log(`✅ Markdown processado manualmente!`);
+
+        // Aplica highlighting
+        setTimeout(() => {
+            enhanceCodeBlocks();
+        }, 100);
     }
 
     // Função para envolver blocos de código em um container com título
@@ -648,7 +819,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(markdownContent => {
                 if (typeof marked !== 'undefined') {
                     readingMaterialDiv.innerHTML = marked.parse(markdownContent);
-                    applyCodeHighlighting(); // Se o README tiver blocos de código
+                    enhanceCodeBlocks(); // Se o README tiver blocos de código
                 } else {
                     const pre = document.createElement('pre');
                     pre.textContent = markdownContent;
@@ -731,7 +902,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 3000); // Mantém o toast visível por 3 segundos
     }
 
-    // Adiciona estilos CSS necessários para o overlay E para o toast
+    // Adiciona estilos CSS necessários para o overlay, toast E highlighting de código aprimorado
     const style = document.createElement('style');
     style.textContent = `
         /* Estilos existentes para overlay, share-container, share-btn, btn-next-material */
@@ -787,6 +958,167 @@ document.addEventListener('DOMContentLoaded', function () {
         .btn-next-material:hover {
             background-color: #4df287;
             transform: scale(1.05);
+        }
+
+        /* ESTILOS PROFISSIONAIS PARA HIGHLIGHTING DE CÓDIGO */
+        .code-keyword {
+            color: #ff79c6;
+            font-weight: 700;
+        }
+        
+        .code-string {
+            color: #50fa7b;
+            font-weight: 500;
+        }
+        
+        .code-template {
+            color: #f1fa8c;
+            font-weight: 500;
+        }
+        
+        .code-comment {
+            color: #6272a4;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .code-function {
+            color: #8be9fd;
+            font-weight: 600;
+        }
+        
+        .code-property {
+            color: #ffb86c;
+            font-weight: 500;
+        }
+        
+        .code-number {
+            color: #bd93f9;
+            font-weight: 600;
+        }
+        
+        .code-hex {
+            color: #ff5555;
+            font-weight: 600;
+        }
+        
+        .code-operator {
+            color: #ff5555;
+            font-weight: 700;
+        }
+        
+        .code-bracket {
+            color: #f8f8f2;
+            font-weight: 700;
+        }
+
+        /* NUMERAÇÃO DE LINHAS E LAYOUT PROFISSIONAL */
+        .code-container {
+            display: flex;
+            background: #282a36;
+            border-radius: 6px;
+            overflow: hidden;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .line-numbers {
+            background: #21222c;
+            color: #6272a4;
+            padding: 16px 12px 16px 16px;
+            text-align: right;
+            border-right: 1px solid #44475a;
+            user-select: none;
+            min-width: 40px;
+        }
+
+        .line-number {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .code-content {
+            flex: 1;
+            padding: 16px;
+            overflow-x: auto;
+            background: #282a36;
+        }
+
+        .code-line {
+            white-space: pre;
+            line-height: 1.5;
+            min-height: 21px;
+        }
+
+        .code-line:empty {
+            min-height: 21px;
+        }
+
+        /* Melhoria nos containers de código */
+        .code-example {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-example-title {
+            background: linear-gradient(135deg, #282a36 0%, #44475a 100%);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-example-title span:first-child {
+            font-weight: 600;
+            color: #f8f8f2;
+        }
+
+        .code-language {
+            background-color: rgba(80, 250, 123, 0.2);
+            color: #50fa7b;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-code-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #f8f8f2;
+            padding: 6px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-code-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        /* Melhoria no estilo do código propriamente dito */
+        .code-example pre {
+            margin: 0;
+            background: #282a36;
+            padding: 16px;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        .code-example code {
+            color: #f8f8f2;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
         }
 
         /* NOVOS ESTILOS PARA O TOAST */
