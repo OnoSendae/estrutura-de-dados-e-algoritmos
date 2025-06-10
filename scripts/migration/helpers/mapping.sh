@@ -214,11 +214,12 @@ get_old_modules() {
     local modules_dir="$PROJECT_ROOT/src/modulos-treinamento"
     
     if [[ ! -d "$modules_dir" ]]; then
-        log_error "Diretório de módulos não encontrado: $modules_dir"
+        # Don't use log_error here as it might not be available
+        echo "# Diretório de módulos não encontrado: $modules_dir" >&2
         return 1
     fi
     
-    find "$modules_dir" -maxdepth 1 -type d -name "[0-9]*" | sort -V
+    find "$modules_dir" -maxdepth 1 -type d -name "[0-9]*" 2>/dev/null | sort -V
 }
 
 # =============================================================================

@@ -434,7 +434,7 @@ show_migration_header() {
         echo -e "${YELLOW}⚠️  ATENÇÃO: Esta operação irá modificar a estrutura do projeto!${NC}"
         echo ""
         
-        read -p "Pressione ENTER para continuar ou Ctrl+C para cancelar..."
+        # read -p "Pressione ENTER para continuar ou Ctrl+C para cancelar..."
         echo ""
     fi
 }

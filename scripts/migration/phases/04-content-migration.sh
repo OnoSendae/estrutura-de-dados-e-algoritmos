@@ -98,7 +98,7 @@ phase4_content_migration() {
         
         # Check if target already exists
         if [[ -f "$new_path" ]]; then
-            log_warn "Target already exists, skipping: $new_path"
+            log_warning "Target already exists, skipping: $new_path"
             ((skipped_files++))
             continue
         fi
@@ -146,7 +146,7 @@ phase4_content_migration() {
         create_content_migration_manifest
         
         if ((error_files > 0)); then
-            log_warn "Phase 4 completed with $error_files errors"
+            log_warning "Phase 4 completed with $error_files errors"
             return 1
         else
             log_success "Phase 4: Content Migration completed successfully!"
