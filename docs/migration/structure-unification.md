@@ -82,10 +82,10 @@ modules:
 #### `_includes/module_navigation.html`
 ```html
 <!-- ANTES -->
-{% for module in site.data.new_course_structure.modules %}
+{% raw %}{% for module in site.data.new_course_structure.modules %}{% endraw %}
 
 <!-- DEPOIS -->
-{% for module in site.data.course_structure.modules %}
+{% raw %}{% for module in site.data.course_structure.modules %}{% endraw %}
 ```
 
 ### 5. Arquivos Removidos
