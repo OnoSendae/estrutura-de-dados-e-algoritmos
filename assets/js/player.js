@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Carrega e toca áudio
-        if (audioSrc && audioSrc !== 'null' && audioSrc !== 'undefined') {
+        if (audioSrc && audioSrc !== 'null' && audioSrc !== 'undefined' && audioSrc.trim() !== '') {
             console.log('Loading audio source:', audioSrc); // DEBUG
             audioPlayer.src = audioSrc;
             // A UI (botão play/pause e isPlaying) será atualizada pelos listeners de 'play' e 'pause'
@@ -235,6 +235,11 @@ document.addEventListener('DOMContentLoaded', function () {
             currentTimeEl.textContent = '0:00';
             durationEl.textContent = '0:00';
             if (progressBar) progressBar.style.width = '0%';
+
+            // Mostra uma notificação amigável informando que é apenas material de leitura
+            if (currentLessonIndex === index) { // Só mostra se esta é realmente a aula carregada
+                showToast('📚 Aula de leitura carregada! Use o material de texto abaixo.');
+            }
         }
 
         // Atualiza destaque na playlist
@@ -554,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Play button clicked.'); // DEBUG
         // Simplifica a lógica do botão play: apenas pausa/toca o que estiver carregado
         // A carga inicial baseada no hash é feita pela loadLessonFromUrlHash no DOMContentLoaded
-        if (audioPlayer.src && audioPlayer.src !== window.location.href) { // Verifica se tem source válida
+        if (audioPlayer.src && audioPlayer.src !== window.location.href && audioPlayer.src !== '') { // Verifica se tem source válida
             console.log('Audio source exists, toggling play/pause.'); // DEBUG
             if (isPlaying) {
                 audioPlayer.pause();
@@ -565,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } else {
             console.log('Play button clicked, but no valid audio source is loaded.');
-            // Opcional: Mostrar mensagem para o usuário selecionar uma aula
+            showToast('Esta aula contém apenas material de leitura. 📚');
         }
     });
 
@@ -695,34 +700,64 @@ document.addEventListener('DOMContentLoaded', function () {
             if (mainHeader) { // Verifica se o .main-header existe
                 mainHeader.prepend(menuToggle);
 
+                // Adiciona botão de fechar dentro da sidebar
+                const sidebar = document.querySelector('.sidebar');
+                if (sidebar && !sidebar.querySelector('.close-menu-btn')) {
+                    const closeBtn = document.createElement('button');
+                    closeBtn.className = 'close-menu-btn control-btn';
+                    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    closeBtn.setAttribute('aria-label', 'Fechar menu');
+                    closeBtn.style.cssText = `
+                        position: absolute;
+                        top: 16px;
+                        right: 16px;
+                        background: rgba(255, 255, 255, 0.1);
+                        border: none;
+                        color: var(--text-secondary);
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        display: none;
+                        z-index: 10;
+                    `;
+
+                    sidebar.appendChild(closeBtn);
+
+                    closeBtn.addEventListener('click', () => {
+                        sidebar.classList.remove('open');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    });
+                }
+
                 menuToggle.addEventListener('click', () => {
                     const sidebar = document.querySelector('.sidebar');
                     const isOpen = sidebar.classList.toggle('open');
                     menuToggle.setAttribute('aria-expanded', isOpen.toString());
 
-                    // Adiciona overlay quando o menu estiver aberto
-                    let overlay = document.querySelector('.sidebar-overlay');
+                    // Controla overflow do body quando menu está aberto
                     if (sidebar.classList.contains('open')) {
-                        if (!overlay) {
-                            overlay = document.createElement('div');
-                            overlay.className = 'sidebar-overlay';
-                            document.body.appendChild(overlay);
-
-                            overlay.addEventListener('click', () => {
-                                sidebar.classList.remove('open');
-                                menuToggle.setAttribute('aria-expanded', 'false');
-                                overlay.remove();
-                            });
-                        }
-                        document.body.style.overflow = 'hidden'; // Impede o scroll do body quando o menu está aberto
-                    } else if (overlay) {
-                        overlay.remove();
-                        document.body.style.overflow = ''; // Restaura o scroll do body
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
                     }
                 });
             } else {
                 console.warn('.main-header element not found for menu toggle.');
             }
+
+            // Adiciona listener global para tecla ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const sidebar = document.querySelector('.sidebar');
+                    if (sidebar && sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                        const menuToggle = document.querySelector('.menu-toggle');
+                        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
         }
     };
 
@@ -741,9 +776,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (sidebar && sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
                         if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-                        const overlay = document.querySelector('.sidebar-overlay');
-                        if (overlay) overlay.remove();
-                        document.body.style.overflow = ''; // Restaura o scroll do body
+                        document.body.style.overflow = '';
                     }
                 });
             });
@@ -752,9 +785,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (sidebar && sidebar.classList.contains('open')) {
                 sidebar.classList.remove('open');
                 if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-                const overlay = document.querySelector('.sidebar-overlay');
-                if (overlay) overlay.remove();
-                document.body.style.overflow = ''; // Restaura o scroll do body
+                document.body.style.overflow = '';
             }
         }
     };
@@ -905,13 +936,14 @@ document.addEventListener('DOMContentLoaded', function () {
     style.textContent = `
         /* Estilos existentes para overlay, share-container, share-btn, btn-next-material */
         .sidebar-overlay {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 999;
+            pointer-events: auto;
         }
         
         /* Estilos para o botão de compartilhar no material */

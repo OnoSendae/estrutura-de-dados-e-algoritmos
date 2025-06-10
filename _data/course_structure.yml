@@ -1,341 +1,557 @@
+course:
+  title: Estrutura de Dados e Algoritmos
+  description: Curso completo de estruturas de dados e algoritmos
+  version: '2.0'
+  last_updated: '2025-06-10'
 modules:
-  - id_prefix: 01-foundations
+  - id: 01-foundations
+    id_prefix: 01-foundations
     title: Fundamentos da Programação
+    title_en: Programming Foundations
     emoji: 🏁
+    path: modules/01-foundations
+    lessons_path: modules/01-foundations/lessons
+    exercises_path: modules/01-foundations/exercises
+    examples_path: modules/01-foundations/examples
+    resources_path: modules/01-foundations/resources
+    audio_path: assets/audio/01-foundations
     lessons:
+      - id: 01-foundations-0-fundamentals-da-programacao
+        title: Fundamentals da Programação
+        mp3_path: null
+        md_path: /modules/01-foundations/lessons/0-fundamentals-da-programacao.md
       - id: 01-foundations-0-fundamentos-da-programacao
-        title: 0 fundamentos da programacao
+        title: Fundamentos da Programação
         mp3_path: /assets/audio/01-foundations/0-fundamentos-da-programacao.mp3
         md_path: /modules/01-foundations/lessons/0-fundamentos-da-programacao.md
       - id: 01-foundations-01-sintaxe-da-linguagem
-        title: 01 sintaxe da linguagem
+        title: Sintaxe da Linguagem
         mp3_path: /assets/audio/01-foundations/01-sintaxe-da-linguagem.mp3
         md_path: /modules/01-foundations/lessons/01-sintaxe-da-linguagem.md
       - id: 01-foundations-02-estruturas-de-controle
-        title: 02 estruturas de controle
+        title: Estruturas de Controle
         mp3_path: /assets/audio/01-foundations/02-estruturas-de-controle.mp3
         md_path: /modules/01-foundations/lessons/02-estruturas-de-controle.md
       - id: 01-foundations-03-funcoes
-        title: 03 funcoes
+        title: Funções
         mp3_path: /assets/audio/01-foundations/03-funcoes.mp3
         md_path: /modules/01-foundations/lessons/03-funcoes.md
       - id: 01-foundations-04-programacao-orientada-objetos
-        title: 04 programacao orientada objetos
+        title: Programação Orientada Objetos
         mp3_path: /assets/audio/01-foundations/04-programacao-orientada-objetos.mp3
         md_path: /modules/01-foundations/lessons/04-programacao-orientada-objetos.md
       - id: 01-foundations-05-pseudocodigo
-        title: 05 pseudocodigo
+        title: Pseudocódigo
         mp3_path: /assets/audio/01-foundations/05-pseudocodigo.mp3
         md_path: /modules/01-foundations/lessons/05-pseudocodigo.md
-  - id_prefix: 02-complexity-analysis
+  - id: 02-complexity-analysis
+    id_prefix: 02-complexity-analysis
     title: Análise de Algoritmos e Complexidade
+    title_en: Algorithm Analysis & Complexity
     emoji: 🛠️
+    path: modules/02-complexity-analysis
+    lessons_path: modules/02-complexity-analysis/lessons
+    exercises_path: modules/02-complexity-analysis/exercises
+    examples_path: modules/02-complexity-analysis/examples
+    resources_path: modules/02-complexity-analysis/resources
+    audio_path: assets/audio/02-complexity-analysis
     lessons:
+      - id: 02-complexity-analysis-0-overview-modulo
+        title: Overview Modulo
+        mp3_path: null
+        md_path: /modules/02-complexity-analysis/lessons/0-overview-modulo.md
       - id: 02-complexity-analysis-0-visao-geral-modulo
-        title: 0 visao geral modulo
+        title: Visao Geral Modulo
         mp3_path: null
         md_path: /modules/02-complexity-analysis/lessons/0-visao-geral-modulo.md
       - id: 02-complexity-analysis-1-introducao-analise-algoritmos
-        title: 1 introducao analise algoritmos
-        mp3_path: /assets/audio/02-complexity-analysis/1-introducao-analise-algoritmos.mp3
-        md_path: /modules/02-complexity-analysis/lessons/1-introducao-analise-algoritmos.md
+        title: Introducao Análise Algoritmos
+        mp3_path: >-
+          /assets/audio/02-complexity-analysis/1-introducao-analise-algoritmos.mp3
+        md_path: >-
+          /modules/02-complexity-analysis/lessons/1-introducao-analise-algoritmos.md
+      - id: 02-complexity-analysis-1-introduction-analise-algoritmos
+        title: Introduction Análise Algoritmos
+        mp3_path: null
+        md_path: >-
+          /modules/02-complexity-analysis/lessons/1-introduction-analise-algoritmos.md
       - id: 02-complexity-analysis-2-notacao-big-o
-        title: 2 notacao big o
+        title: Notacao Big O
         mp3_path: /assets/audio/02-complexity-analysis/2-notacao-big-o.mp3
         md_path: /modules/02-complexity-analysis/lessons/2-notacao-big-o.md
       - id: 02-complexity-analysis-3-analise-complexidade-tempo-espaco
-        title: 3 analise complexidade tempo espaco
-        mp3_path: /assets/audio/02-complexity-analysis/3-analise-complexidade-tempo-espaco.mp3
-        md_path: /modules/02-complexity-analysis/lessons/3-analise-complexidade-tempo-espaco.md
+        title: Análise Complexidade Tempo Espaco
+        mp3_path: >-
+          /assets/audio/02-complexity-analysis/3-analise-complexidade-tempo-espaco.mp3
+        md_path: >-
+          /modules/02-complexity-analysis/lessons/3-analise-complexidade-tempo-espaco.md
       - id: 02-complexity-analysis-4-melhores-piores-casos-medios
-        title: 4 melhores piores casos medios
-        mp3_path: /assets/audio/02-complexity-analysis/4-melhores-piores-casos-medios.mp3
-        md_path: /modules/02-complexity-analysis/lessons/4-melhores-piores-casos-medios.md
+        title: Melhores Piores Casos Medios
+        mp3_path: >-
+          /assets/audio/02-complexity-analysis/4-melhores-piores-casos-medios.mp3
+        md_path: >-
+          /modules/02-complexity-analysis/lessons/4-melhores-piores-casos-medios.md
       - id: 02-complexity-analysis-6-case-study
-        title: 6 case study
+        title: Case Study
         mp3_path: /assets/audio/02-complexity-analysis/6-case-study.mp3
         md_path: /modules/02-complexity-analysis/lessons/6-case-study.md
       - id: 02-complexity-analysis-7-visualizacao-complexidade
-        title: 7 visualizacao complexidade
+        title: Visualizacao Complexidade
         mp3_path: /assets/audio/02-complexity-analysis/7-visualizacao-complexidade.mp3
         md_path: /modules/02-complexity-analysis/lessons/7-visualizacao-complexidade.md
       - id: 02-complexity-analysis-8-reflexao-e-proximos-passos
-        title: 8 reflexao e proximos passos
+        title: Reflexao e Proximos Passos
         mp3_path: null
-        md_path: /modules/02-complexity-analysis/lessons/8-reflexao-e-proximos-passos.md
-  - id_prefix: 03-linear-structures
+        md_path: >-
+          /modules/02-complexity-analysis/lessons/8-reflexao-e-proximos-passos.md
+  - id: 03-linear-structures
+    id_prefix: 03-linear-structures
     title: Estruturas de Dados Lineares Avançadas
+    title_en: Advanced Linear Data Structures
     emoji: 📚
+    path: modules/03-linear-structures
+    lessons_path: modules/03-linear-structures/lessons
+    exercises_path: modules/03-linear-structures/exercises
+    examples_path: modules/03-linear-structures/examples
+    resources_path: modules/03-linear-structures/resources
+    audio_path: assets/audio/03-linear-structures
     lessons:
       - id: 03-linear-structures-0-estruturas-de-dados-lineares-avancadas
-        title: 0 estruturas de dados lineares avancadas
-        mp3_path: /assets/audio/03-linear-structures/0-estruturas-de-dados-lineares-avancadas.mp3
-        md_path: /modules/03-linear-structures/lessons/0-estruturas-de-dados-lineares-avancadas.md
+        title: Estruturas de Dados Lineares Avancadas
+        mp3_path: >-
+          /assets/audio/03-linear-structures/0-estruturas-de-dados-lineares-avancadas.mp3
+        md_path: >-
+          /modules/03-linear-structures/lessons/0-estruturas-de-dados-lineares-avancadas.md
       - id: 03-linear-structures-1-listas-encadeadas
-        title: 1 listas encadeadas
+        title: Listas Encadeadas
         mp3_path: /assets/audio/03-linear-structures/1-listas-encadeadas.mp3
         md_path: /modules/03-linear-structures/lessons/1-listas-encadeadas.md
       - id: 03-linear-structures-2-pilhas-filas
-        title: 2 pilhas filas
+        title: Pilhas Filas
         mp3_path: /assets/audio/03-linear-structures/2-pilhas-filas.mp3
         md_path: /modules/03-linear-structures/lessons/2-pilhas-filas.md
       - id: 03-linear-structures-3-deques
-        title: 3 deques
+        title: Deques
         mp3_path: /assets/audio/03-linear-structures/3-deques.mp3
         md_path: /modules/03-linear-structures/lessons/3-deques.md
       - id: 03-linear-structures-4-listas-skip
-        title: 4 listas skip
+        title: Listas Skip
         mp3_path: /assets/audio/03-linear-structures/4-listas-skip.mp3
         md_path: /modules/03-linear-structures/lessons/4-listas-skip.md
-  - id_prefix: 04-trees-graphs
+  - id: 04-trees-graphs
+    id_prefix: 04-trees-graphs
     title: Árvores e Grafos
+    title_en: Trees and Graphs
     emoji: 🌳
+    path: modules/04-trees-graphs
+    lessons_path: modules/04-trees-graphs/lessons
+    exercises_path: modules/04-trees-graphs/exercises
+    examples_path: modules/04-trees-graphs/examples
+    resources_path: modules/04-trees-graphs/resources
+    audio_path: assets/audio/04-trees-graphs
     lessons:
       - id: 04-trees-graphs-0-arvores-e-grafos
-        title: 0 arvores e grafos
+        title: Arvores e Grafos
         mp3_path: /assets/audio/04-trees-graphs/0-arvores-e-grafos.mp3
         md_path: /modules/04-trees-graphs/lessons/0-arvores-e-grafos.md
       - id: 04-trees-graphs-1-introducao-estruturas-hierarquicas
-        title: 1 introducao estruturas hierarquicas
+        title: Introducao Estruturas Hierarquicas
         mp3_path: /assets/audio/04-trees-graphs/1-introducao-estruturas-hierarquicas.mp3
-        md_path: /modules/04-trees-graphs/lessons/1-introducao-estruturas-hierarquicas.md
+        md_path: >-
+          /modules/04-trees-graphs/lessons/1-introducao-estruturas-hierarquicas.md
+      - id: 04-trees-graphs-1-introduction-estruturas-hierarquicas
+        title: Introduction Estruturas Hierarquicas
+        mp3_path: null
+        md_path: >-
+          /modules/04-trees-graphs/lessons/1-introduction-estruturas-hierarquicas.md
       - id: 04-trees-graphs-2-arvores-binarias-busca
-        title: 2 arvores binarias busca
+        title: Arvores Binarias Busca
         mp3_path: /assets/audio/04-trees-graphs/2-arvores-binarias-busca.mp3
         md_path: /modules/04-trees-graphs/lessons/2-arvores-binarias-busca.md
       - id: 04-trees-graphs-3-arvores-balanceadas
-        title: 3 arvores balanceadas
+        title: Arvores Balanceadas
         mp3_path: /assets/audio/04-trees-graphs/3-arvores-balanceadas.mp3
         md_path: /modules/04-trees-graphs/lessons/3-arvores-balanceadas.md
       - id: 04-trees-graphs-4-grafos-conceitos
-        title: 4 grafos conceitos
+        title: Grafos Conceitos
         mp3_path: /assets/audio/04-trees-graphs/4-grafos-conceitos.mp3
         md_path: /modules/04-trees-graphs/lessons/4-grafos-conceitos.md
-      - id: 04-trees-graphs-4.1-grafos-conceitos-representacoes
-        title: 4.1 grafos conceitos representacoes
+      - id: 04-trees-graphs-4-grafos-concepts
+        title: Grafos Concepts
+        mp3_path: null
+        md_path: /modules/04-trees-graphs/lessons/4-grafos-concepts.md
+      - id: 04-trees-graphs-41-grafos-conceitos-representacoes
+        title: Grafos Conceitos Representacoes
         mp3_path: /assets/audio/04-trees-graphs/4.1-grafos-conceitos-representacoes.mp3
-        md_path: /modules/04-trees-graphs/lessons/4.1-grafos-conceitos-representacoes.md
-      - id: 04-trees-graphs-4.2-grafos-conceitos-modelagem
-        title: 4.2 grafos conceitos modelagem
+        md_path: >-
+          /modules/04-trees-graphs/lessons/4.1-grafos-conceitos-representacoes.md
+      - id: 04-trees-graphs-41-grafos-concepts-representacoes
+        title: Grafos Concepts Representacoes
+        mp3_path: null
+        md_path: /modules/04-trees-graphs/lessons/4.1-grafos-concepts-representacoes.md
+      - id: 04-trees-graphs-42-grafos-conceitos-modelagem
+        title: Grafos Conceitos Modelagem
         mp3_path: /assets/audio/04-trees-graphs/4.2-grafos-conceitos-modelagem.mp3
         md_path: /modules/04-trees-graphs/lessons/4.2-grafos-conceitos-modelagem.md
+      - id: 04-trees-graphs-42-grafos-concepts-modelagem
+        title: Grafos Concepts Modelagem
+        mp3_path: null
+        md_path: /modules/04-trees-graphs/lessons/4.2-grafos-concepts-modelagem.md
       - id: 04-trees-graphs-5-busca-largura-bfs
-        title: 5 busca largura bfs
+        title: Busca Largura Bfs
         mp3_path: /assets/audio/04-trees-graphs/5-busca-largura-bfs.mp3
         md_path: /modules/04-trees-graphs/lessons/5-busca-largura-bfs.md
-  - id_prefix: 05-sorting-searching
+  - id: 05-sorting-searching
+    id_prefix: 05-sorting-searching
     title: Algoritmos de Ordenação e Busca Avançados
+    title_en: Advanced Sorting & Searching Algorithms
     emoji: 🔍
+    path: modules/05-sorting-searching
+    lessons_path: modules/05-sorting-searching/lessons
+    exercises_path: modules/05-sorting-searching/exercises
+    examples_path: modules/05-sorting-searching/examples
+    resources_path: modules/05-sorting-searching/resources
+    audio_path: assets/audio/05-sorting-searching
     lessons:
       - id: 05-sorting-searching-0-algoritmos-de-ordenacao-e-busca-avancados
-        title: 0 algoritmos de ordenacao e busca avancados
-        mp3_path: /assets/audio/05-sorting-searching/0-algoritmos-de-ordenacao-e-busca-avancados.mp3
-        md_path: /modules/05-sorting-searching/lessons/0-algoritmos-de-ordenacao-e-busca-avancados.md
+        title: Algoritmos de Ordenacao e Busca Avancados
+        mp3_path: >-
+          /assets/audio/05-sorting-searching/0-algoritmos-de-ordenacao-e-busca-avancados.mp3
+        md_path: >-
+          /modules/05-sorting-searching/lessons/0-algoritmos-de-ordenacao-e-busca-avancados.md
       - id: 05-sorting-searching-0-introducao-visao-geral
-        title: 0 introducao visao geral
+        title: Introducao Visao Geral
         mp3_path: /assets/audio/05-sorting-searching/0-introducao-visao-geral.mp3
         md_path: /modules/05-sorting-searching/lessons/0-introducao-visao-geral.md
+      - id: 05-sorting-searching-0-introduction-overview
+        title: Introduction Overview
+        mp3_path: null
+        md_path: /modules/05-sorting-searching/lessons/0-introduction-overview.md
       - id: 05-sorting-searching-1-merge-sort-quick-sort-otimizacoes
-        title: 1 merge sort quick sort otimizacoes
-        mp3_path: /assets/audio/05-sorting-searching/1-merge-sort-quick-sort-otimizacoes.mp3
-        md_path: /modules/05-sorting-searching/lessons/1-merge-sort-quick-sort-otimizacoes.md
+        title: Merge Sort Quick Sort Otimizacoes
+        mp3_path: >-
+          /assets/audio/05-sorting-searching/1-merge-sort-quick-sort-otimizacoes.mp3
+        md_path: >-
+          /modules/05-sorting-searching/lessons/1-merge-sort-quick-sort-otimizacoes.md
       - id: 05-sorting-searching-2-heap-sort-aplicacoes
-        title: 2 heap sort aplicacoes
+        title: Heap Sort Aplicacoes
         mp3_path: /assets/audio/05-sorting-searching/2-heap-sort-aplicacoes.mp3
         md_path: /modules/05-sorting-searching/lessons/2-heap-sort-aplicacoes.md
       - id: 05-sorting-searching-3-radix-bucket-sort
-        title: 3 radix bucket sort
+        title: Radix Bucket Sort
         mp3_path: /assets/audio/05-sorting-searching/3-radix-bucket-sort.mp3
         md_path: /modules/05-sorting-searching/lessons/3-radix-bucket-sort.md
       - id: 05-sorting-searching-4-busca-texto-kmp-boyer-moore
-        title: 4 busca texto kmp boyer moore
+        title: Busca Texto Kmp Boyer Moore
         mp3_path: /assets/audio/05-sorting-searching/4-busca-texto-kmp-boyer-moore.mp3
         md_path: /modules/05-sorting-searching/lessons/4-busca-texto-kmp-boyer-moore.md
       - id: 05-sorting-searching-6-case-study-benchmark-sistema
-        title: 6 case study benchmark sistema
+        title: Case Study Benchmark Sistema
         mp3_path: null
-        md_path: /modules/05-sorting-searching/lessons/6-case-study-benchmark-sistema.md
-  - id_prefix: 06-hash-tables
+        md_path: >-
+          /modules/05-sorting-searching/lessons/6-case-study-benchmark-sistema.md
+  - id: 06-hash-tables
+    id_prefix: 06-hash-tables
     title: Tabelas Hash e Funções Hash
+    title_en: Hash Tables & Hash Functions
     emoji: 🗂️
+    path: modules/06-hash-tables
+    lessons_path: modules/06-hash-tables/lessons
+    exercises_path: modules/06-hash-tables/exercises
+    examples_path: modules/06-hash-tables/examples
+    resources_path: modules/06-hash-tables/resources
+    audio_path: assets/audio/06-hash-tables
     lessons:
       - id: 06-hash-tables-0-introducao-hash-tables
-        title: 0 introducao hash tables
+        title: Introducao Hash Tables
         mp3_path: null
         md_path: /modules/06-hash-tables/lessons/0-introducao-hash-tables.md
-      - id: 06-hash-tables-1-tabelas-hash-conceitos-implementacoes
-        title: 1 tabelas hash conceitos implementacoes
+      - id: 06-hash-tables-0-introduction-hash-tables
+        title: Introduction Hash Tables
         mp3_path: null
-        md_path: /modules/06-hash-tables/lessons/1-tabelas-hash-conceitos-implementacoes.md
+        md_path: /modules/06-hash-tables/lessons/0-introduction-hash-tables.md
+      - id: 06-hash-tables-1-tabelas-hash-conceitos-implementacoes
+        title: Tabelas Hash Conceitos Implementacoes
+        mp3_path: null
+        md_path: >-
+          /modules/06-hash-tables/lessons/1-tabelas-hash-conceitos-implementacoes.md
+      - id: 06-hash-tables-1-tabelas-hash-concepts-implementacoes
+        title: Tabelas Hash Concepts Implementacoes
+        mp3_path: null
+        md_path: >-
+          /modules/06-hash-tables/lessons/1-tabelas-hash-concepts-implementacoes.md
       - id: 06-hash-tables-2-funcoes-hash
-        title: 2 funcoes hash
+        title: Funções Hash
         mp3_path: /assets/audio/06-hash-tables/2-funcoes-hash.mp3
         md_path: /modules/06-hash-tables/lessons/2-funcoes-hash.md
       - id: 06-hash-tables-3-tratamento-de-colisoes
-        title: 3 tratamento de colisoes
+        title: Tratamento de Colisoes
         mp3_path: /assets/audio/06-hash-tables/3-tratamento-de-colisoes.mp3
         md_path: /modules/06-hash-tables/lessons/3-tratamento-de-colisoes.md
-      - id: 06-hash-tables-3.1-visual-hash-colisoes
-        title: 3.1 visual hash colisoes
+      - id: 06-hash-tables-31-visual-hash-colisoes
+        title: Visual Hash Colisoes
         mp3_path: /assets/audio/06-hash-tables/3.1-visual-hash-colisoes.mp3
         md_path: /modules/06-hash-tables/lessons/3.1-visual-hash-colisoes.md
       - id: 06-hash-tables-4-rehashing-fatores-carga
-        title: 4 rehashing fatores carga
+        title: Rehashing Fatores Carga
         mp3_path: /assets/audio/06-hash-tables/4-rehashing-fatores-carga.mp3
         md_path: /modules/06-hash-tables/lessons/4-rehashing-fatores-carga.md
       - id: 06-hash-tables-6-case-study
-        title: 6 case study
+        title: Case Study
         mp3_path: null
         md_path: /modules/06-hash-tables/lessons/6-case-study.md
       - id: 06-hash-tables-7-hash-tables-vs-outras-estruturas
-        title: 7 hash tables vs outras estruturas
+        title: Hash Tables Vs Outras Estruturas
         mp3_path: /assets/audio/06-hash-tables/7-hash-tables-vs-outras-estruturas.mp3
         md_path: /modules/06-hash-tables/lessons/7-hash-tables-vs-outras-estruturas.md
-  - id_prefix: 07-greedy-dynamic
+  - id: 07-greedy-dynamic
+    id_prefix: 07-greedy-dynamic
     title: Algoritmos Gulosos e Programação Dinâmica
+    title_en: Greedy Algorithms & Dynamic Programming
     emoji: 🧩
+    path: modules/07-greedy-dynamic
+    lessons_path: modules/07-greedy-dynamic/lessons
+    exercises_path: modules/07-greedy-dynamic/exercises
+    examples_path: modules/07-greedy-dynamic/examples
+    resources_path: modules/07-greedy-dynamic/resources
+    audio_path: assets/audio/07-greedy-dynamic
     lessons:
       - id: 07-greedy-dynamic-0-algoritmos-gulosos-e-programacao-dinamica
-        title: 0 algoritmos gulosos e programacao dinamica
-        mp3_path: /assets/audio/07-greedy-dynamic/0-algoritmos-gulosos-e-programacao-dinamica.mp3
-        md_path: /modules/07-greedy-dynamic/lessons/0-algoritmos-gulosos-e-programacao-dinamica.md
+        title: Algoritmos Gulosos e Programação Dinamica
+        mp3_path: >-
+          /assets/audio/07-greedy-dynamic/0-algoritmos-gulosos-e-programacao-dinamica.mp3
+        md_path: >-
+          /modules/07-greedy-dynamic/lessons/0-algoritmos-gulosos-e-programacao-dinamica.md
+      - id: 07-greedy-dynamic-1-algoritmos-gulosos-fundamentals
+        title: Algoritmos Gulosos Fundamentals
+        mp3_path: null
+        md_path: >-
+          /modules/07-greedy-dynamic/lessons/1-algoritmos-gulosos-fundamentals.md
       - id: 07-greedy-dynamic-1-algoritmos-gulosos-fundamentos
-        title: 1 algoritmos gulosos fundamentos
+        title: Algoritmos Gulosos Fundamentos
         mp3_path: /assets/audio/07-greedy-dynamic/1-algoritmos-gulosos-fundamentos.mp3
         md_path: /modules/07-greedy-dynamic/lessons/1-algoritmos-gulosos-fundamentos.md
       - id: 07-greedy-dynamic-2-problemas-classicos-algoritmos-gulosos
-        title: 2 problemas classicos algoritmos gulosos
-        mp3_path: /assets/audio/07-greedy-dynamic/2-problemas-classicos-algoritmos-gulosos.mp3
-        md_path: /modules/07-greedy-dynamic/lessons/2-problemas-classicos-algoritmos-gulosos.md
+        title: Problemas Classicos Algoritmos Gulosos
+        mp3_path: >-
+          /assets/audio/07-greedy-dynamic/2-problemas-classicos-algoritmos-gulosos.mp3
+        md_path: >-
+          /modules/07-greedy-dynamic/lessons/2-problemas-classicos-algoritmos-gulosos.md
       - id: 07-greedy-dynamic-3-transicao-greedy-para-dp
-        title: 3 transicao greedy para dp
+        title: Transicao Greedy para Dp
         mp3_path: /assets/audio/07-greedy-dynamic/3-transicao-greedy-para-dp.mp3
         md_path: /modules/07-greedy-dynamic/lessons/3-transicao-greedy-para-dp.md
+      - id: 07-greedy-dynamic-4-programacao-dinamica-fundamentals
+        title: Programação Dinamica Fundamentals
+        mp3_path: null
+        md_path: >-
+          /modules/07-greedy-dynamic/lessons/4-programacao-dinamica-fundamentals.md
       - id: 07-greedy-dynamic-4-programacao-dinamica-fundamentos
-        title: 4 programacao dinamica fundamentos
+        title: Programação Dinamica Fundamentos
         mp3_path: /assets/audio/07-greedy-dynamic/4-programacao-dinamica-fundamentos.mp3
-        md_path: /modules/07-greedy-dynamic/lessons/4-programacao-dinamica-fundamentos.md
+        md_path: >-
+          /modules/07-greedy-dynamic/lessons/4-programacao-dinamica-fundamentos.md
       - id: 07-greedy-dynamic-5-programacao-dinamica-problemas-classicos
-        title: 5 programacao dinamica problemas classicos
-        mp3_path: /assets/audio/07-greedy-dynamic/5-programacao-dinamica-problemas-classicos.mp3
-        md_path: /modules/07-greedy-dynamic/lessons/5-programacao-dinamica-problemas-classicos.md
+        title: Programação Dinamica Problemas Classicos
+        mp3_path: >-
+          /assets/audio/07-greedy-dynamic/5-programacao-dinamica-problemas-classicos.mp3
+        md_path: >-
+          /modules/07-greedy-dynamic/lessons/5-programacao-dinamica-problemas-classicos.md
       - id: 07-greedy-dynamic-7-case-study-otimizacao-rotas
-        title: 7 case study otimizacao rotas
+        title: Case Study Otimizacao Rotas
         mp3_path: null
         md_path: /modules/07-greedy-dynamic/lessons/7-case-study-otimizacao-rotas.md
-  - id_prefix: 08-advanced-topics
+  - id: 08-advanced-topics
+    id_prefix: 08-advanced-topics
     title: Tópicos Avançados e Aplicações
+    title_en: Advanced Topics & Applications
     emoji: 🚀
+    path: modules/08-advanced-topics
+    lessons_path: modules/08-advanced-topics/lessons
+    exercises_path: modules/08-advanced-topics/exercises
+    examples_path: modules/08-advanced-topics/examples
+    resources_path: modules/08-advanced-topics/resources
+    audio_path: assets/audio/08-advanced-topics
     lessons:
       - id: 08-advanced-topics-0-topicos-avancados-e-aplicacoes
-        title: 0 topicos avancados e aplicacoes
+        title: Topicos Avancados e Aplicacoes
         mp3_path: /assets/audio/08-advanced-topics/0-topicos-avancados-e-aplicacoes.mp3
-        md_path: /modules/08-advanced-topics/lessons/0-topicos-avancados-e-aplicacoes.md
+        md_path: >-
+          /modules/08-advanced-topics/lessons/0-topicos-avancados-e-aplicacoes.md
       - id: 08-advanced-topics-1-arvores-segmentos-fenwick-consultas-eficientes
-        title: 1 arvores segmentos fenwick consultas eficientes
-        mp3_path: /assets/audio/08-advanced-topics/1-arvores-segmentos-fenwick-consultas-eficientes.mp3
-        md_path: /modules/08-advanced-topics/lessons/1-arvores-segmentos-fenwick-consultas-eficientes.md
+        title: Arvores Segmentos Fenwick Consultas Eficientes
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/1-arvores-segmentos-fenwick-consultas-eficientes.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/1-arvores-segmentos-fenwick-consultas-eficientes.md
       - id: 08-advanced-topics-2-trie-arvore-prefixos-busca-strings
-        title: 2 trie arvore prefixos busca strings
-        mp3_path: /assets/audio/08-advanced-topics/2-trie-arvore-prefixos-busca-strings.mp3
-        md_path: /modules/08-advanced-topics/lessons/2-trie-arvore-prefixos-busca-strings.md
+        title: Trie Arvore Prefixos Busca Strings
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/2-trie-arvore-prefixos-busca-strings.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/2-trie-arvore-prefixos-busca-strings.md
       - id: 08-advanced-topics-3-algoritmos-compressao-huffman-codificacao
-        title: 3 algoritmos compressao huffman codificacao
-        mp3_path: /assets/audio/08-advanced-topics/3-algoritmos-compressao-huffman-codificacao.mp3
-        md_path: /modules/08-advanced-topics/lessons/3-algoritmos-compressao-huffman-codificacao.md
+        title: Algoritmos Compressao Huffman Codificacao
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/3-algoritmos-compressao-huffman-codificacao.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/3-algoritmos-compressao-huffman-codificacao.md
       - id: 08-advanced-topics-4-geometria-computacional-algoritmos-espaciais
-        title: 4 geometria computacional algoritmos espaciais
-        mp3_path: /assets/audio/08-advanced-topics/4-geometria-computacional-algoritmos-espaciais.mp3
-        md_path: /modules/08-advanced-topics/lessons/4-geometria-computacional-algoritmos-espaciais.md
+        title: Geometria Computacional Algoritmos Espaciais
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/4-geometria-computacional-algoritmos-espaciais.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/4-geometria-computacional-algoritmos-espaciais.md
       - id: 08-advanced-topics-6-case-study-sistema-autocompletar-implementacao
-        title: 6 case study sistema autocompletar implementacao
-        mp3_path: /assets/audio/08-advanced-topics/6-case-study-sistema-autocompletar-implementacao.mp3
-        md_path: /modules/08-advanced-topics/lessons/6-case-study-sistema-autocompletar-implementacao.md
+        title: Case Study Sistema Autocompletar Implementacao
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/6-case-study-sistema-autocompletar-implementacao.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/6-case-study-sistema-autocompletar-implementacao.md
       - id: 08-advanced-topics-7-revisao-conhecimentos-proximos-passos
-        title: 7 revisao conhecimentos proximos passos
-        mp3_path: /assets/audio/08-advanced-topics/7-revisao-conhecimentos-proximos-passos.mp3
-        md_path: /modules/08-advanced-topics/lessons/7-revisao-conhecimentos-proximos-passos.md
+        title: Revisao Conhecimentos Proximos Passos
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/7-revisao-conhecimentos-proximos-passos.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/7-revisao-conhecimentos-proximos-passos.md
       - id: 08-advanced-topics-8-dijkstra-bellman-ford-caminhos-minimos
-        title: 8 dijkstra bellman ford caminhos minimos
-        mp3_path: /assets/audio/08-advanced-topics/8-dijkstra-bellman-ford-caminhos-minimos.mp3
-        md_path: /modules/08-advanced-topics/lessons/8-dijkstra-bellman-ford-caminhos-minimos.md
+        title: Dijkstra Bellman Ford Caminhos Minimos
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/8-dijkstra-bellman-ford-caminhos-minimos.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/8-dijkstra-bellman-ford-caminhos-minimos.md
       - id: 08-advanced-topics-9-prim-kruskal-arvores-geradoras-minimas
-        title: 9 prim kruskal arvores geradoras minimas
-        mp3_path: /assets/audio/08-advanced-topics/9-prim-kruskal-arvores-geradoras-minimas.mp3
-        md_path: /modules/08-advanced-topics/lessons/9-prim-kruskal-arvores-geradoras-minimas.md
-  - id_prefix: 09-persistent-structures
+        title: Prim Kruskal Arvores Geradoras Minimas
+        mp3_path: >-
+          /assets/audio/08-advanced-topics/9-prim-kruskal-arvores-geradoras-minimas.mp3
+        md_path: >-
+          /modules/08-advanced-topics/lessons/9-prim-kruskal-arvores-geradoras-minimas.md
+  - id: 09-persistent-structures
+    id_prefix: 09-persistent-structures
     title: Estruturas de Dados Persistentes
+    title_en: Persistent Data Structures
     emoji: 💾
+    path: modules/09-persistent-structures
+    lessons_path: modules/09-persistent-structures/lessons
+    exercises_path: modules/09-persistent-structures/exercises
+    examples_path: modules/09-persistent-structures/examples
+    resources_path: modules/09-persistent-structures/resources
+    audio_path: assets/audio/09-persistent-structures
     lessons:
       - id: 09-persistent-structures-0-estruturas-de-dados-persistentes
-        title: 0 estruturas de dados persistentes
-        mp3_path: /assets/audio/09-persistent-structures/0-estruturas-de-dados-persistentes.mp3
-        md_path: /modules/09-persistent-structures/lessons/0-estruturas-de-dados-persistentes.md
+        title: Estruturas de Dados Persistentes
+        mp3_path: >-
+          /assets/audio/09-persistent-structures/0-estruturas-de-dados-persistentes.mp3
+        md_path: >-
+          /modules/09-persistent-structures/lessons/0-estruturas-de-dados-persistentes.md
+      - id: 09-persistent-structures-1-fundamentals-estruturas-persistentes
+        title: Fundamentals Estruturas Persistentes
+        mp3_path: null
+        md_path: >-
+          /modules/09-persistent-structures/lessons/1-fundamentals-estruturas-persistentes.md
       - id: 09-persistent-structures-1-fundamentos-estruturas-persistentes
-        title: 1 fundamentos estruturas persistentes
-        mp3_path: /assets/audio/09-persistent-structures/1-fundamentos-estruturas-persistentes.mp3
-        md_path: /modules/09-persistent-structures/lessons/1-fundamentos-estruturas-persistentes.md
+        title: Fundamentos Estruturas Persistentes
+        mp3_path: >-
+          /assets/audio/09-persistent-structures/1-fundamentos-estruturas-persistentes.mp3
+        md_path: >-
+          /modules/09-persistent-structures/lessons/1-fundamentos-estruturas-persistentes.md
       - id: 09-persistent-structures-2-listas-encadeadas-persistentes
-        title: 2 listas encadeadas persistentes
-        mp3_path: /assets/audio/09-persistent-structures/2-listas-encadeadas-persistentes.mp3
-        md_path: /modules/09-persistent-structures/lessons/2-listas-encadeadas-persistentes.md
+        title: Listas Encadeadas Persistentes
+        mp3_path: >-
+          /assets/audio/09-persistent-structures/2-listas-encadeadas-persistentes.mp3
+        md_path: >-
+          /modules/09-persistent-structures/lessons/2-listas-encadeadas-persistentes.md
       - id: 09-persistent-structures-3-mapas-persistentes
-        title: 3 mapas persistentes
+        title: Mapas Persistentes
         mp3_path: /assets/audio/09-persistent-structures/3-mapas-persistentes.mp3
         md_path: /modules/09-persistent-structures/lessons/3-mapas-persistentes.md
       - id: 09-persistent-structures-4-estruturas-imutaveis-javascript
-        title: 4 estruturas imutaveis javascript
-        mp3_path: /assets/audio/09-persistent-structures/4-estruturas-imutaveis-javascript.mp3
-        md_path: /modules/09-persistent-structures/lessons/4-estruturas-imutaveis-javascript.md
+        title: Estruturas Imutaveis Javascript
+        mp3_path: >-
+          /assets/audio/09-persistent-structures/4-estruturas-imutaveis-javascript.mp3
+        md_path: >-
+          /modules/09-persistent-structures/lessons/4-estruturas-imutaveis-javascript.md
       - id: 09-persistent-structures-5-estudo-caso-sistema-controle-versao
-        title: 5 estudo caso sistema controle versao
-        mp3_path: /assets/audio/09-persistent-structures/5-estudo-caso-sistema-controle-versao.mp3
-        md_path: /modules/09-persistent-structures/lessons/5-estudo-caso-sistema-controle-versao.md
+        title: Estudo Caso Sistema Controle Versao
+        mp3_path: >-
+          /assets/audio/09-persistent-structures/5-estudo-caso-sistema-controle-versao.mp3
+        md_path: >-
+          /modules/09-persistent-structures/lessons/5-estudo-caso-sistema-controle-versao.md
       - id: 09-persistent-structures-7-disjoint-set-union-find
-        title: 7 disjoint set union find
+        title: Disjoint Set Union Find
         mp3_path: /assets/audio/09-persistent-structures/7-disjoint-set-union-find.mp3
         md_path: /modules/09-persistent-structures/lessons/7-disjoint-set-union-find.md
       - id: 09-persistent-structures-8-suffix-trees-suffix-arrays
-        title: 8 suffix trees suffix arrays
-        mp3_path: /assets/audio/09-persistent-structures/8-suffix-trees-suffix-arrays.mp3
-        md_path: /modules/09-persistent-structures/lessons/8-suffix-trees-suffix-arrays.md
-  - id_prefix: 10-complex-structures
+        title: Suffix Trees Suffix Arrays
+        mp3_path: >-
+          /assets/audio/09-persistent-structures/8-suffix-trees-suffix-arrays.mp3
+        md_path: >-
+          /modules/09-persistent-structures/lessons/8-suffix-trees-suffix-arrays.md
+  - id: 10-complex-structures
+    id_prefix: 10-complex-structures
     title: Estruturas de Dados Complexas
+    title_en: Complex Data Structures
     emoji: 🏗️
+    path: modules/10-complex-structures
+    lessons_path: modules/10-complex-structures/lessons
+    exercises_path: modules/10-complex-structures/exercises
+    examples_path: modules/10-complex-structures/examples
+    resources_path: modules/10-complex-structures/resources
+    audio_path: assets/audio/10-complex-structures
     lessons:
       - id: 10-complex-structures-0-estruturas-de-dados-complexas
-        title: 0 estruturas de dados complexas
-        mp3_path: /assets/audio/10-complex-structures/0-estruturas-de-dados-complexas.mp3
-        md_path: /modules/10-complex-structures/lessons/0-estruturas-de-dados-complexas.md
+        title: Estruturas de Dados Complexas
+        mp3_path: >-
+          /assets/audio/10-complex-structures/0-estruturas-de-dados-complexas.mp3
+        md_path: >-
+          /modules/10-complex-structures/lessons/0-estruturas-de-dados-complexas.md
       - id: 10-complex-structures-1-isam-metodo-acesso-sequencial-indexado
-        title: 1 isam metodo acesso sequencial indexado
-        mp3_path: /assets/audio/10-complex-structures/1-isam-metodo-acesso-sequencial-indexado.mp3
-        md_path: /modules/10-complex-structures/lessons/1-isam-metodo-acesso-sequencial-indexado.md
+        title: Isam Metodo Acesso Sequencial Indexado
+        mp3_path: >-
+          /assets/audio/10-complex-structures/1-isam-metodo-acesso-sequencial-indexado.mp3
+        md_path: >-
+          /modules/10-complex-structures/lessons/1-isam-metodo-acesso-sequencial-indexado.md
       - id: 10-complex-structures-2-arvores-2-3
-        title: 2 arvores 2 3
+        title: Arvores 2 3
         mp3_path: /assets/audio/10-complex-structures/2-arvores-2-3.mp3
         md_path: /modules/10-complex-structures/lessons/2-arvores-2-3.md
-  - id_prefix: 11-indexing
+  - id: 11-indexing
+    id_prefix: 11-indexing
     title: Indexação
+    title_en: Indexing Techniques
     emoji: 📇
+    path: modules/11-indexing
+    lessons_path: modules/11-indexing/lessons
+    exercises_path: modules/11-indexing/exercises
+    examples_path: modules/11-indexing/examples
+    resources_path: modules/11-indexing/resources
+    audio_path: assets/audio/11-indexing
     lessons:
       - id: 11-indexing-0-indexacao
-        title: 0 indexacao
+        title: Indexacao
         mp3_path: /assets/audio/11-indexing/0-indexacao.mp3
         md_path: /modules/11-indexing/lessons/0-indexacao.md
       - id: 11-indexing-1-indexacao-linear
-        title: 1 indexacao linear
+        title: Indexacao Linear
         mp3_path: /assets/audio/11-indexing/1-indexacao-linear.mp3
         md_path: /modules/11-indexing/lessons/1-indexacao-linear.md
       - id: 11-indexing-2-indexacao-baseada-em-arvore
-        title: 2 indexacao baseada em arvore
+        title: Indexacao Baseada em Arvore
         mp3_path: /assets/audio/11-indexing/2-indexacao-baseada-em-arvore.mp3
         md_path: /modules/11-indexing/lessons/2-indexacao-baseada-em-arvore.md
-  - id_prefix: 12-problem-solving
+  - id: 12-problem-solving
+    id_prefix: 12-problem-solving
     title: Técnicas de Resolução de Problemas
+    title_en: Problem Solving Techniques
     emoji: 🎯
+    path: modules/12-problem-solving
+    lessons_path: modules/12-problem-solving/lessons
+    exercises_path: modules/12-problem-solving/exercises
+    examples_path: modules/12-problem-solving/examples
+    resources_path: modules/12-problem-solving/resources
+    audio_path: assets/audio/12-problem-solving
     lessons:
       - id: 12-problem-solving-1-algoritmos-randomizados
-        title: 1 algoritmos randomizados
+        title: Algoritmos Randomizados
         mp3_path: /assets/audio/12-problem-solving/1-algoritmos-randomizados.mp3
         md_path: /modules/12-problem-solving/lessons/1-algoritmos-randomizados.md
