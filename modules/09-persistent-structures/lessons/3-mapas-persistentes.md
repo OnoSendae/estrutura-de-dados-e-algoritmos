@@ -660,3 +660,4 @@ class QueryCache {
 
 ---
 
+Na próxima aula, exploraremos como usar bibliotecas existentes como Immutable.js para trabalhar com estruturas de dados persistentes de forma eficiente em aplicações JavaScript. 

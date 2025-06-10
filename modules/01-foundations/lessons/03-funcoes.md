@@ -505,3 +505,4 @@ Funções são pilares da programação em JavaScript e formam a base para conce
 
 ---
 
+No [próximo tópico](./04-programacao-orientada-objetos.md), exploraremos os conceitos básicos da Programação Orientada a Objetos (OOP), que nos ajudará a organizar nosso código de forma mais estruturada e intuitiva. 

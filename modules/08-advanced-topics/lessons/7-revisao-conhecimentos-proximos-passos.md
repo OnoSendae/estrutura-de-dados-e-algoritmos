@@ -180,3 +180,4 @@ Parabéns por completar este curso! Você agora possui um sólido entendimento d
 
 **"Algoritmos são opiniões embutidas no código." - Cathy O'Neil**
 
+--- 

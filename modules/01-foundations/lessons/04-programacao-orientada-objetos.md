@@ -609,3 +609,4 @@ A Programação Orientada a Objetos ajuda a modelar o código de forma que refli
 
 ---
 
+No [próximo tópico](./05-pseudocodigo.md), exploraremos o pseudocódigo, uma ferramenta para planejar e expressar algoritmos de forma independente de linguagem de programação. 

@@ -291,3 +291,4 @@ if(z>25) { console.log("maior");} else {console.log("menor");}
 
 ---
 
+No [próximo tópico](./02-estruturas-de-controle.md), aprenderemos sobre estruturas de controle como condicionais e loops, que nos permitirão criar lógicas mais complexas em nossos programas. 

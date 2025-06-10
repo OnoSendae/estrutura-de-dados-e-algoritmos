@@ -531,3 +531,4 @@ O pseudocódigo é uma ferramenta valiosa no arsenal de qualquer programador, aj
 
 Com isto, concluímos o módulo de Fundamentos da Programação. Cada um dos tópicos abordados serve como base para os estudos mais avançados de estruturas de dados e algoritmos que virão nos próximos módulos. Continue praticando os conceitos aprendidos através dos exercícios para fortalecer seus conhecimentos!
 
+Não se esqueça de revisar regularmente estes conceitos fundamentais, pois eles serão constantemente utilizados à medida que você avança em sua jornada de programação. 

@@ -421,3 +421,4 @@ As estruturas de controle são ferramentas fundamentais que você usará constan
 
 ---
 
+No [próximo tópico](./03-funcoes.md), veremos como organizar nosso código em funções reutilizáveis que ajudam a modularizar nosso programa e torná-lo mais manutenível. 

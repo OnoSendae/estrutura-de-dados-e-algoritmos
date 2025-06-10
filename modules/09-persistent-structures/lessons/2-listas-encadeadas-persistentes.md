@@ -554,3 +554,4 @@ class StateManager {
 
 ---
 
+Na próxima aula, exploraremos mapas persistentes (dicionários) e como eles podem ser implementados usando árvores de busca. 

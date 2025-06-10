@@ -550,3 +550,4 @@ class TextEditor {
 
 ---
 
+Na próxima aula, exploraremos um estudo de caso completo com sistema de controle de versão utilizando estruturas persistentes. 

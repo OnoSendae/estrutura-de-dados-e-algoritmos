@@ -500,3 +500,4 @@ Sistemas reais como Git têm implementações mais sofisticadas, incluindo:
 
 ---
 
+Através deste estudo de caso, pudemos ver como as estruturas de dados persistentes podem ser aplicadas em um sistema complexo do mundo real, proporcionando benefícios significativos em termos de integridade de dados, rastreabilidade e simplicidade conceitual. 
