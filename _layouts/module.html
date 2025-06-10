@@ -26,15 +26,20 @@ layout: default
             {% endif %}
             {% endfor %}
 
+            {% comment %} Navegação para módulo anterior {% endcomment %}
             {% if current_index > 0 %}
-            {% assign prev_module = modules[current_index - 1] %}
+            {% assign prev_index = current_index | minus: 1 %}
+            {% assign prev_module = modules[prev_index] %}
             <a href="{{ site.baseurl }}/modules/{{ prev_module.id_prefix }}/" class="nav-btn prev">
                 ← {{ prev_module.title }}
             </a>
             {% endif %}
 
-            {% if current_index < modules.size - 1 %} {% assign next_module=modules[current_index + 1] %} <a
-                href="{{ site.baseurl }}/modules/{{ next_module.id_prefix }}/" class="nav-btn next">
+            {% comment %} Navegação para próximo módulo {% endcomment %}
+            {% assign modules_count = modules.size | minus: 1 %}
+            {% if current_index < modules_count %} {% assign next_index=current_index | plus: 1 %} {% assign
+                next_module=modules[next_index] %} <a href="{{ site.baseurl }}/modules/{{ next_module.id_prefix }}/"
+                class="nav-btn next">
                 {{ next_module.title }} →
                 </a>
                 {% endif %}
