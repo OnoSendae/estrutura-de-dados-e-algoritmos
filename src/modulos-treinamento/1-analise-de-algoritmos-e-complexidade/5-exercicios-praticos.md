@@ -11,6 +11,7 @@
 
 **Problema:** Analise cada algoritmo abaixo e identifique sua complexidade de tempo e espaço:
 
+{% raw %}
 ```javascript
 // Algoritmo A: Busca em uma lista não ordenada
 function searchAlgorithmA(array, target) {
@@ -42,6 +43,7 @@ function searchAlgorithmC(hashMap, target) {
     return -1;
 }
 ```
+{% endraw %}
 
 **Questões:**
 1. Qual a complexidade de tempo (melhor, pior e caso médio) para cada algoritmo?
