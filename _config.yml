@@ -20,7 +20,8 @@ exclude:
   - scripts/
   # - README.md # Comentando ou removendo esta linha
   - package.json
-  - package-lock.json 
+  - package-lock.json
+  # Arquivos de áudio agora centralizados - Jekyll pode processá-los 
 # Collections for course modules
 collections:
   modules:

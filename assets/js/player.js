@@ -395,37 +395,35 @@ document.addEventListener('DOMContentLoaded', function () {
         lines.forEach((line, index) => {
             const lineNumber = (index + 1).toString().padStart(2, ' ');
 
-            // PRIMEIRO aplica highlighting (ANTES de escapar HTML)
+            // Aplica highlighting simples e direto
             let processedLine = line
-                // 1. Strings primeiro
-                .replace(/("[^"]*")/g, '###STRING1###$1###/STRING1###')
-                .replace(/('[^']*')/g, '###STRING2###$1###/STRING2###')
-                .replace(/(`[^`]*`)/g, '###STRING3###$1###/STRING3###')
+                // 1. Comentários primeiro (antes de escapar HTML)
+                .replace(/(\/\/.*$)/gm, '{{COMMENT}}$1{{/COMMENT}}')
 
-                // 2. Comentários
-                .replace(/(\/\/.*$)/gm, '###COMMENT###$1###/COMMENT###')
+                // 2. Strings
+                .replace(/("[^"]*")/g, '{{STRING}}$1{{/STRING}}')
+                .replace(/('[^']*')/g, '{{STRING}}$1{{/STRING}}')
+                .replace(/(`[^`]*`)/g, '{{STRING}}$1{{/STRING}}')
 
                 // 3. Keywords
-                .replace(/\b(let|const|var|function|if|else|for|while|return|class|new|this|true|false|null|undefined)\b/g, '###KEYWORD###$1###/KEYWORD###')
+                .replace(/\b(let|const|var|function|if|else|for|while|return|class|new|this|true|false|null|undefined)\b/g, '{{KEYWORD}}$1{{/KEYWORD}}')
 
                 // 4. Números
-                .replace(/\b(\d+\.?\d*)\b/g, '###NUMBER###$1###/NUMBER###')
+                .replace(/\b(\d+\.?\d*)\b/g, '{{NUMBER}}$1{{/NUMBER}}')
 
                 // 5. Funções
-                .replace(/\b([a-zA-Z_$][\w$]*)\s*(?=\()/g, '###FUNCTION###$1###/FUNCTION###');
+                .replace(/\b([a-zA-Z_$][\w$]*)\s*(?=\()/g, '{{FUNCTION}}$1{{/FUNCTION}}');
 
-            // DEPOIS escapa o HTML
+            // Escapa HTML
             processedLine = escapeHtml(processedLine);
 
-            // POR ÚLTIMO converte os marcadores para HTML
+            // Converte marcadores para HTML (depois do escape)
             processedLine = processedLine
-                .replace(/###STRING1###([^#]*)###\/STRING1###/g, '<span class="hl-string">$1</span>')
-                .replace(/###STRING2###([^#]*)###\/STRING2###/g, '<span class="hl-string">$1</span>')
-                .replace(/###STRING3###([^#]*)###\/STRING3###/g, '<span class="hl-string">$1</span>')
-                .replace(/###COMMENT###([^#]*)###\/COMMENT###/g, '<span class="hl-comment">$1</span>')
-                .replace(/###KEYWORD###([^#]*)###\/KEYWORD###/g, '<span class="hl-keyword">$1</span>')
-                .replace(/###NUMBER###([^#]*)###\/NUMBER###/g, '<span class="hl-number">$1</span>')
-                .replace(/###FUNCTION###([^#]*)###\/FUNCTION###/g, '<span class="hl-function">$1</span>');
+                .replace(/\{\{COMMENT\}\}(.*?)\{\{\/COMMENT\}\}/g, '<span class="code-comment">$1</span>')
+                .replace(/\{\{STRING\}\}(.*?)\{\{\/STRING\}\}/g, '<span class="code-string">$1</span>')
+                .replace(/\{\{KEYWORD\}\}(.*?)\{\{\/KEYWORD\}\}/g, '<span class="code-keyword">$1</span>')
+                .replace(/\{\{NUMBER\}\}(.*?)\{\{\/NUMBER\}\}/g, '<span class="code-number">$1</span>')
+                .replace(/\{\{FUNCTION\}\}(.*?)\{\{\/FUNCTION\}\}/g, '<span class="code-function">$1</span>');
 
             html += `<div style="color: #d4d4d4; margin: 0; padding: 0;">` +
                 `<span style="color: #858585; margin-right: 16px; user-select: none; display: inline-block; width: 30px;">${lineNumber}</span>` +
