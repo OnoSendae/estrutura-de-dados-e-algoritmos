@@ -1,0 +1,8 @@
+# Configurações específicas para produção
+# Este arquivo sobrescreve configurações do _config.yml quando usado em produção
+
+# Google Analytics (placeholder que será substituído pelo GitHub Actions)
+google_analytics: PLACEHOLDER_GOOGLE_ANALYTICS_ID
+
+# Environment
+environment: production 
