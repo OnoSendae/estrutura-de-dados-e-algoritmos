@@ -12,8 +12,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
-# Google Analytics
-google_analytics: G-CGFRJJW9J4
+# Google Analytics (definido apenas em produção)
+# google_analytics: # Removido para desenvolvimento local
 
 # Exclude from processing.
 exclude:

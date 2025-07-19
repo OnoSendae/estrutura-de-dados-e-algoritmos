@@ -31,6 +31,9 @@ _site/
 # .env
 # .env.*
 # !.env.example
+
+# Configurações de produção com secrets (se necessário)
+# _config.production.yml # Descomente se quiser ignorar este arquivo
 # Migration and backup files
 _backup/
 _temp/
