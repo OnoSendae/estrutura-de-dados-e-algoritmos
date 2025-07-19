@@ -34,8 +34,8 @@ jobs:
 
       - name: Configure production settings
         run: |
-          # Substitui a chave do Google Analytics pela secret
-          sed -i "s/G-CGFRJJW9J4/${{ secrets.GOOGLE_ANALYTICS_ID }}/g" _config.production.yml
+          # Substitui o placeholder pela secret real do Google Analytics
+          sed -i "s/PLACEHOLDER_GOOGLE_ANALYTICS_ID/${{ secrets.GOOGLE_ANALYTICS_ID }}/g" _config.production.yml
           
       - name: Build with Jekyll
         run: |
