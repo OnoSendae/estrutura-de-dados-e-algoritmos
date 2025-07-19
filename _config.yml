@@ -12,6 +12,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
+# Google Analytics
+google_analytics: G-CGFRJJW9J4
+
 # Exclude from processing.
 exclude:
   - Gemfile
